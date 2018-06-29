@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navi_partner"
+        android:icon="@drawable/icon_buddy"
+        android:title="@string/icon_partner" />
+
+    <item
+        android:id="@+id/navi_digimons"
+        android:icon="@drawable/icon_digimons"
+        android:title="@string/icon_digimons" />
+
+    <item
+        android:id="@+id/navi_scans"
+        android:icon="@drawable/icon_scan"
+        android:title="@string/icon_scans" />
+
+</menu>

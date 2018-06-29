@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnFriends"
+        android:title="@string/title_friends" />
+    <!--<item
+        android:id="@+id/btnScan"
+        android:icon="@drawable/icon_barcode"
+        android:title="@string/title_scan"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnAlbum"
+        android:title="@string/title_album" />
+    <item
+        android:id="@+id/btnQRCodes"
+        android:title="@string/my_qrcodes" />
+    <item
+        android:id="@+id/btnAbout"
+        android:title="@string/about" />-->
+</menu>

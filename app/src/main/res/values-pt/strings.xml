@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DigiColle</string>
+
+    <string name="icon_partner">Parceiro</string>
+    <string name="icon_digimons">Digimons</string>
+    <string name="icon_scans">Scans</string>
+
+    <string name="level">Nível</string>
+    <string name="loading">Lendo o código...</string>
+    <string name="mysim">Você não pode usar seus próprios códigos!</string>
+
+    <string name="alb_vistos">Vistos</string>
+    <string name="alb_total">Total</string>
+    <string name="alb_faltam">Faltam</string>
+
+    <string name="title_friends">Amigos</string>
+    <string name="title_wallet">Carteira</string>
+    <string name="title_album">Álbum</string>
+    <string name="title_scan">Escanear Código</string>
+    <string name="title_qrcodes">Meus QRCodes</string>
+
+    <string name="uploadLvl">Seu parceiro acaba de subir um nível!!</string>
+
+    <string name="text_wallet_1">Você tem </string>
+    <string name="text_wallet_2"> moedas na sua carteira.</string>
+
+    <string name="text_total_1">Existe um total de </string>
+    <string name="text_total_2"> digimons disponíveis no app.</string>
+
+    <string name="text_seen_1">Você já viu </string>
+    <string name="text_seen_2"> digimon(s) diferentes.</string>
+
+    <string name="text_left_1">Faltam apenas </string>
+    <string name="text_left_2"> digimon(s) para você completar o álbum.</string>
+
+    <string name="qr_today">Você já escaneou este QRCode hoje.</string>
+
+    <string name="title_evolution">Evolução</string>
+    <string name="text_evolution_1">Parabéns! Seu</string>
+    <string name="text_evolution_2"> evoluiu para </string>
+    <string name="text_evolution_3"> e agora está mais forte!</string>
+
+    <string name="progress">Progresso:</string>
+
+    <string name="first_buddy">Seu primeiro Digimon acabou de nascer!</string>
+
+    <string name="set_buddy">Definir como parceiro</string>
+    <string name="evo_line">Mostrar detalhes</string>
+    <string name="sell_monster">Vender na lojinha</string>
+
+    <string name="my_qrcodes">Meus QRCodes</string>
+    <string name="about">Sobre</string>
+
+    <string name="about_version">Versão: 0.0.19</string>
+    <string name="about_date">(29/05/2018)</string>
+    <string name="about_text">Novidades dessa versão:\n- Adicionados 10+ Digimons;\n- Ver detalhes do parceiro;\n- Correções de bugs;\n\nAVISOS:\n\n- Ganharam evolução:\n- - Salamon;\n- - Gabumon;\n\n- Níveis de evolução:\n- - Em treinamento: 2 ~ 3;\n- - Criança: 8 ~ 9;\n- - Campeão: 16 ~ 19;</string>
+    <string name="about_creator">Desenvolvido por Manoel Afonso</string>
+
+    <string name="want_sell_title">Cuidado!</string>
+    <string name="want_sell_body">Se você vender o seu Digimon, ele nunca mais poderá ser recuperado. Você tem certeza que quer vender ele por</string>
+    <string name="want_sell_end">moedas?</string>
+
+    <string name="yes">Sim</string>
+    <string name="nop">Não</string>
+
+    <string name="error_code">Opa! Um erro aconteceu ao ler o código.</string>
+
+    <string name="detalhes">Detalhes</string>
+    <string name="det_xpscan">Experiência por scan:</string>
+    <string name="det_pts">pts</string>
+    <string name="det_percent">Porcentagem de scan:</string>
+    <string name="det_evolve">Evolui no nível</string>
+
+    <string name="text_scan_1">O scan de</string>
+    <string name="text_scan_2">agora é</string>
+
+    <string name="error_inesperado">ERRO! Um erro inesperado aconteceu!</string>
+
+    <string name="login_text">Entre com o seu nome de usuário e senha para acessar a sua conta:</string>
+
+    <string name="recebendo_data">Recebendo informações...</string>
+
+    <string name="create">Criar uma conta!</string>
+    <string name="login_button">Entrar</string>
+
+    <string name="username">Usuário</string>
+    <string name="password">Senha</string>
+
+    <string name="create_text">Escolha um nome de usuário e uma senha, esses dados serão usados para acessar sua área de domador:</string>
+
+    <string name="create_button">Criar Conta</string>
+
+    <string name="create_username">Escolha um Nome de Usuário</string>
+    <string name="create_password">Escolha uma Senha</string>
+
+    <string name="create_empty_message">Por favor, informe todos os dados!</string>
+
+    <string name="connect">Tentando se comunicar com o servidor...</string>
+
+    <string name="create_sucesso">Parabéns!</string>
+    <string name="create_criado">Sua conta foi criada com sucesso, agora você pode entrar normalmente na área do domador :)</string>
+    <string name="create_erro">Ah não...</string>
+    <string name="create_naocriado">Infelizmente alguém já está usando este nome de usuário, você vai ter que escolher outro nome :/</string>
+
+    <string name="login_erro">Opa!</string>
+    <string name="login_naocriado">Parece que você errou seu nome de usuário ou sua senha, por favor, verifique seus dados e tente novamente.</string>
+
+    <string name="friends_button">Adicionar</string>
+    <string name="friends_hint">Informe o usuário:</string>
+
+</resources>
