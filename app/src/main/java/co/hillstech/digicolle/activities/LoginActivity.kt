@@ -1,28 +1,35 @@
-package co.hillstech.digicolle
+package co.hillstech.digicolle.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import co.hillstech.digicolle.DataBases.DBOthers
+import co.hillstech.digicolle.MainActivity
+import co.hillstech.digicolle.R
 import co.hillstech.digicolle.Retrofit.CreateClass
 import co.hillstech.digicolle.Retrofit.UserService
+import co.hillstech.digicolle.Session
+import co.hillstech.digicolle.activities.bases.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     var dbo: DBOthers = DBOthers(this, null, null, 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        setStatusBarColor()
 
         txtCreate.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
@@ -88,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
 
                             Session.user.name = result.data!![0].crest.toString()
 
-                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
 
                         }else{

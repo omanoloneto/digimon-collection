@@ -1,24 +1,27 @@
-package co.hillstech.digicolle
+package co.hillstech.digicolle.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import co.hillstech.digicolle.R
 import co.hillstech.digicolle.Retrofit.CreateClass
 import co.hillstech.digicolle.Retrofit.UserService
+import co.hillstech.digicolle.activities.bases.BaseActivity
 import kotlinx.android.synthetic.main.activity_create.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CreateActivity : AppCompatActivity() {
+class CreateActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
+
+        setStatusBarColor()
 
         btnCreate.setOnClickListener {
             if(txtName.text.toString() == "" || txtPass.text.toString() == ""){

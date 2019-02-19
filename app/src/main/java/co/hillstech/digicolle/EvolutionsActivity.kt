@@ -33,10 +33,10 @@ class EvolutionsActivity : AppCompatActivity() {
             evos.add(Evolution(pre, e, lvl))
         }
 
-        rcvEvolutions.adapter =  EvolutionsAdapter(evos, this)
+        /*rcvEvolutions.adapter =  EvolutionsAdapter(evos, this)
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         rcvEvolutions.layoutManager = layoutManager
-        rcvEvolutions.adapter.notifyDataSetChanged()
+        rcvEvolutions.adapter.notifyDataSetChanged()*/
 
         var ac = supportActionBar
         ac?.title = getString(R.string.detalhes)

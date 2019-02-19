@@ -3,7 +3,8 @@ package co.hillstech.digicolle.Classes
 import co.hillstech.digicolle.Session
 import java.util.*
 
-class Monster {
+class
+Monster {
     var id: Int = 0
     var name: String? = null
     var partner: String? = null

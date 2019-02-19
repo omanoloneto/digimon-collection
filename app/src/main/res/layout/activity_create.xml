@@ -4,25 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateActivity">
-
-    <ImageView
-        android:id="@+id/imgBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background" />
+    android:background="@drawable/blue_gradient_theme"
+    tools:context=".activities.CreateActivity">
 
     <ImageView
         android:id="@+id/imgLoginLogo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="64dp"
         android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
         app:layout_constraintBottom_toTopOf="@+id/guide40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,9 +56,9 @@
         android:id="@+id/txtUsername"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guide85"
         app:layout_constraintStart_toStartOf="@+id/guide15"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginText">
@@ -85,9 +75,9 @@
         android:id="@+id/txtPassword"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guide85"
         app:layout_constraintStart_toStartOf="@+id/guide15"
         app:layout_constraintTop_toBottomOf="@+id/txtUsername">
@@ -104,9 +94,9 @@
         android:id="@+id/btnCreate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/create_button"
         app:layout_constraintEnd_toStartOf="@+id/guide85"
         app:layout_constraintStart_toStartOf="@+id/guide15"
