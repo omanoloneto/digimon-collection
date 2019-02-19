@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LobbyActivity"
+        <activity android:name=".activities.LobbyActivity"
             android:screenOrientation="portrait"/>
 
         <activity

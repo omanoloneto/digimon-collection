@@ -1,5 +1,6 @@
 package co.hillstech.digicolle.Retrofit
 
+import co.hillstech.digicolle.models.UserResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,7 +14,7 @@ interface Insert {
 interface Login {
     @GET("user/login/")
     fun exe(@Query("name") name: String,
-            @Query("password") password: String): Call<CreateClass>
+            @Query("password") password: String): Call<UserResponse>
 }
 
 interface Location {

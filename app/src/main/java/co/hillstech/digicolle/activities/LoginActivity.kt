@@ -5,14 +5,13 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.widget.Toast
-import co.hillstech.digicolle.DataBases.DBOthers
-import co.hillstech.digicolle.MainActivity
 import co.hillstech.digicolle.R
-import co.hillstech.digicolle.Retrofit.CreateClass
 import co.hillstech.digicolle.Retrofit.UserService
+import co.hillstech.digicolle.Session
 import co.hillstech.digicolle.activities.bases.BaseActivity
+import co.hillstech.digicolle.models.UserResponse
+import co.hillstech.digicolle.models.User
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -60,20 +59,16 @@ class LoginActivity : BaseActivity() {
 
         progress.show()
 
-        var result: CreateClass
-
         val call = UserService().login().exe(name,pass)
 
-        call.enqueue(object: Callback<CreateClass?> {
+        call.enqueue(object: Callback<UserResponse?> {
 
-            override fun onResponse(call: Call<CreateClass?>?,
-                                    response: Response<CreateClass?>?) {
+            override fun onResponse(call: Call<UserResponse?>?,
+                                    response: Response<UserResponse?>?) {
                 response?.body()?.let {
-                    result = it
-
                     progress.dismiss()
 
-                    if(result.status == "true"){
+                    if(it.status){
 
                         val preferences = getPreferences(Context.MODE_PRIVATE)
 
@@ -82,7 +77,9 @@ class LoginActivity : BaseActivity() {
                                    .putString("password", pass)
                                    .apply()
 
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        Session.user = it.data as User
+
+                        startActivity(Intent(this@LoginActivity, LobbyActivity::class.java))
                         finish()
 
                     }else{
@@ -103,7 +100,7 @@ class LoginActivity : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<CreateClass?>?,
+            override fun onFailure(call: Call<UserResponse?>?,
                                    t: Throwable?) {
 
                 //to-do

@@ -1,7 +1,7 @@
 package co.hillstech.digicolle
 
 import co.hillstech.digicolle.Classes.Monster
-import co.hillstech.digicolle.Classes.User
+import co.hillstech.digicolle.models.User
 
 class Session {
     companion object {
@@ -10,7 +10,7 @@ class Session {
         var mysim: String? = null
         var monsters: List<Monster> = listOf()
         var seens: List<String> = listOf()
-        var user: User = User()
+        lateinit var user: User
         var color: String? = null
     }
 }
