@@ -1,5 +1,6 @@
 package co.hillstech.digicolle.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -16,20 +17,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        try{
-            var user = dbo.getOther("userName")
-            var crest = dbo.getOther("userCrest")
-            if(user!!.value != null && user.value != ""){
-                Session.user.name = user.value
-                Session.user.crest = crest!!.value
-                startActivity(Intent(this, MainActivity::class.java))
-            }else{
-                startActivity(Intent(this, LoginActivity::class.java))
-            }
-        }catch (ex: Exception){
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+        startActivity(Intent(this, LoginActivity::class.java))
 
     }
 }

@@ -4,13 +4,13 @@ import co.hillstech.digicolle.R
 
 class User {
     var name: String? = null
-    var crest: String? = null
+    //var crest: String? = null
 
     constructor(): super(){}
 
     constructor(name: String?,crest: String?){
         this.name = name
-        this.crest = crest
+        //this.crest = crest
     }
 
     companion object {

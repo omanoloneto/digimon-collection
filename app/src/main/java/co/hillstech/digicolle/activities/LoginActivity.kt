@@ -2,18 +2,16 @@ package co.hillstech.digicolle.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import co.hillstech.digicolle.DataBases.DBOthers
 import co.hillstech.digicolle.MainActivity
 import co.hillstech.digicolle.R
 import co.hillstech.digicolle.Retrofit.CreateClass
 import co.hillstech.digicolle.Retrofit.UserService
-import co.hillstech.digicolle.Session
 import co.hillstech.digicolle.activities.bases.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -23,13 +21,13 @@ import retrofit2.Response
 
 class LoginActivity : BaseActivity() {
 
-    var dbo: DBOthers = DBOthers(this, null, null, 1)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         setStatusBarColor()
+
+        verifyPreferences()
 
         txtCreate.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
@@ -45,81 +43,66 @@ class LoginActivity : BaseActivity() {
         }
     }
 
+    private fun verifyPreferences() {
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val username = preferences.getString("username", null)
+        val password = preferences.getString("password", null)
+
+        if (username != null && password != null) {
+            login(username, password)
+        }
+    }
+
     fun login(name: String, pass: String){
 
         val progress = ProgressDialog.show(this, "",
-                getString(R.string.connect), true)
+                getString(co.hillstech.digicolle.R.string.connect), true)
 
         progress.show()
 
-        //criando a variável de apiReturn da api
         var result: CreateClass
 
-        //enviando as credentials para o webservice
         val call = UserService().login().exe(name,pass)
 
-        //executando o request e tratando o response
         call.enqueue(object: Callback<CreateClass?> {
 
-            //sucesso no request
             override fun onResponse(call: Call<CreateClass?>?,
                                     response: Response<CreateClass?>?) {
                 response?.body()?.let {
                     result = it
 
-                    Handler().postDelayed({
+                    progress.dismiss()
 
-                        progress.dismiss()
+                    if(result.status == "true"){
 
-                        if(result.status == "true"){
+                        val preferences = getPreferences(Context.MODE_PRIVATE)
 
-                            //to-do
+                        preferences.edit()
+                                   .putString("username", name)
+                                   .putString("password", pass)
+                                   .apply()
 
-                            var user = dbo.getOther("userName")
-                            if(user!!.term != null){
-                                user.value = result.data!![0].name
-                                dbo.setOther(user)
-                            }else{
-                                dbo.add("userName",result.data!![0].name.toString())
-                            }
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finish()
 
-                            Session.user.name = result.data!![0].name.toString()
+                    }else{
 
-                            var crest = dbo.getOther("userCrest")
-                            if(crest!!.term != null){
-                                crest.value = result.data!![0].crest
-                                dbo.setOther(crest)
-                            }else{
-                                dbo.add("userCrest",result.data!![0].crest.toString())
-                            }
+                        //to-do
+                        val dialogBuilder = AlertDialog.Builder(this@LoginActivity)
+                        dialogBuilder.setTitle(getString(R.string.login_erro))
+                        dialogBuilder.setMessage(getString(R.string.login_naocriado))
+                        dialogBuilder.setPositiveButton("OK", null)
+                        dialogBuilder.show()
 
-                            Session.user.name = result.data!![0].crest.toString()
-
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                            finish()
-
-                        }else{
-
-                            //to-do
-                            val dialogBuilder = AlertDialog.Builder(this@LoginActivity)
-                            dialogBuilder.setTitle(getString(R.string.login_erro))
-                            dialogBuilder.setMessage(getString(R.string.login_naocriado))
-                            dialogBuilder.setPositiveButton("OK", null)
-                            dialogBuilder.show()
-
-                        }
-
-                    }, 1000)
+                    }
 
                 } ?: run {
 
                     //to-do
 
                 }
-
             }
 
-            //falha ao executar o request
             override fun onFailure(call: Call<CreateClass?>?,
                                    t: Throwable?) {
 
