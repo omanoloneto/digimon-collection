@@ -5,19 +5,19 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Insert {
-    @GET("api/user/insert/")
+    @GET("user/insert/")
     fun exe(@Query("name") name: String,
             @Query("password") password: String): Call<CreateClass>
 }
 
 interface Login {
-    @GET("api/user/login/")
+    @GET("user/login/")
     fun exe(@Query("name") name: String,
             @Query("password") password: String): Call<CreateClass>
 }
 
 interface Location {
-    @GET("api/user/location/")
+    @GET("user/location/")
     fun exe(@Query("lat") lat: String,
             @Query("lon") lon: String,
             @Query("lonmin") lonmin: String,

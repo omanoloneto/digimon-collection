@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UserService {
     private val retrofit = Retrofit.Builder()
-            .baseUrl("http://digicolle.hillstech.co/")
+            .baseUrl("http://digicolle.hillstech.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

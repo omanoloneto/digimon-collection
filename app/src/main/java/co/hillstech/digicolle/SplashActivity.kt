@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
                 Session.user.name = user.value
                 Session.user.crest = crest!!.value
                 Handler().postDelayed({
-                    startActivity(Intent(this, DigiviceActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }, 2000)
             }else{

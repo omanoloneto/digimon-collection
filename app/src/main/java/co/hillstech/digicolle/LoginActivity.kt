@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
 
                             Session.user.name = result.data!![0].crest.toString()
 
-                            startActivity(Intent(this@LoginActivity,DigiviceActivity::class.java))
+                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
                             finish()
 
                         }else{
