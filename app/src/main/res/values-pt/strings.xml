@@ -110,4 +110,11 @@
     <string name="friends_button">Adicionar</string>
     <string name="friends_hint">Informe o usuário:</string>
 
+    <string name="menu">Menu</string>
+    <string name="logout">Logout</string>
+    <string name="exit">Sair</string>
+    <string name="are_you_sure_you_want_to_logout">Você tem certeza que deseja sair da sua conta?</string>
+    <string name="no">Não</string>
+    <string name="wait_for_new_updates_in_the_next_days">Espere por novas atualizações nos próximos dias!</string>
+
 </resources>

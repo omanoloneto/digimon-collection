@@ -8,11 +8,6 @@
         android:title="@string/icon_partner" />
 
     <item
-        android:id="@+id/navi_digimons"
-        android:icon="@drawable/icon_digimons"
-        android:title="@string/icon_digimons" />
-
-    <item
         android:id="@+id/layoutMenu"
         android:icon="@drawable/bar_menu"
         android:title="@string/menu" />

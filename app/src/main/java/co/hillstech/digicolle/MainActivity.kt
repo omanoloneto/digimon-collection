@@ -44,10 +44,6 @@ class MainActivity : AppCompatActivity() {
                 showHome()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navi_digimons -> {
-                showMonsters()
-                return@OnNavigationItemSelectedListener true
-            }
             R.id.layoutMenu -> {
                 showScans()
                 return@OnNavigationItemSelectedListener true

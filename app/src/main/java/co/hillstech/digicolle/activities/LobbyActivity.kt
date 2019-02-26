@@ -15,7 +15,6 @@ class LobbyActivity : BaseFragmentActivity() {
     private val fragments by lazy {
         mapOf(
                 R.id.navi_partner to HomeFragment(),
-                R.id.navi_digimons to HomeFragment(),
                 R.id.layoutMenu to MenuFragment()
         )
     }
