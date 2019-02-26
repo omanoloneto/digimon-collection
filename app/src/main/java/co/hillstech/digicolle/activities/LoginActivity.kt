@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import co.hillstech.digicolle.R
 import co.hillstech.digicolle.Retrofit.UserService
@@ -96,7 +97,7 @@ class LoginActivity : BaseActivity() {
             override fun onFailure(call: Call<UserResponse?>?,
                                    t: Throwable?) {
 
-                //to-do
+                Log.e("ERROR", t?.message)
 
             }
         })
