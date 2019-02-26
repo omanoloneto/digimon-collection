@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 showMonsters()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navi_scans -> {
+            R.id.layoutMenu -> {
                 showScans()
                 return@OnNavigationItemSelectedListener true
             }

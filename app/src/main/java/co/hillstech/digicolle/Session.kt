@@ -10,7 +10,11 @@ class Session {
         var mysim: String? = null
         var monsters: List<Monster> = listOf()
         var seens: List<String> = listOf()
-        lateinit var user: User
+
+        var username: String? = null
+        var password: String? = null
+
+        var user: User? = null
         var color: String? = null
     }
 }

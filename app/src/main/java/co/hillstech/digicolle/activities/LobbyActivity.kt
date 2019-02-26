@@ -1,10 +1,13 @@
 package co.hillstech.digicolle.activities
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import co.hillstech.digicolle.R
+import co.hillstech.digicolle.Session
 import co.hillstech.digicolle.activities.bases.BaseFragmentActivity
 import co.hillstech.digicolle.fragments.HomeFragment
+import co.hillstech.digicolle.fragments.MenuFragment
 import kotlinx.android.synthetic.main.activity_lobby.*
 
 class LobbyActivity : BaseFragmentActivity() {
@@ -13,7 +16,7 @@ class LobbyActivity : BaseFragmentActivity() {
         mapOf(
                 R.id.navi_partner to HomeFragment(),
                 R.id.navi_digimons to HomeFragment(),
-                R.id.navi_scans to HomeFragment()
+                R.id.layoutMenu to MenuFragment()
         )
     }
 
@@ -21,7 +24,11 @@ class LobbyActivity : BaseFragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lobby)
 
-        setStatusBarColor()
+        Session.user?.crest?.color.let {
+            setStatusBarColor(it)
+            viewActionBar.setCardBackgroundColor(Color.parseColor(it))
+        }
+
         setupBottomNavigationMenu()
     }
 

@@ -10,7 +10,7 @@ abstract class BaseFragmentActivity : BaseActivity() {
     protected fun openFragment(fragment: Fragment, previousFragment: Fragment?) {
         val transaction = supportFragmentManager.beginTransaction()
 
-        transaction.setCustomAnimations(R.anim.abc_slide_in_top, R.anim.abc_slide_out_bottom)
+        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out)
 
         if (supportFragmentManager.findFragmentByTag(fragment.tag) == null) {
             transaction.replace(R.id.viewContainer, fragment, fragment::class.simpleName)

@@ -13,8 +13,8 @@
         android:title="@string/icon_digimons" />
 
     <item
-        android:id="@+id/navi_scans"
-        android:icon="@drawable/icon_scan"
-        android:title="@string/icon_scans" />
+        android:id="@+id/layoutMenu"
+        android:icon="@drawable/bar_menu"
+        android:title="@string/menu" />
 
 </menu>

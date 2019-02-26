@@ -17,7 +17,20 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        verifyPreferences()
+
         startActivity(Intent(this, LoginActivity::class.java))
 
+    }
+
+    private fun verifyPreferences() {
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val username = preferences.getString("username", null)
+        val password = preferences.getString("password", null)
+
+        if (username != null && password != null) {
+            Session.username = username
+            Session.password = password
+        }
     }
 }

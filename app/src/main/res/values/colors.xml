@@ -4,11 +4,15 @@
     <color name="colorPrimaryDark">@color/regal_blue</color>
     <color name="colorAccent">@color/mine_shaft</color>
 
+    <color name="silver">#c5c5c5</color>
     <color name="backGray">#eeeeee</color>
     <color name="white">#ffffff</color>
 
+    <color name="red">#ff0000</color>
+
     <color name="congress_blue_light">#024d91</color>
     <color name="congress_blue_dark">#03488d</color>
-    <color name="regal_blue">#013e77</color>
+    <color name="regal_blue">#013E77</color>
     <color name="mine_shaft">#3d3d3d</color>
+    <color name="black">#000000</color>
 </resources>

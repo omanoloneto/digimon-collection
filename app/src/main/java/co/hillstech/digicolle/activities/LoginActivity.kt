@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.math.log
 
 
 class LoginActivity : BaseActivity() {
@@ -26,7 +27,9 @@ class LoginActivity : BaseActivity() {
 
         setStatusBarColor()
 
-        verifyPreferences()
+        if(Session.username != null && Session.password != null){
+            login(Session.username!!, Session.password!!)
+        }
 
         txtCreate.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
@@ -39,16 +42,6 @@ class LoginActivity : BaseActivity() {
                 login(txtNameL.text.toString(),
                         txtPassL.text.toString())
             }
-        }
-    }
-
-    private fun verifyPreferences() {
-        val preferences = getPreferences(Context.MODE_PRIVATE)
-        val username = preferences.getString("username", null)
-        val password = preferences.getString("password", null)
-
-        if (username != null && password != null) {
-            login(username, password)
         }
     }
 
