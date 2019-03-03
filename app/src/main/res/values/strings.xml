@@ -120,4 +120,6 @@
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to log out of your account?</string>
     <string name="no">No</string>
     <string name="wait_for_new_updates_in_the_next_days">Wait for new updates in the next days!</string>
+    <string name="track_back">Rastrear</string>
+    <string name="digi_radar">DigiRadar</string>
 </resources>
