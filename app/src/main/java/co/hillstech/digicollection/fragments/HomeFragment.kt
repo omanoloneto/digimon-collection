@@ -19,9 +19,28 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //TODO: create more options
+    }
 
-        Picasso.get().load(Session.user?.partner?.image)
-                .noPlaceholder()
-                .into(viewMonster)
+    override fun onResume() {
+        super.onResume()
+        updateUserHome()
+    }
+
+    private fun updateUserHome() {
+        Session.user?.partner?.let {
+            viewPartnerName.text = it.species
+            Picasso.get().load(it.image)
+                    .noPlaceholder()
+                    .into(viewPartnerImage)
+        }
+
+        Session.user?.digivice?.let {
+            layoutDigivice.visibility = View.VISIBLE
+            viewDigiviceModel.text = it.model+" of "+Session.user!!.crest.virtue
+            Picasso.get().load(it.image)
+                    .noPlaceholder()
+                    .into(viewDigiviceImage)
+        }
     }
 }

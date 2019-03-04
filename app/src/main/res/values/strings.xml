@@ -8,7 +8,7 @@
     <string name="icon_scans">Scans</string>
 
     <string name="level">Level</string>
-    <string name="loading">Reading code...</string>
+    <string name="loading_code">Reading code...</string>
     <string name="mysim">You can not use your own codes!</string>
 
     <string name="alb_vistos">Seen</string>
@@ -122,4 +122,14 @@
     <string name="wait_for_new_updates_in_the_next_days">Wait for new updates in the next days!</string>
     <string name="track_back">Rastrear</string>
     <string name="digi_radar">DigiRadar</string>
+    <string name="store">Loja</string>
+    <string name="loading">Carregando...</string>
+    <string name="bought">Comprado</string>
+    <string name="my_wallet">Minha carteira:</string>
+    <string name="no_money">Sem dinheiro</string>
+    <string name="warning">Atenção</string>
+    <string name="you_must_have_a_digivice_to_use_the_radar">Você precisa de um Digivice para poder usar o rastreador. Compre um Digivice utilizando a Loja no menu.</string>
+    <string name="ok">Ok</string>
+    <string name="error">Erro</string>
+    <string name="user_or_password_is_invalid">Seu usuário ou senha pode estar errado, por favor confira as informações e tente novamente.</string>
 </resources>

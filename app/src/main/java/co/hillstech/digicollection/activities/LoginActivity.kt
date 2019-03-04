@@ -12,6 +12,7 @@ import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.models.UserResponse
 import co.hillstech.digicollection.models.User
+import co.hillstech.digicollection.utils.showMessageDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -77,25 +78,22 @@ class LoginActivity : BaseActivity() {
 
                     }else{
 
-                        //to-do
-                        val dialogBuilder = AlertDialog.Builder(this@LoginActivity)
-                        dialogBuilder.setTitle(getString(R.string.login_erro))
-                        dialogBuilder.setMessage(getString(R.string.login_naocriado))
-                        dialogBuilder.setPositiveButton("OK", null)
-                        dialogBuilder.show()
+                        showMessageDialog(getString(R.string.error), getString(R.string.user_or_password_is_invalid), getString(R.string.ok))
 
                     }
 
                 } ?: run {
 
-                    //to-do
+                    progress.dismiss()
+                    showMessageDialog(getString(R.string.error), getString(R.string.user_or_password_is_invalid), getString(R.string.ok))
 
                 }
             }
 
             override fun onFailure(call: Call<UserResponse?>?,
                                    t: Throwable?) {
-
+                progress.dismiss()
+                showMessageDialog(getString(R.string.error), getString(R.string.user_or_password_is_invalid), getString(R.string.ok))
                 Log.e("ERROR", t?.message)
 
             }

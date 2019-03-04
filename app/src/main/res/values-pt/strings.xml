@@ -8,7 +8,7 @@
     <string name="icon_scans">Scans</string>
 
     <string name="level">Nível</string>
-    <string name="loading">Lendo o código...</string>
+    <string name="loading_code">Lendo o código...</string>
     <string name="mysim">Você não pode usar seus próprios códigos!</string>
 
     <string name="alb_vistos">Vistos</string>

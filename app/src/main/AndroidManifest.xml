@@ -32,9 +32,11 @@
         <activity
             android:name=".activities.LobbyActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".PrivacyActivity"
             android:screenOrientation="portrait" />
@@ -47,7 +49,9 @@
 
         <activity android:name=".EvolutionsActivity" />
 
-        <activity android:name=".StoreActivity" />
+        <activity
+            android:name=".activities.StoreActivity"
+            android:screenOrientation="portrait" />
 
         <activity android:name=".AlbumActivity" />
 

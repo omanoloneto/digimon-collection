@@ -9,10 +9,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.LoginActivity
 import co.hillstech.digicollection.activities.RadarActivity
+import co.hillstech.digicollection.activities.StoreActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu
@@ -45,8 +47,18 @@ class MenuFragment : Fragment() {
         var menus: MutableList<Menu> = mutableListOf()
 
         activity?.let{
-            menus.add(Menu("DigiRadar", it.getDrawable(R.drawable.ic_globe)) {
-                startActivity(Intent(it, RadarActivity::class.java))
+            menus.add(Menu(getString(R.string.digi_radar), it.getDrawable(R.drawable.ic_globe)) {
+                if(Session.user!!.digivice == null){
+                    it.showMessageDialog(getString(R.string.warning),
+                            getString(R.string.you_must_have_a_digivice_to_use_the_radar),
+                            positiveButtonLabel = getString(R.string.ok))
+                }else {
+                    startActivity(Intent(it, RadarActivity::class.java))
+                }
+            })
+
+            menus.add(Menu(getString(R.string.store), it.getDrawable(R.drawable.store)) {
+                startActivity(Intent(it, StoreActivity::class.java))
             })
 
             menus.add(Menu(getString(R.string.logout), it.getDrawable(R.drawable.logout)) {

@@ -60,7 +60,7 @@ class BarcodeScanningActivity : Activity(), ZXingScannerView.ResultHandler {
         Session.code = rawResult.text
 
         val dialog = ProgressDialog.show(this, "",
-                getString(R.string.loading), true)
+                getString(R.string.loading_code), true)
 
         dialog.show()
 
