@@ -47,13 +47,13 @@ class RadarActivity : BaseActivity() {
 
         viewTrackBack.setOnClickListener {
             progressRingCall(this)
-            if(longitude == "" && latitude == ""){
+            if (longitude == "" && latitude == "") {
                 try {
                     locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
                 } catch (e: SecurityException) {
                     Log.e("ERROR", e.message)
                 }
-            }else{
+            } else {
                 trackInfectedMonsters()
             }
         }
@@ -105,7 +105,7 @@ class RadarActivity : BaseActivity() {
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
             var initialize = false
-            if(longitude == "" && latitude == ""){
+            if (longitude == "" && latitude == "") {
                 initialize = true
             }
 
@@ -115,7 +115,7 @@ class RadarActivity : BaseActivity() {
             Session.latitude = location.latitude
             Session.longitude = location.longitude
 
-            if(initialize){
+            if (initialize) {
                 trackInfectedMonsters()
             }
         }
@@ -127,7 +127,7 @@ class RadarActivity : BaseActivity() {
 
     private fun trackInfectedMonsters() {
         Session.user?.let {
-            val call = UserService().location().getInfectedMonster(latitude,longitude,it.digivice!!.id, it.id)
+            val call = UserService().location().getInfectedMonster(latitude, longitude, it.digivice!!.id, it.id)
 
             call.enqueue(object : Callback<MonsterResponse?> {
 
@@ -135,25 +135,25 @@ class RadarActivity : BaseActivity() {
                                         response: Response<MonsterResponse?>?) {
                     response?.body()?.let {
 
-                        if(it.fieldTypeDontSet()){
+                        if (it.fieldTypeDontSet()) {
                             showMessageDialog(getString(R.string.warning), getString(R.string.do_you_want_to_send_your_current_location),
                                     positiveButtonLabel = getString(R.string.yes),
                                     negativeButtonLabel = getString(R.string.no),
                                     positiveButtonAction = {
                                         startActivity(Intent(this@RadarActivity, LocationActivity::class.java))
                                     })
-                        } else if(it.isFieldClear()){
+                        } else if (it.isFieldClear()) {
                             Toast.makeText(this@RadarActivity, "Sem digimons por perto.", Toast.LENGTH_SHORT).show()
-                        } else if(it.isFieldMonstersDontSet()){
+                        } else if (it.isFieldMonstersDontSet()) {
                             Toast.makeText(this@RadarActivity, "Nenhum digimon cadastrado nesta área.", Toast.LENGTH_SHORT).show()
-                        } else if(it.isDigiviceNotCharged()){
+                        } else if (it.isDigiviceNotCharged()) {
                             Toast.makeText(this@RadarActivity, "Digivice sem carga no momento.", Toast.LENGTH_SHORT).show()
                         } else {
                             it.monster?.let {
                                 ScannerFragment().apply {
                                     species = it.species
                                     image = it.image
-                                    progress = Session.getScanProgress(it.id, it.type)
+                                    progress = Session.getScanProgress(it)
                                 }.show(supportFragmentManager, "Scanner Completed")
                             }
                         }

@@ -25,35 +25,35 @@ interface Store {
 interface User {
     @GET("user/updatewallet/")
     fun updateWallet(@Query("user") user: String,
-                 @Query("wallet") wallet: Int): Call<BooleanResponse>
+                     @Query("wallet") wallet: Int): Call<BooleanResponse>
 
     @GET("user/updatedigivice/")
     fun updateDigivice(@Query("user") user: String,
-                 @Query("digivice") digivice: Int): Call<BooleanResponse>
+                       @Query("digivice") digivice: Int): Call<BooleanResponse>
 
     @GET("user/checkdigivicecharge/")
     fun checkDigiviceCharge(@Query("user") user: Int,
-                 @Query("digivice") digivice: Int): Call<ChargeResponse>
+                            @Query("digivice") digivice: Int): Call<ChargeResponse>
 
     @GET("user/updatescan/")
     fun updateScan(@Query("user") user: Int,
-                 @Query("monster") monster: Int,
-                 @Query("progress") progress: Int): Call<BooleanResponse>
+                   @Query("monster") monster: Int,
+                   @Query("progress") progress: Int): Call<BooleanResponse>
 }
 
 interface Location {
     @GET("location/insert/")
     fun insert(@Query("lat") lat: String,
-            @Query("lon") lon: String,
-            @Query("lonmin") lonmin: String,
-            @Query("lonmax") lonmax: String,
-            @Query("latmin") latmin: String,
-            @Query("latmax") latmax: String,
-            @Query("tipo") tipo: String): Call<BooleanResponse>
+               @Query("lon") lon: String,
+               @Query("lonmin") lonmin: String,
+               @Query("lonmax") lonmax: String,
+               @Query("latmin") latmin: String,
+               @Query("latmax") latmax: String,
+               @Query("tipo") tipo: String): Call<BooleanResponse>
 
     @GET("location/getinfectedmonster/")
     fun getInfectedMonster(@Query("lat") latitude: String,
-            @Query("lon") longitude: String,
-            @Query("digivice") digivice: Int,
-            @Query("user") user: Int): Call<MonsterResponse>
+                           @Query("lon") longitude: String,
+                           @Query("digivice") digivice: Int,
+                           @Query("user") user: Int): Call<MonsterResponse>
 }

@@ -24,16 +24,16 @@ class CreateActivity : BaseActivity() {
         setStatusBarColor()
 
         btnCreate.setOnClickListener {
-            if(txtName.text.toString() == "" || txtPass.text.toString() == ""){
-                Toast.makeText(this, getString(R.string.create_empty_message),Toast.LENGTH_SHORT).show()
-            }else{
+            if (txtName.text.toString() == "" || txtPass.text.toString() == "") {
+                Toast.makeText(this, getString(R.string.create_empty_message), Toast.LENGTH_SHORT).show()
+            } else {
                 createAccount(txtName.text.toString(),
-                              txtPass.text.toString())
+                        txtPass.text.toString())
             }
         }
     }
 
-    fun createAccount(name: String, pass: String){
+    fun createAccount(name: String, pass: String) {
 
         val progress = ProgressDialog.show(this, "",
                 getString(R.string.connect), true)
@@ -44,10 +44,10 @@ class CreateActivity : BaseActivity() {
         var result: CreateClass
 
         //enviando as credentials para o webservice
-        val call = UserService().newUser().exe(name,pass)
+        val call = UserService().newUser().exe(name, pass)
 
         //executando o request e tratando o response
-        call.enqueue(object: Callback<CreateClass?> {
+        call.enqueue(object : Callback<CreateClass?> {
 
             //sucesso no request
             override fun onResponse(call: Call<CreateClass?>?,
@@ -59,7 +59,7 @@ class CreateActivity : BaseActivity() {
 
                         progress.dismiss()
 
-                        if(result.status == "true"){
+                        if (result.status == "true") {
 
                             //to-do
                             val dialogBuilder = AlertDialog.Builder(this@CreateActivity)
@@ -70,7 +70,7 @@ class CreateActivity : BaseActivity() {
                             })
                             dialogBuilder.show()
 
-                        }else{
+                        } else {
 
                             //to-do
                             val dialogBuilder = AlertDialog.Builder(this@CreateActivity)

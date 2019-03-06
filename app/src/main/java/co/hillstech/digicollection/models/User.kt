@@ -7,5 +7,5 @@ class User(
         var digivice: Digivice?,
         var wallet: Int,
         var partner: Monster,
-        var scanList: MutableList<Scanner>
-) { }
+        var scanList: MutableList<Monster>
+) {}

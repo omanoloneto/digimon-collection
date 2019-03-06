@@ -9,7 +9,6 @@ import co.hillstech.digicollection.fragments.HomeFragment
 import co.hillstech.digicollection.fragments.MenuFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_lobby.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class LobbyActivity : BaseFragmentActivity() {
 

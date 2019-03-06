@@ -5,4 +5,4 @@ class Crest(
         var virtue: String,
         var color: String,
         var icon: String
-) { }
+) {}

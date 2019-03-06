@@ -3,8 +3,8 @@ package co.hillstech.digicollection.utils
 import android.content.Context
 
 fun Context.showMessageDialog(title: String, message: String,
-                       positiveButtonLabel: String? = "", positiveButtonAction: () -> Unit = {},
-                       negativeButtonLabel: String? = "", negativeButtonAction: () -> Unit = {}){
+                              positiveButtonLabel: String? = "", positiveButtonAction: () -> Unit = {},
+                              negativeButtonLabel: String? = "", negativeButtonAction: () -> Unit = {}) {
     val dialogBuilder = android.app.AlertDialog.Builder(this)
     dialogBuilder.setTitle(title)
     dialogBuilder.setMessage(message)
@@ -15,7 +15,7 @@ fun Context.showMessageDialog(title: String, message: String,
         })
     }
 
-    negativeButtonLabel?.let{
+    negativeButtonLabel?.let {
         dialogBuilder.setNegativeButton(negativeButtonLabel, android.content.DialogInterface.OnClickListener { dialog, whichButton ->
             negativeButtonAction()
         })

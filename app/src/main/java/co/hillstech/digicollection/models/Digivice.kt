@@ -8,4 +8,4 @@ class Digivice(
         var cooldown: Int,
         var image: String,
         var bought: Boolean
-) { }
+) {}

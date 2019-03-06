@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         Session.user?.digivice?.let {
             layoutDigivice.visibility = View.VISIBLE
-            viewDigiviceModel.text = it.model+" of "+Session.user!!.crest.virtue
+            viewDigiviceModel.text = it.model + " of " + Session.user!!.crest.virtue
             Picasso.get().load(it.image)
                     .noPlaceholder()
                     .into(viewDigiviceImage)

@@ -7,5 +7,6 @@ class Monster(
         var experience: Int,
         var personality: String,
         var image: String,
+        var progress: Int,
         var type: Int
-) { }
+) {}

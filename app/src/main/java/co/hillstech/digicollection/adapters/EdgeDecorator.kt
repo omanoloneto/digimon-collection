@@ -9,7 +9,7 @@ import android.view.View
  * Quick way to add padding to first and last item in recyclerview via decorators
  */
 
-class EdgeDecorator(edgePadding: Int) : RecyclerView.ItemDecoration(){
+class EdgeDecorator(edgePadding: Int) : RecyclerView.ItemDecoration() {
 
     private val edgePadding = edgePadding
 

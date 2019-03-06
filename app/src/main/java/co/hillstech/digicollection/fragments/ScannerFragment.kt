@@ -1,16 +1,13 @@
 package co.hillstech.digicollection.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_scanner.*
-import kotlinx.android.synthetic.main.view_menu_item.*
 
 class ScannerFragment : DialogFragment() {
 

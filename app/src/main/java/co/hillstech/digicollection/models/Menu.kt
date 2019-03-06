@@ -6,4 +6,4 @@ class Menu(
         var title: String,
         var icon: Drawable?,
         var onClickAction: () -> Unit
-) { }
+) {}

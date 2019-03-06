@@ -120,7 +120,7 @@ class StoreActivity : BaseActivity() {
 
     private fun setupActivity() {
         viewActivityTitle.text = getString(R.string.store)
-        viewWallet.text = "$ "+Session.user?.wallet.toString()
+        viewWallet.text = "$ " + Session.user?.wallet.toString()
 
         viewBackArrow.setOnClickListener { onBackPressed() }
 

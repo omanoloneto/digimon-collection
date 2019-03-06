@@ -9,8 +9,8 @@ import co.hillstech.digicollection.R
 import co.hillstech.digicollection.models.Menu
 import kotlinx.android.synthetic.main.view_menu_item.view.*
 
-class MenuAdapter (private val menus: List<Menu>,
-                   private val context: Context) : RecyclerView.Adapter<MenuHolder>() {
+class MenuAdapter(private val menus: List<Menu>,
+                  private val context: Context) : RecyclerView.Adapter<MenuHolder>() {
 
     override fun onBindViewHolder(holder: MenuHolder, position: Int) {
         val menu = menus[position]
@@ -29,7 +29,7 @@ class MenuAdapter (private val menus: List<Menu>,
 
 class MenuHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindView(menu: Menu) = with(itemView){
+    fun bindView(menu: Menu) = with(itemView) {
         viewTitle.text = menu.title
         viewIcon.setImageDrawable(menu.icon)
 

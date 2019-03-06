@@ -35,26 +35,8 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".PrivacyActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".BarcodeScanningActivity"
-            android:screenOrientation="portrait" />
-
-        <activity android:name=".QRCodesActivity" />
-
-        <activity android:name=".EvolutionsActivity" />
-
-        <activity
             android:name=".activities.StoreActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".AlbumActivity" />
 
         <activity android:name=".activities.LoginActivity"
             android:screenOrientation="portrait" />
@@ -63,14 +45,9 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".DigiviceActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
             android:name=".activities.LocationActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".FriendsActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
     </application>
 
 </manifest>

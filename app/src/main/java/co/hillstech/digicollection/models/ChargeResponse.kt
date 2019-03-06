@@ -1,5 +1,5 @@
 package co.hillstech.digicollection.models
 
-class ChargeResponse (
+class ChargeResponse(
         val charge: Int
 ) {}
