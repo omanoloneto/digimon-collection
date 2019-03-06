@@ -1,0 +1,53 @@
+package co.hillstech.digicollection.activities
+
+import android.graphics.Color
+import android.os.Bundle
+import co.hillstech.digicollection.R
+import co.hillstech.digicollection.Session
+import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
+import co.hillstech.digicollection.fragments.HomeFragment
+import co.hillstech.digicollection.fragments.MenuFragment
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_lobby.*
+import kotlinx.android.synthetic.main.fragment_home.*
+
+class LobbyActivity : BaseFragmentActivity() {
+
+    private val fragments by lazy {
+        mapOf(
+                R.id.navi_partner to HomeFragment(),
+                R.id.layoutMenu to MenuFragment()
+        )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_lobby)
+
+        Session.user?.crest?.let {
+            setStatusBarColor(it.color)
+            viewActionBar.setCardBackgroundColor(Color.parseColor(it.color))
+
+            Picasso.get().load(it.icon)
+                    .noPlaceholder()
+                    .into(viewCrest)
+        }
+
+        setupBottomNavigationMenu()
+    }
+
+    private fun setupBottomNavigationMenu() {
+        viewBottomNavigation.setOnNavigationItemSelectedListener {
+            fragments[it.itemId]?.let { frag ->
+                openFragment(frag, fragments[selectedFragment])
+                selectedFragment = it.itemId
+
+                return@setOnNavigationItemSelectedListener true
+            }
+
+            return@setOnNavigationItemSelectedListener false
+        }
+
+        viewBottomNavigation.selectedItemId = R.id.navi_partner
+    }
+}
