@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
@@ -65,8 +66,8 @@
             android:name=".DigiviceActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
-            android:name=".LocationActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:name=".activities.LocationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FriendsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />

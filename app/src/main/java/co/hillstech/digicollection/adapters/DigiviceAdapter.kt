@@ -57,6 +57,8 @@ class DigiviceHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                                     id,
                                     model,
                                     price,
+                                    100,
+                                    cooldown,
                                     image.replace(
                                             "${digivice.id}.png",
                                             "${digivice.id}/${it.crest.id}.png"

@@ -1,7 +1,6 @@
 package co.hillstech.digicollection.activities
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -11,15 +10,22 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
+import co.hillstech.digicollection.fragments.ScannerFragment
+import co.hillstech.digicollection.models.ChargeResponse
+import co.hillstech.digicollection.models.MonsterResponse
+import co.hillstech.digicollection.utils.showMessageDialog
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_radar.*
 import kotlinx.android.synthetic.main.view_action_bar.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RadarActivity : BaseActivity() {
 
@@ -40,12 +46,15 @@ class RadarActivity : BaseActivity() {
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
 
         viewTrackBack.setOnClickListener {
-            if(longitude != "" && latitude != ""){
+            progressRingCall(this)
+            if(longitude == "" && latitude == ""){
                 try {
                     locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
                 } catch (e: SecurityException) {
                     Log.e("ERROR", e.message)
                 }
+            }else{
+                trackInfectedMonsters()
             }
         }
     }
@@ -95,13 +104,105 @@ class RadarActivity : BaseActivity() {
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
+            var initialize = false
+            if(longitude == "" && latitude == ""){
+                initialize = true
+            }
+
             longitude = location.longitude.toString()
             latitude = location.latitude.toString()
+
+            Session.latitude = location.latitude
+            Session.longitude = location.longitude
+
+            if(initialize){
+                trackInfectedMonsters()
+            }
         }
 
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
         override fun onProviderEnabled(provider: String) {}
         override fun onProviderDisabled(provider: String) {}
+    }
+
+    private fun trackInfectedMonsters() {
+        Session.user?.let {
+            val call = UserService().location().getInfectedMonster(latitude,longitude,it.digivice!!.id, it.id)
+
+            call.enqueue(object : Callback<MonsterResponse?> {
+
+                override fun onResponse(call: Call<MonsterResponse?>?,
+                                        response: Response<MonsterResponse?>?) {
+                    response?.body()?.let {
+
+                        if(it.fieldTypeDontSet()){
+                            showMessageDialog(getString(R.string.warning), getString(R.string.do_you_want_to_send_your_current_location),
+                                    positiveButtonLabel = getString(R.string.yes),
+                                    negativeButtonLabel = getString(R.string.no),
+                                    positiveButtonAction = {
+                                        startActivity(Intent(this@RadarActivity, LocationActivity::class.java))
+                                    })
+                        } else if(it.isFieldClear()){
+                            Toast.makeText(this@RadarActivity, "Sem digimons por perto.", Toast.LENGTH_SHORT).show()
+                        } else if(it.isFieldMonstersDontSet()){
+                            Toast.makeText(this@RadarActivity, "Nenhum digimon cadastrado nesta área.", Toast.LENGTH_SHORT).show()
+                        } else if(it.isDigiviceNotCharged()){
+                            Toast.makeText(this@RadarActivity, "Digivice sem carga no momento.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            it.monster?.let {
+                                ScannerFragment().apply {
+                                    species = it.species
+                                    image = it.image
+                                    progress = Session.getScanProgress(it.id, it.type)
+                                }.show(supportFragmentManager, "Scanner Completed")
+                            }
+                        }
+
+                        checkDigiviceCharge()
+
+                    } ?: run {
+                        Log.e("ERROR", response?.errorBody().toString())
+                    }
+
+                    progressRingDismiss()
+                }
+
+                override fun onFailure(call: Call<MonsterResponse?>?, t: Throwable?) {
+                    progressRingDismiss()
+                    Log.e("ERROR", t?.message)
+                }
+            })
+        }
+    }
+
+    private fun checkDigiviceCharge() {
+        Session.user?.let {
+            val call = UserService().user().checkDigiviceCharge(it.id, it.digivice!!.id)
+
+            call.enqueue(object : Callback<ChargeResponse?> {
+
+                override fun onResponse(call: Call<ChargeResponse?>?,
+                                        response: Response<ChargeResponse?>?) {
+                    response?.body()?.let {
+
+                        setupDigiviceCharge(it.charge)
+
+                    } ?: run {
+                        Log.e("ERROR", response?.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ChargeResponse?>?, t: Throwable?) {
+                    Log.e("ERROR", t?.message)
+                }
+            })
+        }
+    }
+
+    private fun setupDigiviceCharge(charge: Int) {
+        Session.user?.digivice?.charge = charge
+        viewDigiviceCharge.progress = charge
+        viewDigivicePercent.text = "$charge%"
     }
 
     private fun setupActivity() {
@@ -112,6 +213,17 @@ class RadarActivity : BaseActivity() {
         Session.user?.crest?.color.let {
             setStatusBarColor(it)
             viewActionBar.setCardBackgroundColor(Color.parseColor(it))
+        }
+
+        Session.user?.digivice?.let {
+
+            setupDigiviceCharge(it.charge)
+
+            checkDigiviceCharge()
+
+            Picasso.get().load(it.image)
+                    .noPlaceholder()
+                    .into(viewDigivice)
         }
     }
 }

@@ -33,5 +33,6 @@ class UserService {
     fun login() = retrofit.create(Login::class.java)
     fun store() = retrofit.create(Store::class.java)
     fun user() = retrofit.create(User::class.java)
+    fun location() = retrofit.create(Location::class.java)
     fun setLocation() = retrofit.create(Location::class.java)
 }
