@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navi_partner"
+        android:icon="@drawable/icon_buddy"
+        android:title="@string/icon_partner" />
+
+    <item
+        android:id="@+id/layoutMenu"
+        android:icon="@drawable/bar_menu"
+        android:title="@string/menu" />
+
+</menu>

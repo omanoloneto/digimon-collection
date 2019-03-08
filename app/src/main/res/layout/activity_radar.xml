@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RadarActivity">
+
+    <ProgressBar
+        android:id="@+id/viewDigiviceCharge"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:progress="80"
+        android:progressTint="@color/regal_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/viewDigivicePercent"
+        app:layout_constraintEnd_toStartOf="@+id/viewDigivicePercent"
+        app:layout_constraintStart_toStartOf="@+id/layoutRadar"
+        app:layout_constraintTop_toTopOf="@+id/viewDigivicePercent" />
+
+    <include
+        android:id="@+id/layoutActionBar"
+        layout="@layout/view_action_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/viewTrackBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/track_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/viewDigivice"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline65"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideline50" />
+
+    <ImageView
+        android:id="@+id/layoutRadar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:alpha="0.6"
+        app:layout_constraintBottom_toTopOf="@+id/verticalGuideline60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/verticalGuideline40"
+        app:srcCompat="@drawable/radar_screen" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalGuideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalGuideline60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <TextView
+        android:id="@+id/layoutRadarHelpText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/click_on_button_to_track_infecteds_digimons"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/verticalGuideline40"
+        app:layout_constraintEnd_toEndOf="@+id/layoutRadar"
+        app:layout_constraintStart_toStartOf="@+id/layoutRadar"
+        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontalGuideline65"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <TextView
+        android:id="@+id/layoutDigiviceCharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Carga do Digivice"
+        app:layout_constraintBottom_toTopOf="@+id/viewDigiviceCharge"
+        app:layout_constraintStart_toStartOf="@+id/viewDigiviceCharge" />
+
+    <TextView
+        android:id="@+id/viewDigivicePercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="80%"
+        app:layout_constraintBottom_toTopOf="@+id/viewTrackBack"
+        app:layout_constraintEnd_toEndOf="@+id/layoutRadar"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideline65" />
+
+</android.support.constraint.ConstraintLayout>

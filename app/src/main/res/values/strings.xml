@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DigiColle</string>
+
+    <string name="icon_partner">Buddy</string>
+    <string name="icon_digimons">Digimons</string>
+    <string name="icon_scans">Scans</string>
+
+    <string name="level">Level</string>
+    <string name="loading_code">Reading code...</string>
+    <string name="mysim">You can not use your own codes!</string>
+
+    <string name="alb_vistos">Seen</string>
+    <string name="alb_total">Total</string>
+    <string name="alb_faltam">Missing</string>
+
+    <string name="title_friends">Friends</string>
+    <string name="title_wallet">Wallet</string>
+    <string name="title_album">Album</string>
+    <string name="title_scan">Scan Code</string>
+    <string name="title_qrcodes">My QRCodes</string>
+
+    <string name="uploadLvl">Your buddy has just uploaded one level!!</string>
+
+    <string name="text_wallet_1">You have </string>
+    <string name="text_wallet_2"> coins in your wallet.</string>
+
+    <string name="text_total_1">There is a total of </string>
+    <string name="text_total_2"> digimons to collect.</string>
+
+    <string name="text_seen_1">You have seen </string>
+    <string name="text_seen_2"> different digimon(s).</string>
+
+    <string name="text_left_1">There are only </string>
+    <string name="text_left_2"> digimon(s) left to complete the album.</string>
+
+    <string name="qr_today">You already scanned this QRCode today.</string>
+
+    <string name="title_evolution">Evolution</string>
+    <string name="text_evolution_1">Congratulations! Your</string>
+    <string name="text_evolution_2"> has evolved to </string>
+    <string name="text_evolution_3"> and now its stronger!</string>
+
+    <string name="progress">Progress:</string>
+
+    <string name="first_buddy">Your first Digimon has just hatched!</string>
+
+    <string name="set_buddy">Set as your buddy</string>
+    <string name="evo_line">Show Details</string>
+    <string name="sell_monster">Sell on the market</string>
+
+    <string name="my_qrcodes">My QRCodes</string>
+    <string name="about">About</string>
+
+    <string name="about_version">Version: 0.0.19</string>
+    <string name="about_date">(05/29/2018)</string>
+    <string name="about_text">Whats new in this version:\n- Added 10+ Digimons;\n- View partner details;\n- Bug fixes;\n\nWARNINGS:\n\n- They gained evolution:\n- - Salamon;\n- - Gabumon;\n\n- Evolution levels:\n- - In training: 2 ~ 3;\n- - Rookie: 8 ~ 9;\n- - Champion: 16 ~ 19;</string>
+    <string name="about_creator">Developed by Manoel Afonso</string>
+
+    <string name="want_sell_title">Watch out!</string>
+    <string name="want_sell_body">If you sell your Digimon, it can never be recovered. Are you sure you want to sell it by</string>
+    <string name="want_sell_end">coins?</string>
+
+    <string name="yes">Yes</string>
+    <string name="nop">No</string>
+
+    <string name="error_code">Ops! An error occurred while read the code.</string>
+
+    <string name="detalhes">Details</string>
+    <string name="det_xpscan">Scanning experience:</string>
+    <string name="det_pts">pts</string>
+    <string name="det_percent">Percentage per scan:</string>
+    <string name="det_evolve">Evolve at level</string>
+
+    <string name="text_scan_1">The scan of</string>
+    <string name="text_scan_2">is now</string>
+
+    <string name="error_inesperado">ERROR! An unexpected error happened!</string>
+
+    <string name="facebook_app_id">224664344977954</string>
+    <string name="fb_login_protocol_scheme">fb224664344977954</string>
+
+    <string name="login_text">Enter your username and password to access your account:</string>
+
+    <string name="recebendo_data">Retrieving data...</string>
+
+    <string name="create">Create an account!</string>
+    <string name="login_button">Log in</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="create_text">Choose a username and password, this data will be used to access your tamer area:</string>
+
+    <string name="create_button">Create an Account</string>
+
+    <string name="create_username">Choose an Username</string>
+    <string name="create_password">Choose a Password</string>
+
+    <string name="create_empty_message">Please enter all the data!</string>
+
+    <string name="connect">Trying to communicate with the server...</string>
+
+    <string name="create_sucesso">Congratulations!</string>
+    <string name="create_criado">Your account has been successfully created, you can now normally enter the tamer area :)</string>
+    <string name="create_erro">Oh no...</string>
+    <string name="create_naocriado">Unfortunately someone is already using this username, you will have to choose another name :/</string>
+
+    <string name="login_erro">Oops!</string>
+    <string name="login_naocriado">It looks like you\'ve entered your username or password, please check your details and try again.</string>
+
+    <string name="friends_button">Add Friend</string>
+    <string name="friends_hint">Username:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu">Menu</string>
+    <string name="logout">Logout</string>
+    <string name="exit">Exit</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to log out of your account?</string>
+    <string name="no">No</string>
+    <string name="wait_for_new_updates_in_the_next_days">Wait for new updates in the next days!</string>
+    <string name="track_back">Rastrear</string>
+    <string name="digi_radar">DigiRadar</string>
+    <string name="store">Loja</string>
+    <string name="loading">Carregando...</string>
+    <string name="bought">Comprado</string>
+    <string name="my_wallet">Minha carteira:</string>
+    <string name="no_money">Sem dinheiro</string>
+    <string name="warning">Atenção</string>
+    <string name="you_must_have_a_digivice_to_use_the_radar">Você precisa de um Digivice para poder usar o rastreador. Compre um Digivice utilizando a Loja no menu.</string>
+    <string name="ok">Ok</string>
+    <string name="error">Erro</string>
+    <string name="user_or_password_is_invalid">Seu usuário ou senha pode estar errado, por favor confira as informações e tente novamente.</string>
+    <string name="click_on_button_to_track_infecteds_digimons">Clique no botão para rastrear possíveis Digimons infectados ao seu redor.</string>
+    <string name="scan_completed">Scan Concluido</string>
+    <string name="do_you_want_to_send_your_current_location">O local onde você está tentando rastrear não está cadastrado ainda em nosso banco de dados. Gostaria de cadastrar o seu local atual?</string>
+    <string name="send_location">Enviar localização</string>
+    <string name="success">Sucesso</string>
+    <string name="your_location_was_successfully_registered">Sua localização foi cadastrada com sucesso, agora você já pode tentar rastrear novamente.</string>
+    <string name="scan_list">Lista de Scans</string>
+</resources>
