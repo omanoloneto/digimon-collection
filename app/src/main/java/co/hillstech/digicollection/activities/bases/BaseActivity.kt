@@ -12,22 +12,26 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private var progressRing: ProgressDialog? = null
 
+    protected open fun setupViews() {}
+
+    protected open fun setupActionBar() {}
+
     protected fun setStatusBarColor(color: String? = null) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            color?.let{
+            color?.let {
                 window.statusBarColor = Color.parseColor(color)
-            } ?: run{
+            } ?: run {
                 window.statusBarColor = ContextCompat.getColor(this, R.color.regal_blue)
             }
         }
     }
 
-    protected fun progressRingCall(context: Context, message: String = getString(R.string.loading)){
+    protected fun progressRingCall(context: Context, message: String = getString(R.string.loading)) {
         progressRing = ProgressDialog.show(context, "", message, true)
         progressRing?.show()
     }
 
-    protected fun progressRingDismiss(){
+    protected fun progressRingDismiss() {
         progressRing?.dismiss()
     }
 
