@@ -25,7 +25,7 @@ class ScannerFragment : DialogFragment() {
 
         viewScannerTitle.text =
                 if(title != "") title
-                else getString(R.string.scanner_completed)
+                else getString(R.string.scan_completed)
 
         viewScannerSpecies.text = species
         viewProgressBar.progress = progress
@@ -33,7 +33,7 @@ class ScannerFragment : DialogFragment() {
 
         image?.let {
             Picasso.get().load(it)
-                    .noPlaceholder()
+                    .placeholder(R.drawable.placeholder)
                     .into(viewScannerImage)
         }
 

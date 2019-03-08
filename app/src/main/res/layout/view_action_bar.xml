@@ -9,8 +9,10 @@
         android:id="@+id/viewActionBar"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
         app:cardBackgroundColor="@color/regal_blue"
         app:cardCornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,6 +25,7 @@
                 android:id="@+id/viewBackArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:foreground="?attr/selectableItemBackground"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -133,9 +133,10 @@
     <string name="error">Erro</string>
     <string name="user_or_password_is_invalid">Seu usuário ou senha pode estar errado, por favor confira as informações e tente novamente.</string>
     <string name="click_on_button_to_track_infecteds_digimons">Clique no botão para rastrear possíveis Digimons infectados ao seu redor.</string>
-    <string name="scanner_completed">Scanner Concluido</string>
+    <string name="scan_completed">Scan Concluido</string>
     <string name="do_you_want_to_send_your_current_location">O local onde você está tentando rastrear não está cadastrado ainda em nosso banco de dados. Gostaria de cadastrar o seu local atual?</string>
     <string name="send_location">Enviar localização</string>
     <string name="success">Sucesso</string>
     <string name="your_location_was_successfully_registered">Sua localização foi cadastrada com sucesso, agora você já pode tentar rastrear novamente.</string>
+    <string name="scan_list">Lista de Scans</string>
 </resources>
