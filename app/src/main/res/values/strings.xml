@@ -139,4 +139,7 @@
     <string name="success">Sucesso</string>
     <string name="your_location_was_successfully_registered">Sua localização foi cadastrada com sucesso, agora você já pode tentar rastrear novamente.</string>
     <string name="scan_list">Lista de Scans</string>
+    <string name="do_you_want_change_your_digivice">Você já tem um Digivice equipado, gostaria de substituí-lo pelo</string>
+    <string name="minutes">minutos</string>
+    <string name="you_received">Você ganhou:</string>
 </resources>

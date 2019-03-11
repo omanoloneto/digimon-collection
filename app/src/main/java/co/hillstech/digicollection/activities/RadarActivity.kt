@@ -149,11 +149,17 @@ class RadarActivity : BaseActivity() {
                         } else if (it.isDigiviceNotCharged()) {
                             Toast.makeText(this@RadarActivity, "Digivice sem carga no momento.", Toast.LENGTH_SHORT).show()
                         } else {
+                            var coinsReceived = it.coins
+                            Session.user?.let {
+                                it.wallet += coinsReceived
+                            }
+
                             it.monster?.let {
                                 ScannerFragment().apply {
                                     species = it.species
                                     image = it.image
                                     progress = Session.getScanProgress(it)
+                                    coins = coinsReceived
                                 }.show(supportFragmentManager, "Scanner Completed")
                             }
                         }

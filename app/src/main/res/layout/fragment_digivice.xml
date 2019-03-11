@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/viewDigiviceModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="D-3"
+        app:layout_constraintStart_toEndOf="@+id/layoutDigiviceModel"
+        app:layout_constraintTop_toTopOf="@+id/layoutDigiviceModel" />
+
+    <TextView
+        android:id="@+id/layoutResume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Descrição:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/viewDigiviceImage"
+        app:layout_constraintTop_toBottomOf="@+id/layoutMaxLevel" />
+
+    <TextView
+        android:id="@+id/viewResume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Digivice resume."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDigiviceImage" />
+
+    <TextView
+        android:id="@+id/layoutMaxLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Evolução Máx.:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/viewDigiviceImage"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCooldown" />
+
+    <TextView
+        android:id="@+id/viewMaxLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Extreme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutMaxLevel"
+        app:layout_constraintTop_toTopOf="@+id/layoutMaxLevel" />
+
+    <TextView
+        android:id="@+id/layoutDigiviceModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Modelo:"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/viewDigiviceImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/viewDigiviceImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutResume"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layoutDigiviceModel"
+        app:srcCompat="@drawable/placeholder" />
+
+    <Button
+        android:id="@+id/viewConfirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewResume" />
+
+    <TextView
+        android:id="@+id/layoutCooldown"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Recarga:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/viewDigiviceImage"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDigiviceModel" />
+
+    <TextView
+        android:id="@+id/viewCooldown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="5 minutos"
+        app:layout_constraintStart_toEndOf="@+id/layoutCooldown"
+        app:layout_constraintTop_toTopOf="@+id/layoutCooldown" />
+</android.support.constraint.ConstraintLayout>

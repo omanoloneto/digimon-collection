@@ -29,7 +29,8 @@ interface User {
 
     @GET("user/updatedigivice/")
     fun updateDigivice(@Query("user") user: String,
-                       @Query("digivice") digivice: Int): Call<BooleanResponse>
+                       @Query("digivice") digivice: Int,
+                       @Query("equipe") equipe: Boolean): Call<BooleanResponse>
 
     @GET("user/checkdigivicecharge/")
     fun checkDigiviceCharge(@Query("user") user: Int,

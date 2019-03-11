@@ -6,13 +6,13 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/viewScannerTitle"
+        android:id="@+id/viewScannerSpecies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Título"
+        android:text="Agumon"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -20,30 +20,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/viewScannerImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewScannerTitle"
-        app:srcCompat="@drawable/placeholder" />
-
     <TextView
-        android:id="@+id/viewScannerSpecies"
+        android:id="@+id/viewScannerCoins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Espécie"
+        android:text="Você ganhou: $ 4"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewScannerImage" />
+
+    <ImageView
+        android:id="@+id/viewScannerImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewScannerSpecies"
+        app:srcCompat="@drawable/placeholder" />
 
     <ProgressBar
         android:id="@+id/viewProgressBar"
@@ -67,13 +67,13 @@
         android:layout_marginEnd="16dp"
         android:text="80%"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewScannerSpecies" />
+        app:layout_constraintTop_toBottomOf="@+id/viewScannerCoins" />
 
     <Button
         android:id="@+id/viewConfirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/ok"
