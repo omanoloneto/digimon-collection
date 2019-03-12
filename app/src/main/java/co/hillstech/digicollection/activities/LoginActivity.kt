@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.onesignal.OneSignal
+import org.json.JSONObject
+
+
 
 
 class LoginActivity : BaseActivity() {
@@ -69,6 +73,10 @@ class LoginActivity : BaseActivity() {
                                 .putString("username", name)
                                 .putString("password", pass)
                                 .commit()
+
+                        OneSignal.deleteTag("username")
+                        OneSignal.sendTags(JSONObject()
+                                .put("username", it.data.id))
 
                         Session.user = it.data as User
 

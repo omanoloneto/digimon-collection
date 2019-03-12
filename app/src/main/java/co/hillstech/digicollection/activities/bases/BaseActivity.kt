@@ -7,6 +7,8 @@ import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.Session
+import kotlinx.android.synthetic.main.view_action_bar.*
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -15,6 +17,13 @@ abstract class BaseActivity : AppCompatActivity() {
     protected open fun setupViews() {}
 
     protected open fun setupActionBar() {}
+
+    override fun onResume() {
+        super.onResume()
+        Session.user?.let{
+            viewWallet.text = "$ ${it.wallet}"
+        }
+    }
 
     protected fun setStatusBarColor(color: String? = null) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

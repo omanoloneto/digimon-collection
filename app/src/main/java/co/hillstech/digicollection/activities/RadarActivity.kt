@@ -152,6 +152,7 @@ class RadarActivity : BaseActivity() {
                             var coinsReceived = it.coins
                             Session.user?.let {
                                 it.wallet += coinsReceived
+                                viewWallet.text = "$ ${it.wallet}"
                             }
 
                             it.monster?.let {

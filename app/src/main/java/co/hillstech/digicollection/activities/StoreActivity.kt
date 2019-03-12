@@ -54,7 +54,7 @@ class StoreActivity : BaseActivity() {
                 override fun onResponse(call: Call<BooleanResponse?>?,
                                         response: Response<BooleanResponse?>?) {
                     response?.body()?.let {
-                        viewWallet.text = "$ ${Session.user?.wallet.toString()}"
+                        viewWallet.text = "$ ${Session.user?.wallet}"
                         Log.e("SUCCESS", it.status.toString())
                     } ?: run {
                         Log.e("ERROR", "ERROR")
