@@ -19,6 +19,7 @@ import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu
 import co.hillstech.digicollection.ui.scan.ScanListActivity
 import co.hillstech.digicollection.utils.showMessageDialog
+import com.onesignal.OneSignal
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MenuFragment : Fragment() {
@@ -84,6 +85,8 @@ class MenuFragment : Fragment() {
             preferences.edit()
                     .clear()
                     .commit()
+
+            OneSignal.deleteTag("username")
 
             Session.user = null
             Session.username = null

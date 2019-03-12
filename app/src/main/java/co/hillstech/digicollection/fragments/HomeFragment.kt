@@ -19,7 +19,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO: create more options
     }
 
     override fun onResume() {
@@ -37,10 +36,22 @@ class HomeFragment : Fragment() {
 
         Session.user?.digivice?.let {
             layoutDigivice.visibility = View.VISIBLE
-            viewDigiviceModel.text = it.model + " of " + Session.user!!.crest.virtue
+            layoutDigiviceModel.text = it.model + " of " + Session.user!!.crest.virtue
             Picasso.get().load(it.image)
                     .noPlaceholder()
                     .into(viewDigiviceImage)
+
+            var digiviceFragment = DigiviceFragment().apply {
+                model = it.model
+                cooldown = it.cooldown
+                maxLevel = it.maxLevel
+                resume = it.resume
+                image = it.image
+            }
+
+            layoutDigivice.setOnClickListener {
+                digiviceFragment.show(activity!!.supportFragmentManager, "DIGIVICE_FRAGMENT")
+            }
         }
     }
 }

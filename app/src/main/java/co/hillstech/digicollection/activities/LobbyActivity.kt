@@ -2,6 +2,7 @@ package co.hillstech.digicollection.activities
 
 import android.graphics.Color
 import android.os.Bundle
+import co.hillstech.digicollection.BuildConfig
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
@@ -33,6 +34,15 @@ class LobbyActivity : BaseFragmentActivity() {
         }
 
         setupBottomNavigationMenu()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Session.user?.let {
+            viewVersion.text = "Versão ${BuildConfig.VERSION_NAME}"
+            viewUserName.text = it.name
+            viewWallet.text = "$ ${it.wallet}"
+        }
     }
 
     private fun setupBottomNavigationMenu() {

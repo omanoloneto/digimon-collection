@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
+import com.onesignal.OneSignal
 
 class SplashActivity : AppCompatActivity() {
 
@@ -13,6 +14,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         verifyPreferences()
+
+        OneSignal.startInit(this)
+                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                 .unsubscribeWhenNotificationsAreDisabled(true)
+                 .init()
 
         startActivity(Intent(this, LoginActivity::class.java))
 

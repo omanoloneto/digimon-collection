@@ -23,7 +23,7 @@ class ScanListActivity : BaseActivity(), ScanListPresenter.View {
     }
 
     override fun setupViews() {
-        viewScanList?.run{
+        viewScanList?.run {
             addItemDecoration(EdgeDecorator(16))
             adapter = ScanListAdapter(presenter.getScanList())
             layoutManager = LinearLayoutManager(this@ScanListActivity)
