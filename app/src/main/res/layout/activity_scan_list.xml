@@ -4,36 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.StoreActivity">
-
-    <TextView
-        android:id="@+id/layoutDigivices"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Digivices"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+    android:background="@color/white"
+    tools:context=".ui.scan.ScanListActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/viewDigivicesList"
+        android:id="@+id/viewScanList"
         android:layout_width="0dp"
-        android:layout_height="316dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutDigivices"
-        tools:listitem="@layout/view_store_item" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/view_scan_progress" >
+
+    </android.support.v7.widget.RecyclerView>
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/layoutActionBar"
         layout="@layout/view_action_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

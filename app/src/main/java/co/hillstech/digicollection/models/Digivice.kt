@@ -7,5 +7,7 @@ class Digivice(
         var charge: Int,
         var cooldown: Int,
         var image: String,
+        var resume: String,
+        var maxLevel: String,
         var bought: Boolean
 ) {}

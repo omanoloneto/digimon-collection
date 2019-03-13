@@ -17,7 +17,9 @@ import co.hillstech.digicollection.activities.StoreActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu
+import co.hillstech.digicollection.ui.scan.ScanListActivity
 import co.hillstech.digicollection.utils.showMessageDialog
+import com.onesignal.OneSignal
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MenuFragment : Fragment() {
@@ -56,6 +58,10 @@ class MenuFragment : Fragment() {
                 }
             })
 
+            menus.add(Menu(getString(R.string.scan_list), it.getDrawable(R.drawable.todo_list)) {
+                startActivity(Intent(it, ScanListActivity::class.java))
+            })
+
             menus.add(Menu(getString(R.string.store), it.getDrawable(R.drawable.store)) {
                 startActivity(Intent(it, StoreActivity::class.java))
             })
@@ -79,6 +85,8 @@ class MenuFragment : Fragment() {
             preferences.edit()
                     .clear()
                     .commit()
+
+            OneSignal.deleteTag("username")
 
             Session.user = null
             Session.username = null

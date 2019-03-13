@@ -7,31 +7,32 @@ import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_scanner.*
+import kotlinx.android.synthetic.main.fragment_digivice.*
 
-class ScannerFragment : DialogFragment() {
+class DigiviceFragment : DialogFragment() {
 
-    var species: String = ""
-    var image: String? = null
-    var progress: Int = 0
-    var coins: Int = 0
+    var model       : String = ""
+    var maxLevel    : String = ""
+    var cooldown    : Int = 0
+    var resume      : String = ""
+    var image       : String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_scanner, container)
+        return inflater.inflate(R.layout.fragment_digivice, container)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewScannerSpecies.text = species
-        viewProgressBar.progress = progress
-        viewScannerPercent.text = "$progress%"
-        viewScannerCoins.text = getString(R.string.you_received)+" $ $coins"
+        viewDigiviceModel.text = model
+        viewResume.text = resume
+        viewMaxLevel.text = maxLevel
+        viewCooldown.text = "${cooldown} "+getString(R.string.minutes)
 
         image?.let {
             Picasso.get().load(it)
                     .placeholder(R.drawable.placeholder)
-                    .into(viewScannerImage)
+                    .into(viewDigiviceImage)
         }
 
         viewConfirmButton.setOnClickListener { dismiss() }

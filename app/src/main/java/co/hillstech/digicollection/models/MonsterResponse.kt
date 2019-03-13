@@ -3,7 +3,8 @@ package co.hillstech.digicollection.models
 class MonsterResponse(
         var status: Boolean,
         var message: String,
-        var monster: Monster?
+        var monster: Monster?,
+        var coins: Int
 ) {
     fun fieldTypeDontSet(): Boolean {
         return !status && message == "FIELD_TYPE_DONT_SET"
