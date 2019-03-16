@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.scanList.ScanListActivity">
+    tools:context=".ui.digiviceList.DigiviceListActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/viewScanList"
+        android:id="@+id/viewDigiviceList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
@@ -16,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/view_scan_progress" >
+        tools:listitem="@layout/view_digivice_list_items">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -28,5 +27,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

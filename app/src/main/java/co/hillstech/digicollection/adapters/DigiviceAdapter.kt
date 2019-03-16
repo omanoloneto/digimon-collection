@@ -89,7 +89,8 @@ class DigiviceHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         "${digivice.id}/${crest.id}.png"),
                 digivice.resume,
                 digivice.maxLevel,
-                digivice.bought
+                digivice.bought,
+                digivice.equiped
         )
     }
 

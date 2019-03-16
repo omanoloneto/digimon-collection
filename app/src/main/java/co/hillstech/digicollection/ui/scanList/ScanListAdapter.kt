@@ -1,4 +1,4 @@
-package co.hillstech.digicollection.ui.scan
+package co.hillstech.digicollection.ui.scanList
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
