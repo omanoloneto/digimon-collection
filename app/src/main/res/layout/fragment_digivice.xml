@@ -32,7 +32,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Digivice resume."
+        app:layout_constraintBottom_toTopOf="@+id/viewConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDigiviceImage" />
@@ -89,7 +91,6 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/confirm_button"
@@ -97,15 +98,13 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50"
-        app:layout_constraintTop_toBottomOf="@+id/viewResume" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50" />
 
     <Button
         android:id="@+id/viewCancelButton"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/cancel_button"
@@ -113,8 +112,7 @@
         android:textColor="@color/regal_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewResume" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/layoutCooldown"

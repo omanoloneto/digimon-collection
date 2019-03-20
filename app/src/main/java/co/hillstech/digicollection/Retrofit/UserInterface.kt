@@ -1,6 +1,7 @@
 package co.hillstech.digicollection.Retrofit
 
 import co.hillstech.digicollection.models.*
+import co.hillstech.digicollection.ui.battleResult.BattleResultViewModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -64,4 +65,11 @@ interface Location {
                            @Query("lon") longitude: String,
                            @Query("digivice") digivice: Int,
                            @Query("user") user: Int): Call<MonsterResponse>
+}
+
+interface Monster {
+    @GET("monster/getBattleResult/")
+    fun getBattleResult(@Query("buddy") buddyId: Int,
+                           @Query("wild") wildSpeciesId: Int,
+                           @Query("user") userId: Int): Call<BattleResultViewModel>
 }

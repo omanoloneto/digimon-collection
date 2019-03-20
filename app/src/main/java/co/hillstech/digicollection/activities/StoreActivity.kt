@@ -88,6 +88,7 @@ class StoreActivity : BaseActivity() {
                 maxLevel = it.maxLevel
                 resume = it.resume
                 image = it.image
+                showButtons = false
             }.show(supportFragmentManager, "DIGIVICE_FRAGMENT")
         }
     }

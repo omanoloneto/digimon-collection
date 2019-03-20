@@ -2,6 +2,7 @@ package co.hillstech.digicollection
 
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.models.User
+import com.wooplr.spotlight.SpotlightConfig
 
 object Session {
     var username: String? = null
@@ -12,6 +13,10 @@ object Session {
 
     var user: User? = null
     var color: String? = null
+
+    var wild: Int = 0
+
+    var spotlightConfig = SpotlightConfig()
 
     fun getScanProgress(monster: Monster): Int {
         user?.scanList?.let {

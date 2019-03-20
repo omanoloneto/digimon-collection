@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.digiviceList.DigiviceListActivity"></activity>
+        <activity android:name=".ui.battleResult.BattleResultActivity"></activity>
+        <activity android:name=".ui.digiviceList.DigiviceListActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"

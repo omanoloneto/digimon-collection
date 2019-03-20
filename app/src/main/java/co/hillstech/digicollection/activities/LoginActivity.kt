@@ -2,6 +2,7 @@ package co.hillstech.digicollection.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -79,6 +80,12 @@ class LoginActivity : BaseActivity() {
                                 .put("username", it.data.id))
 
                         Session.user = it.data as User
+
+                        Session.user?.crest?.let {
+                            Session.spotlightConfig.headingTvColor = Color.parseColor("#ffffff")
+                            Session.spotlightConfig.subHeadingTvColor = Color.parseColor("#ffffff")
+                            Session.spotlightConfig.lineAndArcColor = Color.parseColor(it.color)
+                        }
 
                         startActivity(Intent(this@LoginActivity, LobbyActivity::class.java))
                         finish()
