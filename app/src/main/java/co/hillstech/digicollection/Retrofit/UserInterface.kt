@@ -27,6 +27,13 @@ interface User {
     fun updateWallet(@Query("user") user: String,
                      @Query("wallet") wallet: Int): Call<BooleanResponse>
 
+    @GET("user/getUserDevices/")
+    fun getUserDevices(@Query("user") user: Int): Call<MutableList<Digivice>>
+
+    @GET("user/changeEquipedDigivice/")
+    fun changeEquipedDigivice(@Query("user") user: Int,
+                              @Query("digiviceId") digivice: Int): Call<MutableList<Digivice>>
+
     @GET("user/updatedigivice/")
     fun updateDigivice(@Query("user") user: String,
                        @Query("digivice") digivice: Int,

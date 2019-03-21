@@ -13,13 +13,13 @@ android {
         applicationId "co.hillstech.digicollection"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 6
-        versionName "0.0.6"
+        versionCode 7
+        versionName "0.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
         manifestPlaceholders = [
-                onesignal_app_id: 'fe111ffe-38b9-48ee-8ba9-c204bf1f9c4d',
+                onesignal_app_id               : 'fe111ffe-38b9-48ee-8ba9-c204bf1f9c4d',
                 onesignal_google_project_number: 'REMOTE'
         ]
     }

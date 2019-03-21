@@ -1,4 +1,4 @@
-package co.hillstech.digicollection.ui.scan
+package co.hillstech.digicollection.ui.scanList
 
 import android.graphics.Color
 import android.os.Bundle

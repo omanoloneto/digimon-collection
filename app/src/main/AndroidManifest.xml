@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.digiviceList.DigiviceListActivity"></activity>
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
@@ -26,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.scan.ScanListActivity"
+        <activity
+            android:name=".ui.scanList.ScanListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RadarActivity"

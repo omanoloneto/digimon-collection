@@ -1,4 +1,4 @@
-package co.hillstech.digicollection.ui.scan
+package co.hillstech.digicollection.ui.scanList
 
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.models.Monster
