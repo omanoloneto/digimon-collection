@@ -144,4 +144,5 @@
     <string name="you_received">Você ganhou:</string>
     <string name="my_digivices">Meus Digivices</string>
     <string name="battle_result">Resultado da Batalha</string>
+    <string name="evolution_line">Linha evolutiva</string>
 </resources>

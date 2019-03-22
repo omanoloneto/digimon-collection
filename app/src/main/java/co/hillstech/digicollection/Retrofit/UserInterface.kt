@@ -1,6 +1,7 @@
 package co.hillstech.digicollection.Retrofit
 
 import co.hillstech.digicollection.models.*
+import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.ui.battleResult.BattleResultViewModel
 import retrofit2.Call
 import retrofit2.http.GET
@@ -72,4 +73,8 @@ interface Monster {
     fun getBattleResult(@Query("buddy") buddyId: Int,
                            @Query("wild") wildSpeciesId: Int,
                            @Query("user") userId: Int): Call<BattleResultViewModel>
+
+    @GET("monster/getEvolutionLine/")
+    fun getEvolutionLine(@Query("monster") buddyId: Int,
+                           @Query("user") userId: Int): Call<MutableList<Monster>>
 }

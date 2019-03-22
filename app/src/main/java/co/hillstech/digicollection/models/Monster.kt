@@ -5,6 +5,7 @@ class Monster(
         var species: String,
         var experience: Int,
         var personality: String,
+        var element: String,
         var image: String,
         var progress: Int,
         var type: Int
