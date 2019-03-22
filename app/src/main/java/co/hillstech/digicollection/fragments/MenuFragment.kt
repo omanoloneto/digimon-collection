@@ -20,6 +20,7 @@ import co.hillstech.digicollection.models.Menu
 import co.hillstech.digicollection.ui.scanList.ScanListActivity
 import co.hillstech.digicollection.utils.showMessageDialog
 import com.onesignal.OneSignal
+import com.wooplr.spotlight.utils.SpotlightSequence
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MenuFragment : Fragment() {
@@ -34,6 +35,10 @@ class MenuFragment : Fragment() {
 
         setupMenuList()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun setupMenuList() {
@@ -89,8 +94,6 @@ class MenuFragment : Fragment() {
             OneSignal.deleteTag("username")
 
             Session.user = null
-            Session.username = null
-            Session.password = null
 
             startActivity(Intent(it, LoginActivity::class.java))
         }

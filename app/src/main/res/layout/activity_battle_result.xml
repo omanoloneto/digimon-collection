@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.battleResult.BattleResultActivity">
+
+    <include
+        android:id="@+id/layoutActionBar"
+        layout="@layout/view_action_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/viewBattleResult"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar">
+
+        <TextView
+            android:id="@+id/layoutDigiCoins"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="DigiCoins nesta batalha."
+            app:layout_constraintBottom_toBottomOf="@+id/viewResultCoins"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/viewResultCoins"
+            app:layout_constraintTop_toTopOf="@+id/viewResultCoins" />
+
+        <ImageView
+            android:id="@+id/viewBuddyImage"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActionBar"
+            app:srcCompat="@drawable/placeholder" />
+
+        <TextView
+            android:id="@+id/layoutExpPoints"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="pontos de experiência!"
+            app:layout_constraintBottom_toBottomOf="@+id/viewResultExp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/viewResultExp"
+            app:layout_constraintTop_toTopOf="@+id/viewResultExp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_vertical_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/layoutGet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="ganhou"
+            app:layout_constraintBottom_toBottomOf="@+id/viewResultExp"
+            app:layout_constraintStart_toEndOf="@+id/viewBuddyName"
+            app:layout_constraintTop_toTopOf="@+id/viewResultExp" />
+
+        <TextView
+            android:id="@+id/viewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/regal_blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewBuddyImage" />
+
+        <TextView
+            android:id="@+id/viewResultExp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="+ 7000"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toEndOf="@+id/layoutGet"
+            app:layout_constraintTop_toBottomOf="@+id/viewMessage" />
+
+        <ImageView
+            android:id="@+id/viewWildImage"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActionBar"
+            app:srcCompat="@drawable/placeholder" />
+
+        <TextView
+            android:id="@+id/layoutResultCoins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Você ganhou"
+            app:layout_constraintBottom_toBottomOf="@+id/viewResultCoins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewResultCoins" />
+
+        <TextView
+            android:id="@+id/viewResultCoins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="+ $ 5000"
+            android:textColor="@color/regal_blue"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toEndOf="@+id/layoutResultCoins"
+            app:layout_constraintTop_toBottomOf="@+id/viewResultExp" />
+
+        <TextView
+            android:id="@+id/viewBuddyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Agumon"
+            app:layout_constraintBottom_toBottomOf="@+id/layoutGet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layoutGet" />
+
+        <ImageView
+            android:id="@+id/layoutVersus"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewBuddyImage"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50"
+            app:layout_constraintTop_toTopOf="@+id/viewBuddyImage"
+            app:srcCompat="@drawable/versus" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

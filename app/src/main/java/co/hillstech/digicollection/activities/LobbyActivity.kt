@@ -9,6 +9,7 @@ import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
 import co.hillstech.digicollection.fragments.HomeFragment
 import co.hillstech.digicollection.fragments.MenuFragment
 import com.squareup.picasso.Picasso
+import com.wooplr.spotlight.utils.SpotlightSequence
 import kotlinx.android.synthetic.main.activity_lobby.*
 
 class LobbyActivity : BaseFragmentActivity() {
