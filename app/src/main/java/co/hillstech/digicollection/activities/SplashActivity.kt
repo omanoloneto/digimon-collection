@@ -12,40 +12,43 @@ import com.wooplr.spotlight.SpotlightConfig
 
 class SplashActivity : AppCompatActivity() {
 
+    var username: String = ""
+    var password: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        verifyPreferences()
 
         OneSignal.startInit(this)
                  .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                  .unsubscribeWhenNotificationsAreDisabled(true)
                  .init()
 
-        Session.spotlightConfig.introAnimationDuration = 300
-        Session.spotlightConfig.isRevealAnimationEnabled = true
-        Session.spotlightConfig.isPerformClick = true
-        Session.spotlightConfig.fadingTextDuration = 300
-        Session.spotlightConfig.headingTvSize = 32
-        Session.spotlightConfig.subHeadingTvSize = 16
-        Session.spotlightConfig.maskColor = Color.parseColor("#dc333333")
-        Session.spotlightConfig.lineAnimationDuration = 300
+        with(Session.spotlightConfig){
+            introAnimationDuration = 300
+            isRevealAnimationEnabled = true
+            isPerformClick = true
+            fadingTextDuration = 300
+            headingTvSize = 32
+            subHeadingTvSize = 16
+            maskColor = Color.parseColor("#dc333333")
+            lineAnimationDuration = 300
+        }
 
-        startActivity(Intent(this, LoginActivity::class.java))
-
+        if(isUserLogged()){
+            Session.authenticate(this, username, password)
+        }else {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
-    private fun verifyPreferences() {
+    private fun isUserLogged(): Boolean {
         val preferences = applicationContext
                 .getSharedPreferences("DigiCollePref", MODE_PRIVATE)
 
-        val username = preferences.getString("username", null)
-        val password = preferences.getString("password", null)
+        username = preferences.getString("username", null) ?: ""
+        password = preferences.getString("password", null) ?: ""
 
-        if (username != null && password != null) {
-            Session.username = username
-            Session.password = password
-        }
+        return username != "" && password != ""
     }
 }

@@ -1,5 +1,6 @@
 package co.hillstech.digicollection.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -20,6 +21,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     var isSpotlightShowed: Boolean = false
+    var isDigiviceSpotlightShowed: Boolean = false
+    lateinit var preferences: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -29,12 +32,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        preferences = activity!!.getSharedPreferences("DigiCollePref", AppCompatActivity.MODE_PRIVATE)
+
         verifySpotlights()
     }
 
     private fun verifySpotlights() {
-        val preferences = activity!!.getSharedPreferences("DigiCollePref", AppCompatActivity.MODE_PRIVATE)
         isSpotlightShowed = preferences.getString("spotlights", null) != null
+        isDigiviceSpotlightShowed = preferences.getString("digiviceSpotlight", null) != null
     }
 
     override fun onResume() {
@@ -55,10 +60,8 @@ class HomeFragment : Fragment() {
         Session.user?.digivice?.let {
             spotlights.addSpotlight(viewDigiviceImage, "Digivice", "Aqui está o seu Digivice.\nToque nele para ver mais informações.", "tutorialDigivice")
 
-            val preferences = activity!!.getSharedPreferences("DigiCollePref", AppCompatActivity.MODE_PRIVATE)
-
             preferences.edit()
-                    .putString("spotlights", "showed")
+                    .putString("digiviceSpotlight", "showed")
                     .commit()
         }
 
@@ -66,6 +69,10 @@ class HomeFragment : Fragment() {
                 .addSpotlight(viewLevel, "Nível", "Aqui você pode ver o nível que seu Digimon está, para passar de nível deve encher a barra de experiência primeiro.", "tutorialLevelHome")
 
         spotlights.startSequence()
+
+        preferences.edit()
+                .putString("spotlights", "showed")
+                .commit()
     }
 
     private fun updateUserHome() {
@@ -101,8 +108,12 @@ class HomeFragment : Fragment() {
                 digiviceFragment.show(activity!!.supportFragmentManager, "DIGIVICE_FRAGMENT")
             }
 
-            if(!isSpotlightShowed) {
+            if(isSpotlightShowed && !isDigiviceSpotlightShowed) {
                 showDigiviceSpotlight()
+
+                preferences.edit()
+                        .putString("digiviceSpotlight", "showed")
+                        .commit()
             }
         }
     }

@@ -94,8 +94,6 @@ class MenuFragment : Fragment() {
             OneSignal.deleteTag("username")
 
             Session.user = null
-            Session.username = null
-            Session.password = null
 
             startActivity(Intent(it, LoginActivity::class.java))
         }
