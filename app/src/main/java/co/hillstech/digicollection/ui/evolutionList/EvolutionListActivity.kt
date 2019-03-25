@@ -1,14 +1,20 @@
 package co.hillstech.digicollection.ui.evolutionList
 
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.BottomSheetDialog
+import android.support.v4.app.DialogFragment
 import android.support.v7.widget.LinearLayoutManager
+import android.view.WindowManager
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
+import co.hillstech.digicollection.fragments.AlertDialogFragment
+import co.hillstech.digicollection.models.Monster
+import co.hillstech.digicollection.utils.showBottomSheetDialog
 import kotlinx.android.synthetic.main.activity_evolution_list.*
+import kotlinx.android.synthetic.main.fragment_alert_dialog.view.*
 import kotlinx.android.synthetic.main.view_action_bar.*
 
 class EvolutionListActivity : BaseActivity(), EvolutionListPresenter.View {
@@ -38,23 +44,48 @@ class EvolutionListActivity : BaseActivity(), EvolutionListPresenter.View {
         }
     }
 
-    override fun hideProgressRing() {
-
+    override fun showProgressRing() {
+        progressRingCall(this)
     }
 
-    override fun showProgressRing() {
-
+    override fun hideProgressRing() {
+        progressRingDismiss()
     }
 
     override fun inflateEvolutionList() {
         viewEvolutionList?.run {
             addItemDecoration(EdgeDecorator(16))
-            adapter = EvolutionListAdapter(presenter.getEvolutionList())
+            adapter = EvolutionListAdapter(presenter.getEvolutionList(), this@EvolutionListActivity::onEvolutionClick)
             layoutManager = LinearLayoutManager(this@EvolutionListActivity)
         }
     }
 
-    override fun refreshEvolutionList() {
+    private fun onEvolutionClick(monster: Monster){
+        Session.user?.partner?.let {
+            if(it.experience >= (it.type * 1000)){
+                showBottomSheetDialog(
+                        "Atenção", "Você tem certeza que deseja digivolver seu ${it.species} para um ${monster.species}? Depois de evoluir, o Digimon nunca mais voltará a ser o que era antes.",
+                        confirmButtonLabel = getString(R.string.yes),
+                        cancelButtonLabel = getString(R.string.no),
+                        confirmButtonAction = {
+                            presenter.evolveDigimon(it, monster, Session.user!!.id)
+                        }
+                )
+            }else{
+                showBottomSheetDialog("Atenção", "${it.species} ainda não tem experiência o suficiente para digivolver. Você precisa acumular mais experiência se quiser fazer seu parceiro evoluir.")
+            }
+        }
+    }
 
+    override fun evolutionMessage(buddy: String, evolution: String, image: String) {
+        showBottomSheetDialog(
+                title = "Parabéns!",
+                message = "O seu ${buddy} digivolveu para um ${evolution} e agora ele está muito mais forte do que antes!",
+                image = image,
+                confirmButtonLabel = getString(R.string.ok),
+                confirmButtonAction = {
+                    this@EvolutionListActivity.finish()
+                }
+        )
     }
 }

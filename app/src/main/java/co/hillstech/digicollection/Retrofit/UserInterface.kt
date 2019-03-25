@@ -45,10 +45,17 @@ interface User {
     fun checkDigiviceCharge(@Query("user") user: Int,
                             @Query("digivice") digivice: Int): Call<ChargeResponse>
 
+    @GET("user/updateBuddy/")
+    fun updateBuddy(@Query("monster") monsterId: Int,
+                    @Query("user") userId: Int): Call<BooleanResponse>
+
     @GET("user/updatescan/")
     fun updateScan(@Query("user") user: Int,
                    @Query("monster") monster: Int,
                    @Query("progress") progress: Int): Call<BooleanResponse>
+
+    @GET("user/getUserMonsters/")
+    fun getUserMonsters(@Query("user") userId: Int): Call<MutableList<Monster>>
 }
 
 interface Location {
@@ -73,6 +80,16 @@ interface Monster {
     fun getBattleResult(@Query("buddy") buddyId: Int,
                            @Query("wild") wildSpeciesId: Int,
                            @Query("user") userId: Int): Call<BattleResultViewModel>
+
+    @GET("monster/evolve/")
+    fun evolve(@Query("from") from: Int,
+               @Query("to") to: Int,
+               @Query("user") user: Int): Call<Monster>
+
+    @GET("monster/digiconvert/")
+    fun digiconvert(@Query("monster") monster: Int,
+                    @Query("user") user: Int,
+                    @Query("nick") nick: String = ""): Call<Monster>
 
     @GET("monster/getEvolutionLine/")
     fun getEvolutionLine(@Query("monster") buddyId: Int,

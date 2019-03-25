@@ -49,6 +49,8 @@ class DigiviceFragment : DialogFragment() {
             viewConfirmButton.visibility = View.GONE
             viewCancelButton.visibility = View.GONE
         }
+
+        isCancelable = false
     }
 
 }

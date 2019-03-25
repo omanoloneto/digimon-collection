@@ -42,6 +42,8 @@ class ScannerFragment : DialogFragment() {
         viewConfirmButton.setOnClickListener { getBattle() }
         viewCancelButton.setOnClickListener { dismiss() }
 
+        isCancelable = false
+
         //showSpotlights()
     }
 

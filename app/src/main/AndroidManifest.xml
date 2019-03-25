@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.digiBank.DigiBankActivity"></activity>
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"

@@ -1,24 +1,25 @@
-package co.hillstech.digicollection.ui.evolutionList
+package co.hillstech.digicollection.ui.digiBank
 
 import android.util.Log
 import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
+import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Monster
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EvolutionListPresenter {
+class DigiBankPresenter {
 
     var viewModel: MutableList<Monster> = mutableListOf()
-    var view: EvolutionListPresenter.View? = null
+    var view: DigiBankPresenter.View? = null
 
-    fun getEvolutionList() = viewModel
+    fun getDataBoxList() = viewModel
 
-    fun requestEvolutionList() {
+    fun requestDataBoxList() {
         view?.showProgressRing()
         Session.user?.let {
-            val call = UserService().monster().getEvolutionLine(it.partner.id, it.id)
+            val call = UserService().user().getUserMonsters(it.id)
 
             call.enqueue(object : Callback<MutableList<Monster>?> {
 
@@ -28,7 +29,7 @@ class EvolutionListPresenter {
 
                         viewModel = it
 
-                        view?.inflateEvolutionList()
+                        view?.inflateDataBoxList()
 
                     } ?: run {
                         Log.e("ERROR", response?.errorBody().toString())
@@ -45,26 +46,21 @@ class EvolutionListPresenter {
         }
     }
 
-    fun updatePartner(monster: Monster){
-        Session.user?.let {
-            it.partner = monster
-        }
-    }
-
-    fun evolveDigimon(from: Monster, to: Monster, user: Int) {
+    fun changePartner(monster: Monster){
         view?.showProgressRing()
         Session.user?.let {
-            val call = UserService().monster().evolve(from.id, to.id, user)
+            val call = UserService().user().updateBuddy(monster.id, it.id)
 
-            call.enqueue(object : Callback<Monster?> {
+            call.enqueue(object : Callback<BooleanResponse?> {
 
-                override fun onResponse(call: Call<Monster?>?,
-                                        response: Response<Monster?>?) {
+                override fun onResponse(call: Call<BooleanResponse?>?,
+                                        response: Response<BooleanResponse?>?) {
                     response?.body()?.let {
 
-                        updatePartner(it)
+                        updateUserBuddy(monster)
 
-                        view?.evolutionMessage(from.species, to.species, to.image)
+                        view?.refreshDataBoxList()
+                        view?.changeBuddyMessage(monster.species, monster.image)
 
                     } ?: run {
                         Log.e("ERROR", response?.errorBody().toString())
@@ -73,7 +69,7 @@ class EvolutionListPresenter {
                     view?.hideProgressRing()
                 }
 
-                override fun onFailure(call: Call<Monster?>?, t: Throwable?) {
+                override fun onFailure(call: Call<BooleanResponse?>?, t: Throwable?) {
                     Log.e("ERROR", t?.message)
                     view?.hideProgressRing()
                 }
@@ -81,9 +77,29 @@ class EvolutionListPresenter {
         }
     }
 
+    private fun updateUserBuddy(monster: Monster) {
+        Session.user?.let {
+            it.partner = monster
+        }
+
+        val partner = viewModel.indexOf(
+                viewModel.find { it.partner == true }
+        )
+
+        viewModel[partner].partner = false
+
+        val newPartner = viewModel.indexOf(
+                viewModel.find { it.id == monster.id }
+        )
+
+        viewModel[newPartner].partner = true
+
+    }
+
     interface View {
-        fun inflateEvolutionList()
-        fun evolutionMessage(buddy: String, evolution: String, image: String)
+        fun changeBuddyMessage(monster: String, image: String)
+        fun inflateDataBoxList()
+        fun refreshDataBoxList()
         fun showProgressRing()
         fun hideProgressRing()
     }

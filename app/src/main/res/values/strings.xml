@@ -145,4 +145,18 @@
     <string name="my_digivices">Meus Digivices</string>
     <string name="battle_result">Resultado da Batalha</string>
     <string name="evolution_line">Linha evolutiva</string>
+    <string name="digibank">DigiBank</string>
+    <string name="fire">Fogo</string>
+    <string name="water">Água</string>
+    <string name="grass">Vegetal</string>
+    <string name="eletric">Elétrico</string>
+    <string name="ground">Solo</string>
+    <string name="fly">Voador</string>
+    <string name="dragon">Dragão</string>
+    <string name="metal">Metal</string>
+    <string name="dark">Trevas</string>
+    <string name="luz">Luz</string>
+    <string name="virus">Vírus</string>
+    <string name="data">Dados</string>
+    <string name="vaccine">Vacina</string>
 </resources>

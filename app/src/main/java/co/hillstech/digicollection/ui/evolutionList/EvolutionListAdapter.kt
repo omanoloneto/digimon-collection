@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.enums.getElement
 import co.hillstech.digicollection.models.Monster
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.view_digivice_list_items.view.*
 import kotlinx.android.synthetic.main.view_evolution_line_monster.view.*
 
-class EvolutionListAdapter(private val items: List<Monster>) : RecyclerView.Adapter<EvolutionListHolder>() {
+class EvolutionListAdapter(private val items: List<Monster>,
+                           private val onEvolutionClick: (Monster) -> Unit) : RecyclerView.Adapter<EvolutionListHolder>() {
 
     override fun onBindViewHolder(holder: EvolutionListHolder, position: Int) {
         val item = items[position]
-        holder.bindView(item)
+        holder.bindView(item, onEvolutionClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EvolutionListHolder {
@@ -29,13 +30,17 @@ class EvolutionListAdapter(private val items: List<Monster>) : RecyclerView.Adap
 
 class EvolutionListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindView(item: Monster) = with(itemView) {
+    fun bindView(item: Monster, onEvolutionClick: (Monster) -> Unit) = with(itemView) {
         viewEvolutionSpecies.text = item.species
-        viewEvolutionElement.text = item.element
+        viewEvolutionElement.text = item.element.getElement(context)
 
         Picasso.get().load(item.image)
                 .placeholder(R.drawable.placeholder)
                 .into(viewEvolutionImage)
+
+        layoutEvolutionMonster.setOnClickListener {
+            onEvolutionClick(item)
+        }
     }
 
 }

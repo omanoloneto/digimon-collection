@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.evolutionList.EvolutionListActivity">
+    tools:context=".ui.digiBank.DigiBankActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/viewEvolutionList"
+        android:id="@+id/viewDataBoxList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/view_scan_progress">
+        tools:listitem="@layout/view_data_box_item">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -28,5 +28,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

@@ -24,6 +24,8 @@ class BattleResultActivity : BaseActivity(), BattleResultPresenter.View {
         presenter.requestBattleResult()
 
         setupActionBar()
+
+        setupViews()
     }
 
     override fun showBattleResults() {
@@ -42,6 +44,12 @@ class BattleResultActivity : BaseActivity(), BattleResultPresenter.View {
             viewMessage.text = result?.toMessage()
 
             viewBattleResult.visibility = View.VISIBLE
+        }
+    }
+
+    override fun setupViews() {
+        viewBackButton.setOnClickListener {
+            onBackPressed()
         }
     }
 

@@ -1,7 +1,6 @@
 package co.hillstech.digicollection.ui.battleResult
 
 import android.util.Log
-import android.widget.Toast
 import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
 import retrofit2.Call
@@ -15,7 +14,7 @@ class BattleResultPresenter {
 
     fun getBattleResults() = viewModel
 
-    fun updateUserWallet(){
+    fun updateUserWallet() {
         val coinsReceived = viewModel.coins
         Session.user?.let {
             it.wallet += coinsReceived
@@ -23,7 +22,7 @@ class BattleResultPresenter {
         }
     }
 
-    fun requestBattleResult(){
+    fun requestBattleResult() {
         view?.showProgressRing()
         Session.user?.let {
             val call = UserService().monster().getBattleResult(it.partner.id, Session.wild, it.id)
@@ -37,7 +36,7 @@ class BattleResultPresenter {
                         viewModel = it
                         updateUserWallet()
 
-                        Session.user?.let{
+                        Session.user?.let {
                             it.partner.experience += viewModel.exp
                         }
 
