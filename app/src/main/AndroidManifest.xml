@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.digiBank.DigiBankActivity"></activity>
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
@@ -52,6 +53,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.digiviceList.DigiviceListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.evolutionList.EvolutionListActivity"
             android:screenOrientation="portrait" />
     </application>
 

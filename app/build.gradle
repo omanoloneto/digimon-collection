@@ -13,8 +13,8 @@ android {
         applicationId "co.hillstech.digicollection"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 8
-        versionName "0.0.8"
+        versionCode 10
+        versionName "0.0.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 

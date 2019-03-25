@@ -1,5 +1,6 @@
 package co.hillstech.digicollection.fragments
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
+import co.hillstech.digicollection.ui.evolutionList.EvolutionListActivity
+import co.hillstech.digicollection.ui.evolutionList.EvolutionListAdapter
 import com.squareup.picasso.Picasso
 import com.wooplr.spotlight.SpotlightConfig
 import com.wooplr.spotlight.SpotlightView
@@ -77,16 +80,24 @@ class HomeFragment : Fragment() {
 
     private fun updateUserHome() {
         Session.user?.partner?.let {
+
+            val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5))).toInt()
+
             viewPartnerName.text = it.species
-            viewExperience.text = "${it.experience} pts"
+            viewExperience.text = it.experience.toString()
+            viewExpToEvolve.text = "/ ${base}"
             viewLevel.text = it.getLevel()
 
-            viewProgressBar.max = (it.type * 1000)
+            viewProgressBar.max = base
             viewProgressBar.progress = it.experience
 
             Picasso.get().load(it.image)
                     .noPlaceholder()
                     .into(viewPartnerImage)
+
+            layoutPartner.setOnClickListener {
+                startActivity(Intent(activity, EvolutionListActivity::class.java))
+            }
         }
 
         Session.user?.digivice?.let {

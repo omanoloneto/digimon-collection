@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
-import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.models.Digivice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_digivice_list_items.view.*
