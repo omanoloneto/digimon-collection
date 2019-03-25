@@ -80,11 +80,15 @@ class HomeFragment : Fragment() {
 
     private fun updateUserHome() {
         Session.user?.partner?.let {
+
+            val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5))).toInt()
+
             viewPartnerName.text = it.species
-            viewExperience.text = "${it.experience} pts"
+            viewExperience.text = it.experience.toString()
+            viewExpToEvolve.text = "/ ${base}"
             viewLevel.text = it.getLevel()
 
-            viewProgressBar.max = (it.type * 1000)
+            viewProgressBar.max = base
             viewProgressBar.progress = it.experience
 
             Picasso.get().load(it.image)

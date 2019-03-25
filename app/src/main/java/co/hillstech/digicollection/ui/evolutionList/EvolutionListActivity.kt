@@ -62,7 +62,8 @@ class EvolutionListActivity : BaseActivity(), EvolutionListPresenter.View {
 
     private fun onEvolutionClick(monster: Monster){
         Session.user?.partner?.let {
-            if(it.experience >= (it.type * 1000)){
+            val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5)))
+            if(it.experience >= base){
                 showBottomSheetDialog(
                         "Atenção", "Você tem certeza que deseja digivolver seu ${it.species} para um ${monster.species}? Depois de evoluir, o Digimon nunca mais voltará a ser o que era antes.",
                         confirmButtonLabel = getString(R.string.yes),

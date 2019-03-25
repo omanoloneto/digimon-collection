@@ -134,13 +134,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutExperience">
+
+                    <TextView
+                        android:id="@+id/viewExpToEvolve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/viewExperience"
+                        app:layout_constraintStart_toEndOf="@+id/viewExperience"
+                        app:layout_constraintTop_toTopOf="@+id/viewExperience"
+                        tools:text="/ 13000" />
+
+                    <TextView
+                        android:id="@+id/viewExperience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="12000" />
+                </android.support.constraint.ConstraintLayout>
+
                 <ProgressBar
                     android:id="@+id/viewProgressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
                     android:progress="0"
@@ -148,7 +180,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewExperience" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                 <TextView
                     android:id="@+id/layoutExperience"
@@ -168,17 +200,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
-
-                <TextView
-                    android:id="@+id/viewExperience"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutExperience" />
 
                 <TextView
                     android:id="@+id/layoutLevel"
@@ -202,6 +223,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50"
                     app:layout_constraintTop_toBottomOf="@+id/layoutLevel" />
+
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
     </android.support.constraint.ConstraintLayout>
