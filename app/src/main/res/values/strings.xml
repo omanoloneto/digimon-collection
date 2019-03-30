@@ -113,6 +113,8 @@
     <string name="friends_button">Add Friend</string>
     <string name="friends_hint">Username:</string>
 
+    <string name="digidata">DigiData</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="menu">Menu</string>
     <string name="logout">Logout</string>
