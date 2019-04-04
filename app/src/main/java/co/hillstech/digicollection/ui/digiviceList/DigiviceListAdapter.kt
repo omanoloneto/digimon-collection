@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.enums.toString
 import co.hillstech.digicollection.models.Digivice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_digivice_list_items.view.*
@@ -34,7 +35,7 @@ class ScanListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         viewModel.text = item.model
         viewCooldown.text = "${item.cooldown} " + itemView.context.getString(R.string.minutes)
-        viewMaxEvolution.text = item.maxLevel
+        viewMaxEvolution.text = item.maxLevel.toString(this.context)
 
         if (item.equiped) {
             viewCheckedCircle.visibility = View.VISIBLE

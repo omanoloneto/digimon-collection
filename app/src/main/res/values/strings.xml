@@ -159,4 +159,20 @@
     <string name="virus">Vírus</string>
     <string name="data">Dados</string>
     <string name="vaccine">Vacina</string>
+    <string name="fresh">Bebê</string>
+    <string name="intraining">Infantil</string>
+    <string name="rookie">Criança</string>
+    <string name="champion">Adulto</string>
+    <string name="ultimate">Perfeito</string>
+    <string name="mega">Extremo</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="rename">Renomear</string>
+    <string name="enter_in_the_field_below_the_new_name">Informe no campo abaixo o novo nome que deseja dar ao seu Digimon.</string>
+
+    <string name="calm">Calmo</string>
+    <string name="timid">Tímido</string>
+    <string name="trickster">Malandro</string>
+    <string name="controlled">Controlado</string>
+    <string name="nervous">Nervoso</string>
+    <string name="locations">Locations</string>
 </resources>

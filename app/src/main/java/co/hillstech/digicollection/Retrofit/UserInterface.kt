@@ -1,6 +1,7 @@
 package co.hillstech.digicollection.Retrofit
 
 import co.hillstech.digicollection.models.*
+import co.hillstech.digicollection.models.Location
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.ui.battleResult.BattleResultViewModel
 import retrofit2.Call
@@ -69,10 +70,16 @@ interface Location {
                @Query("tipo") tipo: String): Call<BooleanResponse>
 
     @GET("location/getinfectedmonster/")
-    fun getInfectedMonster(@Query("lat") latitude: String,
-                           @Query("lon") longitude: String,
+    fun getInfectedMonster(@Query("location") location: Int,
                            @Query("digivice") digivice: Int,
                            @Query("user") user: Int): Call<MonsterResponse>
+
+    @GET("location/getLocations/")
+    fun getLocations(@Query("user") user: Int): Call<List<Location>>
+
+    @GET("location/unlockNextLocation/")
+    fun unlockNextLocation(@Query("locationId") locationId: Int,
+                           @Query("user") user: Int): Call<BooleanResponse>
 }
 
 interface Monster {
@@ -81,10 +88,20 @@ interface Monster {
                            @Query("wild") wildSpeciesId: Int,
                            @Query("user") userId: Int): Call<BattleResultViewModel>
 
+    @GET("monster/getBossBattleResult/")
+    fun getBossBattleResult(@Query("buddy") buddyId: Int,
+                           @Query("boss") bossId: Int,
+                           @Query("user") userId: Int): Call<BattleResultViewModel>
+
     @GET("monster/evolve/")
     fun evolve(@Query("from") from: Int,
                @Query("to") to: Int,
                @Query("user") user: Int): Call<Monster>
+
+    @GET("monster/rename/")
+    fun rename(@Query("monster") monster: Int,
+               @Query("nick") nick: String,
+               @Query("user") user: Int): Call<BooleanResponse>
 
     @GET("monster/digiconvert/")
     fun digiconvert(@Query("monster") monster: Int,

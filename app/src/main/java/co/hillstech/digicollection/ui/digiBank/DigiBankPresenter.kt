@@ -96,6 +96,38 @@ class DigiBankPresenter {
 
     }
 
+    fun rename(monster: Monster) {
+        view?.showProgressRing()
+        Session.user?.let {
+            val call = UserService().monster().rename(monster.id, monster.nick!!, it.id)
+
+            call.enqueue(object : Callback<BooleanResponse?> {
+
+                override fun onResponse(call: Call<BooleanResponse?>?,
+                                        response: Response<BooleanResponse?>?) {
+                    response?.body()?.let {
+
+                        if(it.status){
+                            Log.e("SUCCESS", "Nick do digimon atualizado com sucesso!")
+                        }else{
+                            Log.e("ERROR", "Erro ao atualizar o nick do digimon.")
+                        }
+
+                    } ?: run {
+                        Log.e("ERROR", response?.errorBody().toString())
+                    }
+
+                    view?.hideProgressRing()
+                }
+
+                override fun onFailure(call: Call<BooleanResponse?>?, t: Throwable?) {
+                    Log.e("ERROR", t?.message)
+                    view?.hideProgressRing()
+                }
+            })
+        }
+    }
+
     interface View {
         fun changeBuddyMessage(monster: String, image: String)
         fun inflateDataBoxList()

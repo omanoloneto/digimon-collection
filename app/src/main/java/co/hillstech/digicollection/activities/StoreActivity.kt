@@ -10,6 +10,7 @@ import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.adapters.DigiviceAdapter
+import co.hillstech.digicollection.enums.toString
 import co.hillstech.digicollection.fragments.DigiviceFragment
 import co.hillstech.digicollection.fragments.ScannerFragment
 import co.hillstech.digicollection.models.BooleanResponse
@@ -85,10 +86,11 @@ class StoreActivity : BaseActivity() {
             DigiviceFragment().apply {
                 model = it.model
                 cooldown = it.cooldown
-                maxLevel = it.maxLevel
+                maxLevel = it.maxLevel.toString(this@StoreActivity)
                 resume = it.resume
                 image = it.image
                 showButtons = false
+                blockBack = false
             }.show(supportFragmentManager, "DIGIVICE_FRAGMENT")
         }
     }
