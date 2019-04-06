@@ -3,12 +3,11 @@ package co.hillstech.digicollection.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import com.onesignal.OneSignal
-import com.wooplr.spotlight.SpotlightConfig
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,11 +19,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         OneSignal.startInit(this)
-                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                 .unsubscribeWhenNotificationsAreDisabled(true)
-                 .init()
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init()
 
-        with(Session.spotlightConfig){
+        with(Session.spotlightConfig) {
             introAnimationDuration = 300
             isRevealAnimationEnabled = true
             isPerformClick = true
@@ -35,10 +34,11 @@ class SplashActivity : AppCompatActivity() {
             lineAnimationDuration = 300
         }
 
-        if(isUserLogged()){
+        if (isUserLogged()) {
             Session.authenticate(this, username, password)
-        }else {
-            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
         }
     }
 

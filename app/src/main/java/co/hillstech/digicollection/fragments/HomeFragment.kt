@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
+import co.hillstech.digicollection.enums.MonsterLevel
+import co.hillstech.digicollection.enums.toString
 import co.hillstech.digicollection.ui.evolutionList.EvolutionListActivity
 import co.hillstech.digicollection.ui.evolutionList.EvolutionListAdapter
 import com.squareup.picasso.Picasso
@@ -83,10 +85,10 @@ class HomeFragment : Fragment() {
 
             val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5))).toInt()
 
-            viewPartnerName.text = it.species
+            viewPartnerName.text = it.nick ?: it.species
             viewExperience.text = it.experience.toString()
             viewExpToEvolve.text = "/ ${base}"
-            viewLevel.text = it.getLevel()
+            viewLevel.text = Session.monsterLevel(this@HomeFragment.activity!!, it.type)
 
             viewProgressBar.max = base
             viewProgressBar.progress = it.experience
@@ -110,7 +112,7 @@ class HomeFragment : Fragment() {
             var digiviceFragment = DigiviceFragment().apply {
                 model = it.model
                 cooldown = it.cooldown
-                maxLevel = it.maxLevel
+                maxLevel = it.maxLevel.toString(this@HomeFragment.activity!!)
                 resume = it.resume
                 image = it.image
             }

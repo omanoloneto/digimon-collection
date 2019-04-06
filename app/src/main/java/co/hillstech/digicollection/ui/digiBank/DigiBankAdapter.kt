@@ -33,7 +33,7 @@ class DataBoxHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindView(item: Monster, onMonsterClick: (Monster) -> Unit) = with(itemView) {
 
-        if (item.nick != "") {
+        if (item.nick != null) {
             viewDataTitle.text = item.nick
             viewDataSpecies.visibility = View.VISIBLE
             viewDataSpecies.text = item.species

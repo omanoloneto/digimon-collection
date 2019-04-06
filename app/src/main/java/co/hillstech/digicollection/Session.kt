@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.util.Log
 import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.activities.LobbyActivity
+import co.hillstech.digicollection.models.Location
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.models.User
 import co.hillstech.digicollection.models.UserResponse
@@ -30,6 +31,9 @@ object Session {
     var wild: Int = 0
 
     var spotlightConfig = SpotlightConfig()
+
+    var location: Location? = null
+    var guardians: MutableList<Monster> = mutableListOf()
 
     fun authenticate(context: Context, name: String, pass: String) {
 
@@ -85,6 +89,18 @@ object Session {
                 Log.e("ERROR", t?.message)
             }
         })
+    }
+
+    fun monsterLevel(context: Context, type: Int): String{
+        return when(type){
+            1 -> context.getString(R.string.fresh)
+            2 -> context.getString(R.string.intraining)
+            3 -> context.getString(R.string.rookie)
+            4 -> context.getString(R.string.champion)
+            5 -> context.getString(R.string.ultimate)
+            6 -> context.getString(R.string.mega)
+            else -> context.getString(R.string.unknown)
+        }
     }
 
     fun getScanProgress(monster: Monster): Int {

@@ -8,6 +8,11 @@
         android:title="@string/icon_partner" />
 
     <item
+        android:id="@+id/layoutLocations"
+        android:icon="@drawable/map_marked"
+        android:title="@string/locations" />
+
+    <item
         android:id="@+id/layoutMenu"
         android:icon="@drawable/bar_menu"
         android:title="@string/menu" />

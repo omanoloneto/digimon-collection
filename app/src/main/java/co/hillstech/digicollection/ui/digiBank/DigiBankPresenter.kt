@@ -5,6 +5,8 @@ import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Monster
+import co.hillstech.digicollection.services.apis.UserAPI
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,62 +20,48 @@ class DigiBankPresenter {
 
     fun requestDataBoxList() {
         view?.showProgressRing()
-        Session.user?.let {
-            val call = UserService().user().getUserMonsters(it.id)
 
-            call.enqueue(object : Callback<MutableList<Monster>?> {
+        launch {
+            try {
 
-                override fun onResponse(call: Call<MutableList<Monster>?>?,
-                                        response: Response<MutableList<Monster>?>?) {
-                    response?.body()?.let {
+                val monsters = UserAPI.getUserMonsters(Session.user!!.id).await()
+                viewModel = monsters
+                view?.inflateDataBoxList()
 
-                        viewModel = it
+            } catch (e: Exception) {
 
-                        view?.inflateDataBoxList()
+                Log.e("ERROR", e.message)
 
-                    } ?: run {
-                        Log.e("ERROR", response?.errorBody().toString())
-                    }
+            } finally {
 
-                    view?.hideProgressRing()
-                }
+                view?.hideProgressRing()
 
-                override fun onFailure(call: Call<MutableList<Monster>?>?, t: Throwable?) {
-                    Log.e("ERROR", t?.message)
-                    view?.hideProgressRing()
-                }
-            })
+            }
         }
     }
 
-    fun changePartner(monster: Monster){
+    fun changePartner(monster: Monster) {
         view?.showProgressRing()
-        Session.user?.let {
-            val call = UserService().user().updateBuddy(monster.id, it.id)
 
-            call.enqueue(object : Callback<BooleanResponse?> {
+        launch {
+            try {
 
-                override fun onResponse(call: Call<BooleanResponse?>?,
-                                        response: Response<BooleanResponse?>?) {
-                    response?.body()?.let {
+                val response = UserAPI.updateBuddy(monster.id, Session.user!!.id).await()
 
-                        updateUserBuddy(monster)
+                updateUserBuddy(monster)
 
-                        view?.refreshDataBoxList()
-                        view?.changeBuddyMessage(monster.species, monster.image)
+                view?.refreshDataBoxList()
+                view?.changeBuddyMessage(monster.species, monster.image)
 
-                    } ?: run {
-                        Log.e("ERROR", response?.errorBody().toString())
-                    }
+            } catch (e: Exception) {
 
-                    view?.hideProgressRing()
-                }
+                Log.e("ERROR", e.message)
 
-                override fun onFailure(call: Call<BooleanResponse?>?, t: Throwable?) {
-                    Log.e("ERROR", t?.message)
-                    view?.hideProgressRing()
-                }
-            })
+            } finally {
+
+                view?.hideProgressRing()
+
+            }
         }
     }
 
@@ -94,6 +82,38 @@ class DigiBankPresenter {
 
         viewModel[newPartner].partner = true
 
+    }
+
+    fun rename(monster: Monster) {
+        view?.showProgressRing()
+        Session.user?.let {
+            val call = UserService().monster().rename(monster.id, monster.nick!!, it.id)
+
+            call.enqueue(object : Callback<BooleanResponse?> {
+
+                override fun onResponse(call: Call<BooleanResponse?>?,
+                                        response: Response<BooleanResponse?>?) {
+                    response?.body()?.let {
+
+                        if (it.status) {
+                            Log.e("SUCCESS", "Nick do digimon atualizado com sucesso!")
+                        } else {
+                            Log.e("ERROR", "Erro ao atualizar o nick do digimon.")
+                        }
+
+                    } ?: run {
+                        Log.e("ERROR", response?.errorBody().toString())
+                    }
+
+                    view?.hideProgressRing()
+                }
+
+                override fun onFailure(call: Call<BooleanResponse?>?, t: Throwable?) {
+                    Log.e("ERROR", t?.message)
+                    view?.hideProgressRing()
+                }
+            })
+        }
     }
 
     interface View {
