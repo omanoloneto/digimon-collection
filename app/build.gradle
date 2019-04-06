@@ -11,6 +11,7 @@ kotlin {
 
 android {
     def appName = "digicolle"
+    def apkName = "-flavor-v"
 
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -33,7 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "hillstech-" + appName + variant.versionName + ".apk"
+                    outputFileName = "hillstech-" + appName + apkName + variant.versionName + ".apk"
                 }
             }
         }
@@ -50,7 +51,7 @@ android {
             dimension "version"
             versionName "0.0.12"
             versionCode 12
-            versionName "-alpha-v" + versionName
+            apkName = "-alpha-v"
             buildConfigField "String", "HTTP_SERVER", "\"http://digicolle.hillstech.co/api/\""
         }
 
@@ -58,7 +59,7 @@ android {
             dimension "version"
             versionName "0.0.1"
             versionCode 1
-            versionName "-beta-v" + versionName
+            apkName = "-beta-v"
             buildConfigField "String", "HTTP_SERVER", "\"http://digicolle.hillstech.co/api/\""
         }
     }
@@ -86,6 +87,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.27.0-eap13'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
