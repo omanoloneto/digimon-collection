@@ -31,18 +31,7 @@ class StoreActivity : BaseActivity() {
 
         setupActivity()
 
-        checkFristTimeInStore()
-
         getItems()
-    }
-
-    private fun checkFristTimeInStore() {
-        Session.user?.let {
-            if (it.digivice == null && it.wallet == 0) {
-                Session.user?.wallet = 3000
-                updateWallet()
-            }
-        }
     }
 
     private fun updateWallet() {
@@ -99,6 +88,7 @@ class StoreActivity : BaseActivity() {
                 maxLevel = it.maxLevel
                 resume = it.resume
                 image = it.image
+                showButtons = false
             }.show(supportFragmentManager, "DIGIVICE_FRAGMENT")
         }
     }

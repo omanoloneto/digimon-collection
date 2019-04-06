@@ -1,39 +1,54 @@
 package co.hillstech.digicollection.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import com.onesignal.OneSignal
+import com.wooplr.spotlight.SpotlightConfig
 
 class SplashActivity : AppCompatActivity() {
+
+    var username: String = ""
+    var password: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        verifyPreferences()
 
         OneSignal.startInit(this)
                  .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                  .unsubscribeWhenNotificationsAreDisabled(true)
                  .init()
 
-        startActivity(Intent(this, LoginActivity::class.java))
+        with(Session.spotlightConfig){
+            introAnimationDuration = 300
+            isRevealAnimationEnabled = true
+            isPerformClick = true
+            fadingTextDuration = 300
+            headingTvSize = 32
+            subHeadingTvSize = 16
+            maskColor = Color.parseColor("#dc333333")
+            lineAnimationDuration = 300
+        }
 
+        if(isUserLogged()){
+            Session.authenticate(this, username, password)
+        }else {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
-    private fun verifyPreferences() {
+    private fun isUserLogged(): Boolean {
         val preferences = applicationContext
                 .getSharedPreferences("DigiCollePref", MODE_PRIVATE)
 
-        val username = preferences.getString("username", null)
-        val password = preferences.getString("password", null)
+        username = preferences.getString("username", null) ?: ""
+        password = preferences.getString("password", null) ?: ""
 
-        if (username != null && password != null) {
-            Session.username = username
-            Session.password = password
-        }
+        return username != "" && password != ""
     }
 }

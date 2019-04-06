@@ -1,6 +1,8 @@
 package co.hillstech.digicollection.Retrofit
 
 import co.hillstech.digicollection.models.*
+import co.hillstech.digicollection.models.Monster
+import co.hillstech.digicollection.ui.battleResult.BattleResultViewModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -27,6 +29,13 @@ interface User {
     fun updateWallet(@Query("user") user: String,
                      @Query("wallet") wallet: Int): Call<BooleanResponse>
 
+    @GET("user/getUserDevices/")
+    fun getUserDevices(@Query("user") user: Int): Call<MutableList<Digivice>>
+
+    @GET("user/changeEquipedDigivice/")
+    fun changeEquipedDigivice(@Query("user") user: Int,
+                              @Query("digiviceId") digivice: Int): Call<MutableList<Digivice>>
+
     @GET("user/updatedigivice/")
     fun updateDigivice(@Query("user") user: String,
                        @Query("digivice") digivice: Int,
@@ -36,10 +45,17 @@ interface User {
     fun checkDigiviceCharge(@Query("user") user: Int,
                             @Query("digivice") digivice: Int): Call<ChargeResponse>
 
+    @GET("user/updateBuddy/")
+    fun updateBuddy(@Query("monster") monsterId: Int,
+                    @Query("user") userId: Int): Call<BooleanResponse>
+
     @GET("user/updatescan/")
     fun updateScan(@Query("user") user: Int,
                    @Query("monster") monster: Int,
                    @Query("progress") progress: Int): Call<BooleanResponse>
+
+    @GET("user/getUserMonsters/")
+    fun getUserMonsters(@Query("user") userId: Int): Call<MutableList<Monster>>
 }
 
 interface Location {
@@ -57,4 +73,25 @@ interface Location {
                            @Query("lon") longitude: String,
                            @Query("digivice") digivice: Int,
                            @Query("user") user: Int): Call<MonsterResponse>
+}
+
+interface Monster {
+    @GET("monster/getBattleResult/")
+    fun getBattleResult(@Query("buddy") buddyId: Int,
+                           @Query("wild") wildSpeciesId: Int,
+                           @Query("user") userId: Int): Call<BattleResultViewModel>
+
+    @GET("monster/evolve/")
+    fun evolve(@Query("from") from: Int,
+               @Query("to") to: Int,
+               @Query("user") user: Int): Call<Monster>
+
+    @GET("monster/digiconvert/")
+    fun digiconvert(@Query("monster") monster: Int,
+                    @Query("user") user: Int,
+                    @Query("nick") nick: String = ""): Call<Monster>
+
+    @GET("monster/getEvolutionLine/")
+    fun getEvolutionLine(@Query("monster") buddyId: Int,
+                           @Query("user") userId: Int): Call<MutableList<Monster>>
 }

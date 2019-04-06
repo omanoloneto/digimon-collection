@@ -1,4 +1,4 @@
-package co.hillstech.digicollection.ui.scan
+package co.hillstech.digicollection.ui.scanList
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,11 +9,12 @@ import co.hillstech.digicollection.models.Monster
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_scan_progress.view.*
 
-class ScanListAdapter(private val items: List<Monster>) : RecyclerView.Adapter<ScanListHolder>() {
+class ScanListAdapter(private val items: List<Monster>,
+                      private val onScanClick: (Monster) -> Unit) : RecyclerView.Adapter<ScanListHolder>() {
 
     override fun onBindViewHolder(holder: ScanListHolder, position: Int) {
         val item = items[position]
-        holder.bindView(item)
+        holder.bindView(item, onScanClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanListHolder {
@@ -28,7 +29,7 @@ class ScanListAdapter(private val items: List<Monster>) : RecyclerView.Adapter<S
 
 class ScanListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindView(item: Monster) = with(itemView) {
+    fun bindView(item: Monster, onScanClick: (Monster) -> Unit) = with(itemView) {
         viewSpecies.text = item.species
         viewProgress.text = "${item.progress}%"
         viewProgressBar.progress = item.progress
@@ -36,6 +37,10 @@ class ScanListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         Picasso.get().load(item.image)
                 .placeholder(R.drawable.placeholder)
                 .into(viewImage)
+
+        layoutScanListItem.setOnClickListener {
+            onScanClick(item)
+        }
     }
 
 }

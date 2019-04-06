@@ -157,6 +157,7 @@ class RadarActivity : BaseActivity() {
 
                             it.monster?.let {
                                 ScannerFragment().apply {
+                                    wildId = it.id
                                     species = it.species
                                     image = it.image
                                     progress = Session.getScanProgress(it)

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/viewImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/placeholder" />
+
+    <TextView
+        android:id="@+id/viewModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="D-Ark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/layoutCooldown"
+        app:layout_constraintStart_toEndOf="@+id/viewImage" />
+
+    <TextView
+        android:id="@+id/layoutCooldown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Regarca:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/layoutMaxEvolution"
+        app:layout_constraintStart_toStartOf="@+id/viewModel" />
+
+    <TextView
+        android:id="@+id/viewCooldown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="5 minutos"
+        app:layout_constraintStart_toEndOf="@+id/layoutCooldown"
+        app:layout_constraintTop_toTopOf="@+id/layoutCooldown" />
+
+    <TextView
+        android:id="@+id/layoutMaxEvolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Evolução máxima:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/viewImage"
+        app:layout_constraintStart_toStartOf="@+id/layoutCooldown" />
+
+    <TextView
+        android:id="@+id/viewMaxEvolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Ultimate"
+        app:layout_constraintStart_toEndOf="@+id/layoutMaxEvolution"
+        app:layout_constraintTop_toTopOf="@+id/layoutMaxEvolution" />
+
+    <ImageView
+        android:id="@+id/viewCheckedCircle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/checked_circle" />
+
+    <ImageView
+        android:id="@+id/viewUncheckedCircle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/unchecked_circle" />
+</android.support.constraint.ConstraintLayout>

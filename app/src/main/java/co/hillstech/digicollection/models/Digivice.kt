@@ -9,5 +9,6 @@ class Digivice(
         var image: String,
         var resume: String,
         var maxLevel: String,
-        var bought: Boolean
+        var bought: Boolean,
+        var equiped: Boolean
 ) {}
