@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".activities.RadarActivity">
 
+    <Button
+        android:id="@+id/viewBossList"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/confirm_button"
+        android:text="     Enfrentar Guardiões     "
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/layoutSample"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewLocationTitle" />
+
     <ProgressBar
         android:id="@+id/viewDigiviceCharge"
         style="?android:attr/progressBarStyleHorizontal"
@@ -60,6 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:alpha="0.6"
         app:layout_constraintBottom_toTopOf="@+id/verticalGuideline60"
@@ -73,30 +90,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <android.support.constraint.Guideline
         android:id="@+id/verticalGuideline60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <TextView
-        android:id="@+id/layoutRadarHelpText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/click_on_button_to_track_infecteds_digimons"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/verticalGuideline40"
-        app:layout_constraintEnd_toEndOf="@+id/layoutRadar"
-        app:layout_constraintStart_toStartOf="@+id/layoutRadar"
-        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <android.support.constraint.Guideline
         android:id="@+id/verticalGuideline50"
@@ -110,14 +111,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <android.support.constraint.Guideline
         android:id="@+id/horizontalGuideline65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <TextView
         android:id="@+id/layoutDigiviceCharge"
@@ -138,5 +139,41 @@
         app:layout_constraintBottom_toTopOf="@+id/viewTrackBack"
         app:layout_constraintEnd_toEndOf="@+id/layoutRadar"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideline65" />
+
+    <TextView
+        android:id="@+id/layoutLocationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nome do Local"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar" />
+
+    <TextView
+        android:id="@+id/viewLocationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutLocationName"
+        tools:text="The Forest" />
+
+    <TextView
+        android:id="@+id/layoutSample"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Rastreie a área para encontrar Digimons para balhatar. Derrote os Guardiões para desbloquear a próxima zona."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/layoutRadar"
+        app:layout_constraintEnd_toEndOf="@+id/layoutRadar"
+        app:layout_constraintStart_toStartOf="@+id/layoutRadar" />
 
 </android.support.constraint.ConstraintLayout>

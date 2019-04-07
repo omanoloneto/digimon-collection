@@ -10,6 +10,8 @@ import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
+import co.hillstech.digicollection.enums.MonsterLevel
+import co.hillstech.digicollection.enums.toInt
 import co.hillstech.digicollection.fragments.AlertDialogFragment
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.utils.showBottomSheetDialog
@@ -63,7 +65,7 @@ class EvolutionListActivity : BaseActivity(), EvolutionListPresenter.View {
     private fun onEvolutionClick(monster: Monster){
         Session.user?.partner?.let {
             val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5)))
-            if(it.experience >= base){
+            if(it.experience >= base && it.type < Session.user!!.digivice!!.maxLevel.toInt()){
                 showBottomSheetDialog(
                         "Atenção", "Você tem certeza que deseja digivolver seu ${it.species} para um ${monster.species}? Depois de evoluir, o Digimon nunca mais voltará a ser o que era antes.",
                         confirmButtonLabel = getString(R.string.yes),
@@ -72,7 +74,9 @@ class EvolutionListActivity : BaseActivity(), EvolutionListPresenter.View {
                             presenter.evolveDigimon(it, monster, Session.user!!.id)
                         }
                 )
-            }else{
+            }else if(it.type >= Session.user!!.digivice!!.maxLevel.toInt()) {
+                showBottomSheetDialog(getString(R.string.warning), "O seu Digivice não tem capacidade suficiente para evoluir este Digimon.")
+            } else{
                 showBottomSheetDialog("Atenção", "${it.species} ainda não tem experiência o suficiente para digivolver. Você precisa acumular mais experiência se quiser fazer seu parceiro evoluir.")
             }
         }

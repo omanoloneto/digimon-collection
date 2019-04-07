@@ -7,6 +7,7 @@ import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
 import co.hillstech.digicollection.fragments.HomeFragment
+import co.hillstech.digicollection.fragments.LocationsFragment
 import co.hillstech.digicollection.fragments.MenuFragment
 import com.squareup.picasso.Picasso
 import com.wooplr.spotlight.utils.SpotlightSequence
@@ -17,6 +18,7 @@ class LobbyActivity : BaseFragmentActivity() {
     private val fragments by lazy {
         mapOf(
                 R.id.navi_partner to HomeFragment(),
+                R.id.layoutLocations to LocationsFragment(),
                 R.id.layoutMenu to MenuFragment()
         )
     }

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/viewDetailNickButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/cancel_button"
+        android:text="Renomear"
+        android:textColor="@color/regal_blue"
+        app:layout_constraintBottom_toTopOf="@+id/viewDetailBuddyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_50"
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
+
+    <Button
+        android:id="@+id/viewDetailBuddyButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/confirm_button"
+        android:text="Tornar Parceiro"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/viewDetailBackButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/cancel_button"
+        android:text="Voltar"
+        android:textColor="@color/regal_blue"
+        app:layout_constraintBottom_toTopOf="@+id/viewDetailBuddyButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
+
+    <ImageView
+        android:id="@+id/viewDetailImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutDetailDEF"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/placeholder" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/viewDetailName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Agumon" />
+
+    <TextView
+        android:id="@+id/layoutDetailSpecies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Espécie:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailName" />
+
+    <TextView
+        android:id="@+id/viewDetailSpecies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailSpecies"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailSpecies"
+        tools:text="Agumon" />
+
+    <TextView
+        android:id="@+id/layoutDetailAttribute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="Atributo:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailSpecies" />
+
+    <TextView
+        android:id="@+id/viewDetailAttribute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailAttribute"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailAttribute"
+        tools:text="Vacine" />
+
+    <TextView
+        android:id="@+id/layoutDetailElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="Elemento:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailAttribute" />
+
+    <TextView
+        android:id="@+id/viewDetailElemet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailElement"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailElement"
+        tools:text="Fogo" />
+
+    <TextView
+        android:id="@+id/layoutDetailHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="HP:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailPerson" />
+
+    <TextView
+        android:id="@+id/viewDetailHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailHP"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailHP"
+        tools:text="250" />
+
+    <TextView
+        android:id="@+id/layoutDetailATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="ATK:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailHP" />
+
+    <TextView
+        android:id="@+id/viewDetailATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailATK"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailATK"
+        tools:text="60" />
+
+    <TextView
+        android:id="@+id/layoutDetailDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="DEF:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailATK" />
+
+    <TextView
+        android:id="@+id/viewDetailDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailDEF"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailDEF"
+        tools:text="60" />
+
+    <TextView
+        android:id="@+id/layoutDetailSPATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SP. ATK:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_70"
+        app:layout_constraintTop_toTopOf="@+id/viewDetailHP" />
+
+    <TextView
+        android:id="@+id/viewDetailSPATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailSPATK"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailSPATK"
+        tools:text="60" />
+
+    <TextView
+        android:id="@+id/layoutDetailSPDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="SP. DEF:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_70"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailSPATK" />
+
+    <TextView
+        android:id="@+id/viewDetailSPDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailSPDEF"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailSPDEF"
+        tools:text="60" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/layoutDetailSPD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="SDP:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_70"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailSPDEF" />
+
+    <TextView
+        android:id="@+id/viewDetailSPD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailSPD"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailSPD"
+        tools:text="30" />
+
+    <TextView
+        android:id="@+id/viewDetailDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailImage"
+        tools:text="Um digimon bem legal." />
+
+    <TextView
+        android:id="@+id/layoutDetailLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="Nível:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailElement" />
+
+    <TextView
+        android:id="@+id/viewDetailLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailLevel"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailLevel"
+        tools:text="Criança" />
+
+    <TextView
+        android:id="@+id/layoutDetailPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Personalidade:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_40"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDetailLevel" />
+
+    <TextView
+        android:id="@+id/viewDetailPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutDetailPerson"
+        app:layout_constraintTop_toTopOf="@+id/layoutDetailPerson"
+        tools:text="Calmo" />
+</android.support.constraint.ConstraintLayout>

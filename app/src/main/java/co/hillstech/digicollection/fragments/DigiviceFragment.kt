@@ -19,6 +19,7 @@ class DigiviceFragment : DialogFragment() {
     var resume: String = ""
     var image: String? = null
     var showButtons: Boolean = true
+    var blockBack: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_digivice, container)
@@ -50,7 +51,7 @@ class DigiviceFragment : DialogFragment() {
             viewCancelButton.visibility = View.GONE
         }
 
-        isCancelable = false
+        if(blockBack) isCancelable = false
     }
 
 }

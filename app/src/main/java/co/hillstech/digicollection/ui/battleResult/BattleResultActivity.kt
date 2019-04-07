@@ -1,11 +1,13 @@
 package co.hillstech.digicollection.ui.battleResult
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
+import co.hillstech.digicollection.utils.showBottomSheetDialog
 import com.squareup.picasso.Picasso
 import com.wooplr.spotlight.utils.SpotlightSequence
 import kotlinx.android.synthetic.main.activity_battle_result.*
@@ -26,6 +28,23 @@ class BattleResultActivity : BaseActivity(), BattleResultPresenter.View {
         setupActionBar()
 
         setupViews()
+    }
+
+    override fun showLoseMessage() {
+        showBottomSheetDialog(
+                "Ops...",
+                "Você não conseguiu derrotar o Guardião desta área. Treine mais e tente novamente...",
+                confirmButtonLabel = getString(R.string.ok)
+        )
+    }
+
+    override fun showWinMessage() {
+        Session.location?.clear = true
+        showBottomSheetDialog(
+                "Parabéns!",
+                "Você derrotou o Guardião da área e agora liberou uma nova zona para explorar.",
+                confirmButtonLabel = getString(R.string.ok)
+        )
     }
 
     override fun showBattleResults() {
@@ -50,6 +69,14 @@ class BattleResultActivity : BaseActivity(), BattleResultPresenter.View {
     override fun setupViews() {
         viewBackButton.setOnClickListener {
             onBackPressed()
+        }
+    }
+
+    override fun showNextButton() {
+        viewNextButton.visibility = View.VISIBLE
+        viewNextButton.setOnClickListener {
+            finish()
+            startActivity(Intent(this, BattleResultActivity::class.java))
         }
     }
 
