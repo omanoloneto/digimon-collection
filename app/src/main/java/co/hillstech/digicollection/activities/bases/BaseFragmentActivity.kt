@@ -7,7 +7,7 @@ abstract class BaseFragmentActivity : BaseActivity() {
 
     protected var selectedFragment: Int? = null
 
-    protected fun openFragment(fragment: Fragment, previousFragment: Fragment?) {
+    fun openFragment(fragment: Fragment, previousFragment: Fragment?) {
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out)

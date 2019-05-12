@@ -14,6 +14,7 @@ import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.LoginActivity
 import co.hillstech.digicollection.activities.RadarActivity
 import co.hillstech.digicollection.activities.StoreActivity
+import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu
@@ -65,6 +66,10 @@ class MenuFragment : Fragment() {
 
             menus.add(Menu(getString(R.string.digibank), it.getDrawable(R.drawable.box)) {
                 startActivity(Intent(it, DigiBankActivity::class.java))
+            })
+
+            menus.add(Menu(getString(R.string.events), it.getDrawable(R.drawable.bell)) {
+                (activity as BaseFragmentActivity).openFragment(HomeFragment(), MenuFragment())
             })
 
             menus.add(Menu(getString(R.string.store), it.getDrawable(R.drawable.store)) {
