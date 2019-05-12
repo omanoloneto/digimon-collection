@@ -29,7 +29,7 @@ class LobbyActivity : BaseFragmentActivity() {
 
         Session.user?.crest?.let {
             setStatusBarColor(it.color)
-            viewActionBar.setCardBackgroundColor(Color.parseColor(it.color))
+            //viewCrestBackground.setBackgroundColor(Color.parseColor(it.color))
 
             Picasso.get().load(it.icon)
                     .noPlaceholder()
