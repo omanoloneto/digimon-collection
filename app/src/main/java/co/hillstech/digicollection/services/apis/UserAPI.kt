@@ -1,6 +1,7 @@
 package co.hillstech.digicollection.services.apis
 
 import co.hillstech.digicollection.models.BooleanResponse
+import co.hillstech.digicollection.models.Event
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.services.ServiceAPI
 import co.hillstech.digicollection.services.interfaces.UserInterface
