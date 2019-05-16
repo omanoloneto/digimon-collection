@@ -6,6 +6,9 @@ import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.services.apis.UserAPI
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,12 +24,15 @@ class DigiBankPresenter {
     fun requestDataBoxList() {
         view?.showProgressRing()
 
-        launch {
+        GlobalScope.launch(Dispatchers.Default) {
             try {
 
                 val monsters = UserAPI.getUserMonsters(Session.user!!.id).await()
                 viewModel = monsters
-                view?.inflateDataBoxList()
+
+                GlobalScope.launch(Dispatchers.Main) {
+                    view?.inflateDataBoxList()
+                }
 
             } catch (e: Exception) {
 
@@ -34,7 +40,9 @@ class DigiBankPresenter {
 
             } finally {
 
-                view?.hideProgressRing()
+                GlobalScope.launch(Dispatchers.Main) {
+                    view?.hideProgressRing()
+                }
 
             }
         }
@@ -43,23 +51,26 @@ class DigiBankPresenter {
     fun changePartner(monster: Monster) {
         view?.showProgressRing()
 
-        launch {
+        GlobalScope.launch(Dispatchers.Default) {
             try {
 
                 val response = UserAPI.updateBuddy(monster.id, Session.user!!.id).await()
 
                 updateUserBuddy(monster)
 
-                view?.refreshDataBoxList()
-                view?.changeBuddyMessage(monster.species, monster.image)
+                GlobalScope.launch(Dispatchers.Main) {
+                    view?.refreshDataBoxList()
+                    view?.changeBuddyMessage(monster.species, monster.image)
+                }
 
             } catch (e: Exception) {
 
                 Log.e("ERROR", e.message)
 
             } finally {
-
-                view?.hideProgressRing()
+                GlobalScope.launch(Dispatchers.Main) {
+                    view?.hideProgressRing()
+                }
 
             }
         }
