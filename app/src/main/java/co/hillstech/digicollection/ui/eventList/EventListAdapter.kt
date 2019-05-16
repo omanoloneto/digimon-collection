@@ -1,10 +1,12 @@
 package co.hillstech.digicollection.ui.eventList
 
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.models.Event
 import kotlinx.android.synthetic.main.view_event_list_item.view.*
 
@@ -30,10 +32,15 @@ class EventListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindView(item: Event, onEventClick: (Event) -> Unit) = with(itemView) {
 
+        Session.user?.crest?.color.let {
+            viewEventFlag.setCardBackgroundColor(Color.parseColor(it))
+        }
+
         if (item.isActive) {
+            viewEventFlag.visibility = View.VISIBLE
             viewEventFlagText.text = context.getString(R.string.active)
         } else {
-            viewEventFlagText.text = context.getString(R.string.inactive)
+            viewEventFlag.visibility = View.GONE
         }
 
         viewEventName.text = item.name

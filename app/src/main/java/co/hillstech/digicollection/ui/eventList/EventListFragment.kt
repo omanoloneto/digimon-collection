@@ -1,5 +1,7 @@
 package co.hillstech.digicollection.ui.eventList
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.bases.BaseFragment
 import co.hillstech.digicollection.models.Event
@@ -26,16 +29,24 @@ class EventListFragment : BaseFragment(), EventListPresenter.View {
 
         presenter.view = this
         presenter.requestEventList()
+
+        setProgressRingColor()
+    }
+
+    private fun setProgressRingColor() {
+        Session.user?.crest?.color.let {
+            viewProgressRing.indeterminateDrawable.setColorFilter(Color.parseColor(it), PorterDuff.Mode.MULTIPLY)
+        }
     }
 
     override fun showProgressRing() {
-        //layoutContainer.visibility = View.GONE
-        //viewProgressRing.visibility = View.VISIBLE
+        layoutContainer.visibility = View.GONE
+        viewProgressRing.visibility = View.VISIBLE
     }
 
     override fun hideProgressRing() {
-        //viewProgressRing.visibility = View.GONE
-        //layoutContainer.visibility = View.VISIBLE
+        viewProgressRing.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
     }
 
     override fun inflateEventList() {
