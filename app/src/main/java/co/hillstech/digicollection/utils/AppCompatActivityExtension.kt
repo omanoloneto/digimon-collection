@@ -15,7 +15,8 @@ fun AppCompatActivity.showBottomSheetDialog(title: String = "",
                                             confirmButtonLabel: String? = null,
                                             cancelButtonLabel: String? = null,
                                             confirmButtonAction: () -> Unit = {},
-                                            cancelButtonAction: () -> Unit = {}) {
+                                            cancelButtonAction: () -> Unit = {},
+                                            isCancelable: Boolean = false) {
 
     val dialog = BottomSheetDialog(this)
 
@@ -53,6 +54,6 @@ fun AppCompatActivity.showBottomSheetDialog(title: String = "",
     }
 
     dialog.setContentView(view)
-    dialog.setCancelable(false)
+    dialog.setCancelable(isCancelable)
     dialog.show()
 }
