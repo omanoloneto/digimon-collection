@@ -1,6 +1,5 @@
 package co.hillstech.digicollection.activities
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,15 +9,16 @@ import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.adapters.DigiviceAdapter
+import co.hillstech.digicollection.adapters.ItemAdapter
 import co.hillstech.digicollection.enums.toString
 import co.hillstech.digicollection.fragments.DigiviceFragment
-import co.hillstech.digicollection.fragments.ScannerFragment
 import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Digivice
+import co.hillstech.digicollection.models.Item
 import co.hillstech.digicollection.models.StoreResponse
+import co.hillstech.digicollection.utils.showBottomSheetDialog
 import co.hillstech.digicollection.utils.showMessageDialog
 import kotlinx.android.synthetic.main.activity_store.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_action_bar.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -81,7 +81,7 @@ class StoreActivity : BaseActivity() {
         }
     }
 
-    private fun digiviceDetails(digivice: Digivice){
+    private fun digiviceDetails(digivice: Digivice) {
         digivice.let {
             DigiviceFragment().apply {
                 model = it.model
@@ -95,19 +95,19 @@ class StoreActivity : BaseActivity() {
         }
     }
 
-    private fun changeDigivice(digivice: Digivice){
-        showMessageDialog(getString(R.string.warning), getString(R.string.do_you_want_change_your_digivice)+" ${digivice.model}?",
-            positiveButtonLabel = getString(R.string.yes),
-            negativeButtonLabel = getString(R.string.no),
-            positiveButtonAction = {
-                Session.user?.let {
-                    it.digivice = digivice
-                    updateDigivice(digivice.id, true)
+    private fun changeDigivice(digivice: Digivice) {
+        showMessageDialog(getString(R.string.warning), getString(R.string.do_you_want_change_your_digivice) + " ${digivice.model}?",
+                positiveButtonLabel = getString(R.string.yes),
+                negativeButtonLabel = getString(R.string.no),
+                positiveButtonAction = {
+                    Session.user?.let {
+                        it.digivice = digivice
+                        updateDigivice(digivice.id, true)
+                    }
+                },
+                negativeButtonAction = {
+                    updateDigivice(digivice.id, false)
                 }
-            },
-            negativeButtonAction = {
-                updateDigivice(digivice.id, false)
-            }
         )
     }
 
@@ -128,6 +128,9 @@ class StoreActivity : BaseActivity() {
                             ::updateWallet, ::updateDigivice, ::changeDigivice, ::digiviceDetails)
                     viewDigivicesList?.layoutManager = LinearLayoutManager(this@StoreActivity, LinearLayoutManager.HORIZONTAL, false)
 
+                    viewChargeItemList?.adapter = ItemAdapter(it.chargeChips, ::itemDetails)
+                    viewChargeItemList?.layoutManager = LinearLayoutManager(this@StoreActivity, LinearLayoutManager.HORIZONTAL, false)
+
                 } ?: run {
 
                     progressRingDismiss()
@@ -143,6 +146,18 @@ class StoreActivity : BaseActivity() {
 
             }
         })
+    }
+
+    private fun itemDetails(item: Item) {
+        showBottomSheetDialog(item.name, item.description, item.image,
+                confirmButtonLabel = "Comprar",
+                confirmButtonAction = {
+                    Session.user!!.wallet -= item.price
+                    updateWallet()
+                },
+                cancelButtonLabel = "Voltar",
+                isCancelable = true
+        )
     }
 
     private fun setupActivity() {
