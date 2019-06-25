@@ -68,10 +68,6 @@ class MenuFragment : Fragment() {
                 startActivity(Intent(it, DigiBankActivity::class.java))
             })
 
-            menus.add(Menu(getString(R.string.events), it.getDrawable(R.drawable.bell)) {
-                (activity as BaseFragmentActivity).openFragment(HomeFragment(), MenuFragment())
-            })
-
             menus.add(Menu(getString(R.string.store), it.getDrawable(R.drawable.store)) {
                 startActivity(Intent(it, StoreActivity::class.java))
             })
