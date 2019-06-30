@@ -4,7 +4,7 @@ class Event(
         val id: Int,
         val name: String,
         val description: String,
-        val startDate: Int,
-        val finishDate: Int,
+        val startDate: String,
+        val finishDate: String,
         val isActive: Boolean
 )

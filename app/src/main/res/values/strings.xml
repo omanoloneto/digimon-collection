@@ -189,4 +189,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="active">Active</string>
     <string name="inactive">Inactive</string>
+    <string name="error_on_show_event_informations">Erro ao exibir dados do evento</string>
 </resources>
