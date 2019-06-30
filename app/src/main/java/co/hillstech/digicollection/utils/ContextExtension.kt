@@ -31,6 +31,6 @@ fun Context.timestampToDate(timestamp: String): String {
     return SimpleDateFormat("dd/MM/yyyy").format(Date(timestamp.toLong() * 1000)).toString()
 }
 
-fun Context.showToast(message: String){
+fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

@@ -20,6 +20,7 @@ class EventListPresenter {
                 viewModel.eventList = EventAPI.requestEventList(Session.user!!.id).await()
                 GlobalScope.launch(Dispatchers.Main) {
                     view?.inflateEventList()
+                    view?.showTutorial()
                 }
             } catch (e: Exception) {
                 Log.e("ERROR", e.message)
@@ -33,6 +34,7 @@ class EventListPresenter {
 
     interface View {
         fun inflateEventList()
+        fun showTutorial()
         fun showProgressRing()
         fun hideProgressRing()
     }

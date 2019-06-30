@@ -190,4 +190,6 @@
     <string name="active">Active</string>
     <string name="inactive">Inactive</string>
     <string name="error_on_show_event_informations">Erro ao exibir dados do evento</string>
+    <string name="close">Fechar</string>
+    <string name="next">Próximo</string>
 </resources>

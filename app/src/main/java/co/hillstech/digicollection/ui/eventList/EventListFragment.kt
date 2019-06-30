@@ -1,5 +1,6 @@
 package co.hillstech.digicollection.ui.eventList
 
+import android.content.Context.MODE_PRIVATE
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -8,14 +9,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.bases.BaseFragment
 import co.hillstech.digicollection.models.Event
+import co.hillstech.digicollection.utils.showBottomCharDialog
 import co.hillstech.digicollection.utils.showBottomSheetDialog
-import co.hillstech.digicollection.utils.showMessageDialog
 import co.hillstech.digicollection.utils.showToast
 import co.hillstech.digicollection.utils.timestampToDate
 import kotlinx.android.synthetic.main.fragment_event_list.*
@@ -62,8 +62,36 @@ class EventListFragment : BaseFragment(), EventListPresenter.View {
         }
     }
 
+    override fun showTutorial() {
+        if (!isTutorialShowed()) {
+            (activity as AppCompatActivity).showBottomCharDialog(
+                    charName = "Genai",
+                    image = R.drawable.genai_dialog_window,
+                    messages = mutableListOf(
+                            "Esta aqui é a aba de Eventos, nela você pode visualizar todos os eventos antigos e atuais.",
+                            "Se clicar em um evento vai ver as informações dele, e a data em que ele terminou, ou terminará no caso dos eventos atuais.",
+                            "Falando nisso, os eventos atuais ficam marcados com uma tag \"Ativo\"."
+                    )
+            )
+            setTutorialShowed()
+        }
+    }
+
+    private fun isTutorialShowed(): Boolean {
+        val preferences = activity!!.getSharedPreferences("DigiCollePref", MODE_PRIVATE)
+        return preferences.getString("eventListTutorial1", null) != null
+    }
+
+    private fun setTutorialShowed() {
+        val preferences = activity!!.getSharedPreferences("DigiCollePref", MODE_PRIVATE)
+
+        preferences.edit()
+                .putString("eventListTutorial1", "cleared")
+                .commit()
+    }
+
     private fun onEventClick(event: Event) {
-        activity?.let{
+        activity?.let {
             (it as AppCompatActivity).showBottomSheetDialog(
                     title = event.name,
                     message = "${event.description}\n\nFim do evento: ${it.timestampToDate(event.finishDate)}",
