@@ -22,7 +22,8 @@ class Monster(
         var base_def: Float,
         var base_sp_atk: Float,
         var base_sp_def: Float,
-        var base_spd: Float
+        var base_spd: Float,
+        var scanned: Boolean
 ) {
     fun getLevel():String{
         return when(this.type){

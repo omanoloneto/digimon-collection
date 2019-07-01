@@ -19,6 +19,7 @@ import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu
 import co.hillstech.digicollection.ui.digiBank.DigiBankActivity
+import co.hillstech.digicollection.ui.digiDex.DigiDexActivity
 import co.hillstech.digicollection.ui.scanList.ScanListActivity
 import co.hillstech.digicollection.utils.showMessageDialog
 import com.onesignal.OneSignal
@@ -60,7 +61,15 @@ class MenuFragment : Fragment() {
                 }
             })*/
 
+            menus.add(Menu(getString(R.string.digidex), it.getDrawable(R.drawable.open_book)) {
+                startActivity(Intent(it, DigiDexActivity::class.java))
+            })
+
             menus.add(Menu(getString(R.string.scan_list), it.getDrawable(R.drawable.todo_list)) {
+                startActivity(Intent(it, ScanListActivity::class.java))
+            })
+
+            menus.add(Menu(getString(R.string.data_radar), it.getDrawable(R.drawable.search_location)) {
                 startActivity(Intent(it, ScanListActivity::class.java))
             })
 
