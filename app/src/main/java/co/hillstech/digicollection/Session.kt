@@ -35,6 +35,8 @@ object Session {
     var location: Location? = null
     var guardians: MutableList<Monster> = mutableListOf()
 
+    var digimon: Monster? = null
+
     fun authenticate(context: Context, name: String, pass: String) {
 
         val call = UserService().login().exe(name, pass)
