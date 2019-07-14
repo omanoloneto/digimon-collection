@@ -42,8 +42,8 @@ class DataBoxHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             viewDataTitle.text = item.species
         }
 
-        viewDataAttribute.text = item.attribute.getAttribute(context)
-        viewDataElement.text = item.element.getElement(context)
+        viewDataAttribute.text = item.attribute?.getAttribute(context)
+        viewDataElement.text = item.element?.getElement(context)
 
         if (item.partner) {
             viewDataPartner.visibility = View.VISIBLE

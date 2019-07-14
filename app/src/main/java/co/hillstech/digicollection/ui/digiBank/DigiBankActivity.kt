@@ -81,10 +81,10 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
                     .into(viewDetailImage)
 
             viewDetailLevel.text = Session.monsterLevel(this@DigiBankActivity, monster.type)
-            viewDetailElemet.text = monster.element.getElement(this@DigiBankActivity)
-            viewDetailAttribute.text = monster.attribute.getAttribute(this@DigiBankActivity)
+            viewDetailElemet.text = monster.element?.getElement(this@DigiBankActivity)
+            viewDetailAttribute.text = monster.attribute?.getAttribute(this@DigiBankActivity)
             viewDetailDescription.text = monster.description
-            viewDetailPerson.text = monster.personality.toString(this@DigiBankActivity)
+            viewDetailPerson.text = monster.personality?.toString(this@DigiBankActivity)
 
             viewDetailHP.text = monster.base_hp.toString()
             viewDetailATK.text = monster.base_atk.toString()

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
+import co.hillstech.digicollection.ui.login.LoginActivity
 import com.onesignal.OneSignal
 
 

@@ -32,7 +32,7 @@ class EvolutionListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindView(item: Monster, onEvolutionClick: (Monster) -> Unit) = with(itemView) {
         viewEvolutionSpecies.text = item.species
-        viewEvolutionElement.text = item.element.getElement(context)
+        viewEvolutionElement.text = item.element?.getElement(context)
 
         Picasso.get().load(item.image)
                 .placeholder(R.drawable.placeholder)

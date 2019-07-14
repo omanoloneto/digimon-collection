@@ -18,19 +18,8 @@ class DigimonDetailsActivity : BaseActivity(), DigimonDetailsPresenter.View {
 
         presenter.view = this
 
-        setupActionBar()
+        setupActionBar(presenter.getMonster().species)
         setupViews()
-    }
-
-    override fun setupActionBar() {
-        viewActivityTitle.text = presenter.getMonster().species
-
-        viewBackArrow.setOnClickListener { onBackPressed() }
-
-        Session.user?.crest?.color.let {
-            setStatusBarColor(it)
-            viewActionBar.setCardBackgroundColor(Color.parseColor(it))
-        }
     }
 
     override fun setupViews() {

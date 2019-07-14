@@ -194,4 +194,7 @@
     <string name="next">Próximo</string>
     <string name="digidex">DigiDex</string>
     <string name="data_radar">Data Radar</string>
+    <string name="forgot_password">I forgot my password</string>
+    <string name="enter_the_data_required">Enter the data required</string>
+    <string name="an_unexpected_error_happened">An unexpected error happened. Please try again later.</string>
 </resources>

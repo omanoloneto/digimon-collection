@@ -37,7 +37,7 @@ object Session {
 
     var digimon: Monster? = null
 
-    fun authenticate(context: Context, name: String, pass: String) {
+    fun authenticate(context: Context, name: String, pass: String, successCallback: (() -> Unit)? = null, errorCallback: (() -> Unit)? = null) {
 
         val call = UserService().login().exe(name, pass)
 
@@ -70,31 +70,40 @@ object Session {
                             }
                         }
 
+                        successCallback?.let { it() }
+
                         context.startActivity(Intent(context, LobbyActivity::class.java))
                         (context as Activity).finish()
 
                     } else {
 
-                        context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
+                        errorCallback?.let { it() } ?: run {
+                            context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
+                        }
 
                     }
 
                 } ?: run {
 
-                    context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
+                    errorCallback?.let { it() } ?: run {
+                        context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
+                    }
 
                 }
             }
 
             override fun onFailure(call: Call<UserResponse?>?, t: Throwable?) {
-                context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
-                Log.e("ERROR", t?.message)
+
+                errorCallback?.let { it() } ?: run {
+                    context.showMessageDialog(context.getString(R.string.error), context.getString(R.string.user_or_password_is_invalid), context.getString(R.string.ok))
+                }
+
             }
         })
     }
 
-    fun monsterLevel(context: Context, type: Int): String{
-        return when(type){
+    fun monsterLevel(context: Context, type: Int): String {
+        return when (type) {
             1 -> context.getString(R.string.fresh)
             2 -> context.getString(R.string.intraining)
             3 -> context.getString(R.string.rookie)

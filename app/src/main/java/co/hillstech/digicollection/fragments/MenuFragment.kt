@@ -11,10 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
-import co.hillstech.digicollection.activities.LoginActivity
-import co.hillstech.digicollection.activities.RadarActivity
+import co.hillstech.digicollection.ui.login.LoginActivity
 import co.hillstech.digicollection.activities.StoreActivity
-import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
 import co.hillstech.digicollection.adapters.MenuAdapter
 import co.hillstech.digicollection.models.Menu

@@ -1,5 +1,6 @@
 package co.hillstech.digicollection.services.apis
 
+import co.hillstech.digicollection.Retrofit.CreateClass
 import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Event
 import co.hillstech.digicollection.models.Monster
@@ -18,5 +19,9 @@ object UserAPI {
 
     fun updateBuddy(monsterId: Int, userId: Int): Deferred<BooleanResponse> {
         return service.updateBuddy(monsterId, userId)
+    }
+
+    fun createAccount(username: String, password: String): Deferred<CreateClass> {
+        return service.createAccount(username, password)
     }
 }
