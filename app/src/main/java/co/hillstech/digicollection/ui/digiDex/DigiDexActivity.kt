@@ -43,6 +43,16 @@ class DigiDexActivity : BaseActivity(), DigiDexPresenter.View {
             adapter = DigiDexAdapter(presenter.getMonsterList(), {})
             layoutManager = GridLayoutManager(this@DigiDexActivity, 3)
         }
+
+        refreshProgressCount()
+    }
+
+    private fun refreshProgressCount() {
+        with(presenter.getMonsterList()) {
+            viewProgressBar.max = size
+            viewProgressBar.progress = filter { it.scanned }.size
+            viewProgressText.text = "${viewProgressBar.progress} / $size"
+        }
     }
 
     override fun showTutorial() {

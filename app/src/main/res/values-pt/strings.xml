@@ -119,5 +119,6 @@
     <string name="forgot_password">Esqueci minha senha</string>
     <string name="enter_the_data_required">Informe os dados necessários</string>
     <string name="an_unexpected_error_happened">Um erro inesperado aconteceu. Por favor, tente novamente mais tarde.</string>
+    <string name="digimon_converted_so_far">Digimons convertidos\naté o momento</string>
 
 </resources>
