@@ -1,6 +1,5 @@
 package co.hillstech.digicollection.ui.digiDex
 
-import android.graphics.ColorFilter
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.support.v7.widget.RecyclerView
@@ -14,13 +13,12 @@ import kotlinx.android.synthetic.main.view_digidex_item.view.*
 import kotlinx.android.synthetic.main.view_digivice_list_items.view.viewImage
 
 
-
 class DigiDexAdapter(private val items: List<Monster>,
-                     private val onMonsterClick: () -> Unit) : RecyclerView.Adapter<DigiDexHolder>() {
+                     private val onItemClickListner: (Monster) -> Unit) : RecyclerView.Adapter<DigiDexHolder>() {
 
     override fun onBindViewHolder(holder: DigiDexHolder, position: Int) {
         val item = items[position]
-        holder.bindView(item, onMonsterClick)
+        holder.bindView(item, onItemClickListner)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DigiDexHolder {
@@ -35,7 +33,7 @@ class DigiDexAdapter(private val items: List<Monster>,
 
 class DigiDexHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindView(item: Monster, onMonsterClick: () -> Unit) = with(itemView) {
+    fun bindView(item: Monster, onItemClickListner: (Monster) -> Unit) = with(itemView) {
         viewSpecies.text = item.species
 
         val matrix = ColorMatrix()
@@ -43,14 +41,14 @@ class DigiDexHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (item.scanned) {
             viewImage.alpha = 1f
             matrix.setSaturation(1f)
-            layoutMonster.setOnClickListener { onMonsterClick() }
         } else {
             viewImage.alpha = 0.1f
             matrix.setSaturation(0f)
-            layoutMonster.setOnClickListener { }
         }
 
         viewImage.colorFilter = ColorMatrixColorFilter(matrix)
+
+        layoutMonster.setOnClickListener { onItemClickListner(item) }
 
         Picasso.get().load(item.image)
                 .placeholder(R.drawable.placeholder)

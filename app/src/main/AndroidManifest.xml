@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="co.hillstech.digicollection">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -43,9 +44,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.CreateActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LocationActivity"

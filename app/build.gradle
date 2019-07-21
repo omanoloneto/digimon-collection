@@ -43,8 +43,8 @@ android {
     productFlavors {
         alpha {
             dimension "version"
-            versionName "0.0.12"
-            versionCode 12
+            versionName "0.1.0"
+            versionCode 13
             apkName = "-alpha-v"
             applicationIdSuffix = ".alpha"
             buildConfigField "String", "HTTP_SERVER", "\"http://digicolle-dsv.hillstech.co/api/\""
@@ -52,8 +52,8 @@ android {
 
         beta {
             dimension "version"
-            versionName "0.0.1"
-            versionCode 1
+            versionName "0.1.0"
+            versionCode 13
             apkName = "-beta-v"
             buildConfigField "String", "HTTP_SERVER", "\"http://digicolle.hillstech.co/api/\""
         }

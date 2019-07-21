@@ -67,9 +67,9 @@ class MenuFragment : Fragment() {
                 startActivity(Intent(it, ScanListActivity::class.java))
             })
 
-            menus.add(Menu(getString(R.string.data_radar), it.getDrawable(R.drawable.search_location)) {
+            /*menus.add(Menu(getString(R.string.data_radar), it.getDrawable(R.drawable.search_location)) {
                 startActivity(Intent(it, ScanListActivity::class.java))
-            })
+            })*/
 
             menus.add(Menu(getString(R.string.digibank), it.getDrawable(R.drawable.box)) {
                 startActivity(Intent(it, DigiBankActivity::class.java))

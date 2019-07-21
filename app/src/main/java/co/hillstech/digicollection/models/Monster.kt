@@ -23,7 +23,8 @@ class Monster(
         var base_sp_atk: Float = 0f,
         var base_sp_def: Float = 0f,
         var base_spd: Float = 0f,
-        var scanned: Boolean = false
+        var scanned: Boolean = false,
+        var locations: List<String> = listOf()
 ) {
 
     fun getLevel():String{
