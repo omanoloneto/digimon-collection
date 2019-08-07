@@ -13,6 +13,11 @@
         android:title="@string/locations" />
 
     <item
+        android:id="@+id/layoutEvents"
+        android:icon="@drawable/bell"
+        android:title="@string/events" />
+
+    <item
         android:id="@+id/layoutMenu"
         android:icon="@drawable/bar_menu"
         android:title="@string/menu" />

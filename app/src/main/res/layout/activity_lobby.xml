@@ -4,14 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".activities.LobbyActivity">
+
+    <ImageView
+        android:id="@+id/viewBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/lobby_background" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/viewActionBar"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        app:cardBackgroundColor="@color/regal_blue"
+        app:cardBackgroundColor="#55000000"
         app:cardCornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +36,22 @@
 
             <ImageView
                 android:id="@+id/viewCrest"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:padding="15dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layoutGuidelineVertical15"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/placeholder" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/layoutGuidelineVertical15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.155" />
 
             <ImageView
                 android:id="@+id/layoutCoinsIcon"
@@ -63,6 +86,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/viewCrest"
                 app:layout_constraintTop_toTopOf="parent">
@@ -91,15 +115,21 @@
 
             </android.support.constraint.ConstraintLayout>
 
+            <ImageView
+                android:id="@+id/layoutLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/digicolle_logo" />
+
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
 
     <FrameLayout
         android:id="@+id/viewContainer"
@@ -118,9 +148,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:itemIconTint="@color/mine_shaft"
-        app:itemTextColor="@color/mine_shaft"
+        android:background="#55000000"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

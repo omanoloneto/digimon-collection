@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="co.hillstech.digicollection">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,6 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.digimonDetails.DigimonDetailsActivity"></activity>
+        <activity android:name=".ui.digiDex.DigiDexActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
@@ -40,10 +43,7 @@
             android:name=".activities.StoreActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.CreateActivity"
+            android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LocationActivity"

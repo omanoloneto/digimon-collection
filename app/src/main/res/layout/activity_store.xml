@@ -6,27 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".activities.StoreActivity">
 
-    <TextView
-        android:id="@+id/layoutDigivices"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Digivices"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/viewDigivicesList"
-        android:layout_width="0dp"
-        android:layout_height="316dp"
-        android:layout_marginTop="8dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutDigivices"
-        tools:listitem="@layout/view_store_item" />
+        app:layout_constraintTop_toTopOf="@+id/include">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/layoutDigivices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Digivices"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/viewChargeItemList"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutChargeItem"
+                tools:listitem="@layout/view_store_item" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/viewDigivicesList"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutDigivices"
+                tools:listitem="@layout/view_store_item" />
+
+            <TextView
+                android:id="@+id/layoutChargeItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Carge Items"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewDigivicesList" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
     <include
         android:id="@+id/include"

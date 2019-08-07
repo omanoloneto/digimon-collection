@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
         spotlights.addSpotlight(viewExperience, "Exp.", "Esta é a experiência do seu parceiro. Batalhe para acumular mais experiência para poder evoluir.", "tutorialExpHome")
                 .addSpotlight(viewLevel, "Nível", "Aqui você pode ver o nível que seu Digimon está, para passar de nível deve encher a barra de experiência primeiro.", "tutorialLevelHome")
 
-        spotlights.startSequence()
+        //spotlights.startSequence()
 
         preferences.edit()
                 .putString("spotlights", "showed")

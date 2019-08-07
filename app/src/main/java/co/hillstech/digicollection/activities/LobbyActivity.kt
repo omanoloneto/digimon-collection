@@ -9,6 +9,7 @@ import co.hillstech.digicollection.activities.bases.BaseFragmentActivity
 import co.hillstech.digicollection.fragments.HomeFragment
 import co.hillstech.digicollection.fragments.LocationsFragment
 import co.hillstech.digicollection.fragments.MenuFragment
+import co.hillstech.digicollection.ui.eventList.EventListFragment
 import com.squareup.picasso.Picasso
 import com.wooplr.spotlight.utils.SpotlightSequence
 import kotlinx.android.synthetic.main.activity_lobby.*
@@ -19,6 +20,7 @@ class LobbyActivity : BaseFragmentActivity() {
         mapOf(
                 R.id.navi_partner to HomeFragment(),
                 R.id.layoutLocations to LocationsFragment(),
+                R.id.layoutEvents to EventListFragment(),
                 R.id.layoutMenu to MenuFragment()
         )
     }
@@ -29,7 +31,7 @@ class LobbyActivity : BaseFragmentActivity() {
 
         Session.user?.crest?.let {
             setStatusBarColor(it.color)
-            viewActionBar.setCardBackgroundColor(Color.parseColor(it.color))
+            //viewCrestBackground.setBackgroundColor(Color.parseColor(it.color))
 
             Picasso.get().load(it.icon)
                     .noPlaceholder()

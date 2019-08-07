@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="co.hillstech.digicollection.ui.digimonDetails.DigimonDetailsActivity">
+
+    <include
+        android:id="@+id/layoutActionBar"
+        layout="@layout/view_action_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/viewDigimonDetails"
+        layout="@layout/view_digimon_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/viewDetailMap"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/layoutActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/map_marked" />
+</android.support.constraint.ConstraintLayout>

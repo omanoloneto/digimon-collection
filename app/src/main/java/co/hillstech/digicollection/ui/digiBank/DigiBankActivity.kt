@@ -2,25 +2,24 @@ package co.hillstech.digicollection.ui.digiBank
 
 import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.FrameLayout
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
 import co.hillstech.digicollection.activities.bases.BaseActivity
 import co.hillstech.digicollection.adapters.EdgeDecorator
-import co.hillstech.digicollection.enums.MonsterLevel
 import co.hillstech.digicollection.enums.getAttribute
 import co.hillstech.digicollection.enums.getElement
+import co.hillstech.digicollection.enums.toString
 import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.utils.showBottomSheetDialog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_data_box.*
 import kotlinx.android.synthetic.main.view_action_bar.*
 import kotlinx.android.synthetic.main.view_digimon_details.view.*
-import android.support.design.widget.BottomSheetBehavior
-import android.widget.FrameLayout
-import co.hillstech.digicollection.enums.toString
 import kotlinx.android.synthetic.main.view_rename_monster.view.*
 
 
@@ -67,7 +66,7 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
         }
     }
 
-    private fun onMonsterClick(monster: Monster){
+    private fun onMonsterClick(monster: Monster) {
         val dialog = BottomSheetDialog(this)
 
         val view = layoutInflater.inflate(R.layout.view_digimon_details, null)
@@ -81,10 +80,10 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
                     .into(viewDetailImage)
 
             viewDetailLevel.text = Session.monsterLevel(this@DigiBankActivity, monster.type)
-            viewDetailElemet.text = monster.element.getElement(this@DigiBankActivity)
-            viewDetailAttribute.text = monster.attribute.getAttribute(this@DigiBankActivity)
+            viewDetailElemet.text = monster.element?.getElement(this@DigiBankActivity)
+            viewDetailAttribute.text = monster.attribute?.getAttribute(this@DigiBankActivity)
             viewDetailDescription.text = monster.description
-            viewDetailPerson.text = monster.personality.toString(this@DigiBankActivity)
+            viewDetailPerson.text = monster.personality?.toString(this@DigiBankActivity)
 
             viewDetailHP.text = monster.base_hp.toString()
             viewDetailATK.text = monster.base_atk.toString()
@@ -100,7 +99,7 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
                         changePartner(monster)
                         dialog.dismiss()
                     }
-                }else{
+                } else {
                     viewDetailBuddyButton.visibility = View.GONE
                 }
             }
@@ -118,14 +117,14 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
 
         dialog.setContentView(view)
         dialog.setCancelable(false)
-        dialog.setOnShowListener{
+        dialog.setOnShowListener {
             val bottomSheet = dialog.findViewById(android.support.design.R.id.design_bottom_sheet) as FrameLayout?
             BottomSheetBehavior.from(bottomSheet!!).setState(BottomSheetBehavior.STATE_EXPANDED)
         }
         dialog.show()
     }
 
-    private fun renameMonster(monster: Monster){
+    private fun renameMonster(monster: Monster) {
         val dialog = BottomSheetDialog(this)
 
         val view = layoutInflater.inflate(R.layout.view_rename_monster, null)
@@ -156,14 +155,14 @@ class DigiBankActivity : BaseActivity(), DigiBankPresenter.View {
 
         dialog.setContentView(view)
         dialog.setCancelable(false)
-        dialog.setOnShowListener{
+        dialog.setOnShowListener {
             val bottomSheet = dialog.findViewById(android.support.design.R.id.design_bottom_sheet) as FrameLayout?
             BottomSheetBehavior.from(bottomSheet!!).setState(BottomSheetBehavior.STATE_EXPANDED)
         }
         dialog.show()
     }
 
-    private fun changePartner(monster: Monster){
+    private fun changePartner(monster: Monster) {
         showBottomSheetDialog(
                 title = "Trocar de Parceiro",
                 message = "Você quer que ${monster.species} seja seu parceiro a partir de agora?",

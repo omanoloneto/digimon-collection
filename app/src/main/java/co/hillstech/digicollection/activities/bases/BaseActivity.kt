@@ -16,7 +16,21 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected open fun setupViews() {}
 
-    protected open fun setupActionBar() {}
+    //TODO: remove this after refactoring all code
+    protected open fun setupActionBar() {
+        setupActionBar()
+    }
+
+    protected open fun setupActionBar(title: String = this.localClassName) {
+        viewActivityTitle.text = title
+
+        viewBackArrow.setOnClickListener { onBackPressed() }
+
+        Session.user?.crest?.color.let {
+            setStatusBarColor(it)
+            viewActionBar.setCardBackgroundColor(Color.parseColor(it))
+        }
+    }
 
     override fun onResume() {
         super.onResume()

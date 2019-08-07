@@ -1,5 +1,6 @@
 package co.hillstech.digicollection.Retrofit
 
+import co.hillstech.digicollection.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +21,7 @@ class UserService {
                 .writeTimeout(timeout, timeUnit)
                 .addInterceptor(interceptor)
 
-        val baseUrl = "http://digicolle.hillstech.co/api/v2/"
+        val baseUrl = BuildConfig.HTTP_SERVER + "v2/"
 
         Retrofit.Builder()
                 .client(httpClient.build())
