@@ -179,8 +179,11 @@ class StoreActivity : BaseActivity() {
     }
 
     private fun onAddItemToBagSuccess(item: Item) {
-        Session.user!!.wallet -= item.price
-        GlobalScope.launch(Dispatchers.Main) { updateWallet() }
+        GlobalScope.launch(Dispatchers.Main) {
+            Session.user!!.wallet -= item.price
+            updateWallet()
+            showToast("Compra efetuada com sucesso!")
+        }
     }
 
     private fun onAddItemToBagError() {
