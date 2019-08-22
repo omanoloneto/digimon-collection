@@ -19,4 +19,8 @@ interface UserInterface {
     @GET("v2/user/insert/")
     fun createAccount(@Query("name") name: String,
                       @Query("password") password: String): Deferred<CreateClass>
+
+    @GET("v2/user/addItemToBag/")
+    fun addItemToBag(@Query("itemId") itemId: Int,
+                     @Query("userId") userId: Int): Deferred<BooleanResponse>
 }

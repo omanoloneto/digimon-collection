@@ -16,10 +16,15 @@ import co.hillstech.digicollection.models.BooleanResponse
 import co.hillstech.digicollection.models.Digivice
 import co.hillstech.digicollection.models.Item
 import co.hillstech.digicollection.models.StoreResponse
+import co.hillstech.digicollection.services.apis.UserAPI
 import co.hillstech.digicollection.utils.showBottomSheetDialog
 import co.hillstech.digicollection.utils.showMessageDialog
+import co.hillstech.digicollection.utils.showToast
 import kotlinx.android.synthetic.main.activity_store.*
 import kotlinx.android.synthetic.main.view_action_bar.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -151,13 +156,37 @@ class StoreActivity : BaseActivity() {
     private fun itemDetails(item: Item) {
         showBottomSheetDialog(item.name, item.description, item.image,
                 confirmButtonLabel = "Comprar",
-                confirmButtonAction = {
-                    Session.user!!.wallet -= item.price
-                    updateWallet()
-                },
+                confirmButtonAction = { getItemToUser(item, Session.user!!.id) },
                 cancelButtonLabel = "Voltar",
                 isCancelable = true
         )
+    }
+
+    private fun getItemToUser(item: Item, userId: Int) {
+        GlobalScope.launch(Dispatchers.Default) {
+            try {
+                val response = UserAPI.addItemToBag(item.id, userId).await()
+                if (response.status.not()) {
+                    onAddItemToBagError()
+                } else {
+                    onAddItemToBagSuccess(item)
+                }
+            } catch (e: Exception) {
+                Log.e("ERROR", e.message)
+                onAddItemToBagError()
+            }
+        }
+    }
+
+    private fun onAddItemToBagSuccess(item: Item) {
+        Session.user!!.wallet -= item.price
+        GlobalScope.launch(Dispatchers.Main) { updateWallet() }
+    }
+
+    private fun onAddItemToBagError() {
+        GlobalScope.launch(Dispatchers.Main) {
+            showToast("Erro ao adicionar item na mochila")
+        }
     }
 
     private fun setupActivity() {

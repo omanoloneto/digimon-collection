@@ -24,4 +24,8 @@ object UserAPI {
     fun createAccount(username: String, password: String): Deferred<CreateClass> {
         return service.createAccount(username, password)
     }
+
+    fun addItemToBag(itemId: Int, userId: Int): Deferred<BooleanResponse> {
+        return service.addItemToBag(itemId, userId)
+    }
 }
