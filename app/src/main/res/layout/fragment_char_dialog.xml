@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/viewCharDialogImage"
         tools:text="Genai" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +44,6 @@
 
     <TextView
         android:id="@+id/viewCharDialogMessage"
-        tools:text="Message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,7 +53,8 @@
         app:layout_constraintBottom_toTopOf="@+id/viewCharConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewCharDialogImage" />
+        app:layout_constraintTop_toBottomOf="@+id/viewCharDialogImage"
+        tools:text="Message" />
 
     <ImageView
         android:id="@+id/viewCharDialogImage"
@@ -66,4 +67,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/placeholder"
         tools:srcCompat="@drawable/genai_dialog_window" />
-</android.support.constraint.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

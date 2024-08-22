@@ -1,24 +1,26 @@
 package co.hillstech.digicollection.activities.bases
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import co.hillstech.digicollection.R
 
 abstract class BaseFragmentActivity : BaseActivity() {
 
     protected var selectedFragment: Int? = null
 
-    fun openFragment(fragment: Fragment, previousFragment: Fragment?) {
+    fun openFragment(fragment: Fragment, previousFragment: Fragment? = null) {
         val transaction = supportFragmentManager.beginTransaction()
 
-        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out)
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
 
-        if (supportFragmentManager.findFragmentByTag(fragment.tag) == null) {
-            transaction.replace(R.id.viewContainer, fragment, fragment::class.simpleName)
+        val fragmentTag = fragment::class.simpleName
+
+        if (supportFragmentManager.findFragmentByTag(fragmentTag) == null) {
+            transaction.replace(R.id.viewContainer, fragment, fragmentTag)
         }
 
-        if (previousFragment != null) transaction.hide(previousFragment)
+        previousFragment?.let { transaction.hide(it) }
+
         transaction.show(fragment)
         transaction.commit()
     }
-
 }

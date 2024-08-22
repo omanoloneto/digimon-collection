@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Color
-import android.util.Log
 import co.hillstech.digicollection.Retrofit.UserService
 import co.hillstech.digicollection.activities.LobbyActivity
 import co.hillstech.digicollection.models.Location
@@ -14,8 +13,6 @@ import co.hillstech.digicollection.models.Monster
 import co.hillstech.digicollection.models.User
 import co.hillstech.digicollection.models.UserResponse
 import co.hillstech.digicollection.utils.showMessageDialog
-import com.onesignal.OneSignal
-import com.wooplr.spotlight.SpotlightConfig
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,8 +26,6 @@ object Session {
     var color: String? = null
 
     var wild: Int = 0
-
-    var spotlightConfig = SpotlightConfig()
 
     var location: Location? = null
     var guardians: MutableList<Monster> = mutableListOf()
@@ -56,19 +51,8 @@ object Session {
                                 .putString("password", pass)
                                 .commit()
 
-                        OneSignal.deleteTag("username")
-                        OneSignal.sendTags(JSONObject()
-                                .put("username", it.data.id))
 
                         Session.user = it.data as User
-
-                        Session.user?.crest?.let {
-                            with(Session.spotlightConfig) {
-                                headingTvColor = Color.parseColor("#ffffff")
-                                subHeadingTvColor = Color.parseColor("#ffffff")
-                                lineAndArcColor = Color.parseColor(it.color)
-                            }
-                        }
 
                         successCallback?.let { it() }
 

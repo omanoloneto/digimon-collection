@@ -3,59 +3,67 @@ package co.hillstech.digicollection.activities.bases
 import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
-import android.os.Build
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
-import kotlinx.android.synthetic.main.view_action_bar.*
+import co.hillstech.digicollection.databinding.ViewActionBarBinding
 
 abstract class BaseActivity : AppCompatActivity() {
 
     private var progressRing: ProgressDialog? = null
+    private lateinit var binding: ViewActionBarBinding
 
-    protected open fun setupViews() {}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ViewActionBarBinding.inflate(layoutInflater)
+    }
 
-    //TODO: remove this after refactoring all code
-    protected open fun setupActionBar() {
-        setupActionBar()
+    protected open fun setupViews() {
+        // Este método pode ser sobrescrito nas subclasses para configurar as views.
     }
 
     protected open fun setupActionBar(title: String = this.localClassName) {
-        viewActivityTitle.text = title
+        binding.viewActivityTitle.text = title
 
-        viewBackArrow.setOnClickListener { onBackPressed() }
+        binding.viewBackArrow.setOnClickListener { onBackPressed() }
 
-        Session.user?.crest?.color.let {
-            setStatusBarColor(it)
-            viewActionBar.setCardBackgroundColor(Color.parseColor(it))
+        Session.user?.crest?.color?.let { crestColor ->
+            setStatusBarColor(crestColor)
+            binding.viewActionBar.setCardBackgroundColor(Color.parseColor(crestColor))
         }
     }
 
     override fun onResume() {
         super.onResume()
-        Session.user?.let{
-            viewWallet.text = "$ ${it.wallet}"
+        updateWallet()
+    }
+
+    private fun updateWallet() {
+        Session.user?.wallet?.let {
+            binding.viewWallet.text = "$ ${it}"
         }
     }
 
     protected fun setStatusBarColor(color: String? = null) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            color?.let {
-                window.statusBarColor = Color.parseColor(color)
-            } ?: run {
-                window.statusBarColor = ContextCompat.getColor(this, R.color.regal_blue)
-            }
+        val statusBarColor = color?.let { Color.parseColor(it) }
+            ?: ContextCompat.getColor(this, R.color.regal_blue)
+        window.statusBarColor = statusBarColor
+    }
+
+    protected fun showProgressRing(
+        context: Context,
+        message: String = getString(R.string.loading)
+    ) {
+        progressRing = ProgressDialog(context).apply {
+            setMessage(message)
+            setCancelable(false)
+            show()
         }
     }
 
-    protected fun progressRingCall(context: Context, message: String = getString(R.string.loading)) {
-        progressRing = ProgressDialog.show(context, "", message, true)
-        progressRing?.show()
-    }
-
-    protected fun progressRingDismiss() {
+    protected fun dismissProgressRing() {
         progressRing?.dismiss()
     }
-
 }

@@ -80,7 +80,7 @@
                 android:layout_height="match_parent">
 
                 <android.support.constraint.Guideline
-                    android:id="@+id/guideline3"
+                    android:id="@+id/guideline3Main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -113,7 +113,7 @@
                     android:scaleType="fitStart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3Main"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@mipmap/ic_launcher_round" />
             </android.support.constraint.ConstraintLayout>

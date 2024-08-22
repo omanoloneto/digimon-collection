@@ -1,44 +1,44 @@
 package co.hillstech.digicollection.utils
 
-import android.support.design.widget.BottomSheetDialog
-import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import co.hillstech.digicollection.R
+import co.hillstech.digicollection.databinding.FragmentAlertDialogBinding
+import co.hillstech.digicollection.databinding.FragmentCharDialogBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_alert_dialog.view.*
-import kotlinx.android.synthetic.main.fragment_char_dialog.view.*
 
-
-fun AppCompatActivity.showBottomSheetDialog(title: String = "",
-                                            message: String = "",
-                                            image: String = "",
-                                            confirmButtonLabel: String? = null,
-                                            cancelButtonLabel: String? = null,
-                                            confirmButtonAction: () -> Unit = {},
-                                            cancelButtonAction: () -> Unit = {},
-                                            isCancelable: Boolean = false) {
-
+fun AppCompatActivity.showBottomSheetDialog(
+    title: String = "",
+    message: String = "",
+    image: String = "",
+    confirmButtonLabel: String? = null,
+    cancelButtonLabel: String? = null,
+    confirmButtonAction: () -> Unit = {},
+    cancelButtonAction: () -> Unit = {},
+    isCancelable: Boolean = false
+) {
     val dialog = BottomSheetDialog(this)
+    val binding = FragmentAlertDialogBinding.inflate(layoutInflater)
 
-    val view = layoutInflater.inflate(R.layout.fragment_alert_dialog, null)
-
-    with(view) {
+    with(binding) {
         viewAlertDialogTitle.text = title
         viewAlertDialogMessage.text = message
 
-        if (image != "") {
+        if (image.isNotEmpty()) {
             viewAlertDialogTitle.gravity = Gravity.CENTER
             viewAlertDialogMessage.gravity = Gravity.CENTER
 
             viewAlertDialogImage.visibility = View.VISIBLE
 
             Picasso.get().load(image)
-                    .placeholder(R.drawable.placeholder)
-                    .into(viewAlertDialogImage)
+                .placeholder(R.drawable.placeholder)
+                .into(viewAlertDialogImage)
         }
 
-        viewConfirmButton.text = confirmButtonLabel ?: context.getString(R.string.ok)
+        //TODO: implement getString again
+        viewConfirmButton.text = confirmButtonLabel ?: "Ok"
         viewConfirmButton.setOnClickListener {
             confirmButtonAction()
             dialog.dismiss()
@@ -54,44 +54,44 @@ fun AppCompatActivity.showBottomSheetDialog(title: String = "",
         }
     }
 
-    dialog.setContentView(view)
+    dialog.setContentView(binding.root)
     dialog.setCancelable(isCancelable)
     dialog.show()
 }
 
-fun AppCompatActivity.showBottomCharDialog(charName: String,
-                                           messages: MutableList<String>,
-                                           image: Int,
-                                           isCancelable: Boolean = false) {
-
+fun AppCompatActivity.showBottomCharDialog(
+    charName: String,
+    messages: MutableList<String>,
+    image: Int,
+    isCancelable: Boolean = false
+) {
     val dialog = BottomSheetDialog(this)
-
-    val view = layoutInflater.inflate(R.layout.fragment_char_dialog, null)
+    val binding = FragmentCharDialogBinding.inflate(layoutInflater)
 
     var messagePosition = 0
 
-    with(view) {
+    with(binding) {
         viewCharDialogTitle.text = charName
-        viewCharDialogImage.setImageDrawable(context.getDrawable(image))
+        viewCharDialogImage.setImageDrawable(getDrawable(image))
         viewCharDialogMessage.text = messages[0]
 
         if (messages.size > 1) {
-            viewCharConfirmButton.text = context.getString(R.string.next)
+            viewCharConfirmButton.text = "Next"
             viewCharConfirmButton.setOnClickListener {
                 messagePosition++
                 viewCharDialogMessage.text = messages[messagePosition]
                 if (messages.size == (messagePosition + 1)) {
-                    viewCharConfirmButton.text = context.getString(R.string.close)
+                    viewCharConfirmButton.text = "Close"
                     viewCharConfirmButton.setOnClickListener { dialog.dismiss() }
                 }
             }
         } else {
-            viewCharConfirmButton.text = context.getString(R.string.close)
+            viewCharConfirmButton.text = "Close"
             viewCharConfirmButton.setOnClickListener { dialog.dismiss() }
         }
     }
 
-    dialog.setContentView(view)
+    dialog.setContentView(binding.root)
     dialog.setCancelable(isCancelable)
     dialog.show()
 }
