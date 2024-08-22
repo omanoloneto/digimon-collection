@@ -19,7 +19,7 @@ class LobbyActivity : BaseFragmentActivity() {
 
     private val fragments: Map<Int, Fragment> = mapOf(
         R.id.navi_partner to HomeFragment(),
-        //R.id.layoutLocations to LocationsFragment(),
+        R.id.layoutLocations to LocationsFragment(),
         //R.id.layoutEvents to EventListFragment(),
         //R.id.layoutMenu to MenuFragment()
     )

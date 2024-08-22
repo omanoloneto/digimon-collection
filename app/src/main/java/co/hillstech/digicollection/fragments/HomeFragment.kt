@@ -3,43 +3,40 @@ package co.hillstech.digicollection.fragments
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import co.hillstech.digicollection.R
 import co.hillstech.digicollection.Session
-import co.hillstech.digicollection.enums.MonsterLevel
-import co.hillstech.digicollection.enums.toString
+import co.hillstech.digicollection.databinding.FragmentHomeBinding
 import co.hillstech.digicollection.ui.evolutionList.EvolutionListActivity
-import co.hillstech.digicollection.ui.evolutionList.EvolutionListAdapter
 import com.squareup.picasso.Picasso
-import com.wooplr.spotlight.SpotlightConfig
-import com.wooplr.spotlight.SpotlightView
-import com.wooplr.spotlight.utils.SpotlightListener
-import com.wooplr.spotlight.utils.SpotlightSequence
-import kotlinx.android.synthetic.main.activity_lobby.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    var isSpotlightShowed: Boolean = false
-    var isDigiviceSpotlightShowed: Boolean = false
-    lateinit var preferences: SharedPreferences
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    private lateinit var preferences: SharedPreferences
+
+    private var isSpotlightShowed: Boolean = false
+    private var isDigiviceSpotlightShowed: Boolean = false
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        preferences = activity!!.getSharedPreferences("DigiCollePref", AppCompatActivity.MODE_PRIVATE)
-
+        preferences =
+            requireActivity().getSharedPreferences("DigiCollePref", AppCompatActivity.MODE_PRIVATE)
         verifySpotlights()
     }
 
@@ -51,93 +48,122 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         updateUserHome()
-        showSpotlights()
     }
 
     private fun showSpotlights() {
-        var crest: View = activity!!.findViewById(R.id.viewCrest)
-        var wallet: View = activity!!.findViewById(R.id.viewWallet)
+        /* val activity = requireActivity()
 
-        var spotlights = SpotlightSequence.getInstance(activity, Session.spotlightConfig)
-                .addSpotlight(crest, "Crest of ${Session.user!!.crest.virtue}", "Este é o seu brasão.\nEle representa uma virtude sua, e será muito importante para evoluir seus Digimons.", "tutorialCrest")
-                .addSpotlight(wallet, "Carteira", "Aqui estão suas DigiCoins.\nVocê vai usar-las para comprar itens e melhorias na loja.", "tutorialWallet")
-                .addSpotlight(viewPartnerImage, "Parceiro", "Este é o seu parceiro.\nÉ com ele que você fará as primeiras batalhas, e é ele que te ajudará no começo de sua jornada.", "tutorialPartner")
+        val spotlights = SpotlightSequence.getInstance(activity, Session.spotlightConfig)
+            .addSpotlight(
+                binding.viewCrest,
+                "Crest of ${Session.user?.crest?.virtue}",
+                "Este é o seu brasão.\nEle representa uma virtude sua, e será muito importante para evoluir seus Digimons.",
+                "tutorialCrest"
+            )
+            .addSpotlight(
+                binding.viewWallet,
+                "Carteira",
+                "Aqui estão suas DigiCoins.\nVocê vai usá-las para comprar itens e melhorias na loja.",
+                "tutorialWallet"
+            )
+            .addSpotlight(
+                binding.viewPartnerImage,
+                "Parceiro",
+                "Este é o seu parceiro.\nÉ com ele que você fará as primeiras batalhas, e é ele que te ajudará no começo de sua jornada.",
+                "tutorialPartner"
+            )
 
         Session.user?.digivice?.let {
-            spotlights.addSpotlight(viewDigiviceImage, "Digivice", "Aqui está o seu Digivice.\nToque nele para ver mais informações.", "tutorialDigivice")
+            spotlights.addSpotlight(
+                binding.viewDigiviceImage,
+                "Digivice",
+                "Aqui está o seu Digivice.\nToque nele para ver mais informações.",
+                "tutorialDigivice"
+            )
 
             preferences.edit()
-                    .putString("digiviceSpotlight", "showed")
-                    .commit()
+                .putString("digiviceSpotlight", "showed")
+                .apply()
         }
 
-        spotlights.addSpotlight(viewExperience, "Exp.", "Esta é a experiência do seu parceiro. Batalhe para acumular mais experiência para poder evoluir.", "tutorialExpHome")
-                .addSpotlight(viewLevel, "Nível", "Aqui você pode ver o nível que seu Digimon está, para passar de nível deve encher a barra de experiência primeiro.", "tutorialLevelHome")
-
-        //spotlights.startSequence()
+        spotlights.addSpotlight(
+            binding.viewExperience,
+            "Exp.",
+            "Esta é a experiência do seu parceiro. Batalhe para acumular mais experiência para poder evoluir.",
+            "tutorialExpHome"
+        ).addSpotlight(
+            binding.viewLevel,
+            "Nível",
+            "Aqui você pode ver o nível que seu Digimon está. Para passar de nível, deve encher a barra de experiência primeiro.",
+            "tutorialLevelHome"
+        )
 
         preferences.edit()
-                .putString("spotlights", "showed")
-                .commit()
+            .putString("spotlights", "showed")
+            .apply()
+
+         */
     }
 
     private fun updateUserHome() {
-        Session.user?.partner?.let {
+        Session.user?.partner?.let { partner ->
+            val baseExp =
+                (partner.type * ((partner.type * 1000) - ((partner.type * 1000) * 0.5))).toInt()
 
-            val base = (it.type * ((it.type * 1000) - ((it.type * 1000) * 0.5))).toInt()
+            binding.viewPartnerName.text = partner.nick ?: partner.species
+            binding.viewExperience.text = partner.experience.toString()
+            binding.viewExpToEvolve.text = "/ $baseExp"
+            binding.viewLevel.text = Session.monsterLevel(requireActivity(), partner.type)
 
-            viewPartnerName.text = it.nick ?: it.species
-            viewExperience.text = it.experience.toString()
-            viewExpToEvolve.text = "/ ${base}"
-            viewLevel.text = Session.monsterLevel(this@HomeFragment.activity!!, it.type)
+            binding.viewProgressBar.max = baseExp
+            binding.viewProgressBar.progress = partner.experience
 
-            viewProgressBar.max = base
-            viewProgressBar.progress = it.experience
+            Picasso.get().load(partner.image)
+                .noPlaceholder()
+                .into(binding.viewPartnerImage)
 
-            Picasso.get().load(it.image)
-                    .noPlaceholder()
-                    .into(viewPartnerImage)
-
-            layoutPartner.setOnClickListener {
+            binding.layoutPartner.setOnClickListener {
                 startActivity(Intent(activity, EvolutionListActivity::class.java))
             }
         }
 
-        Session.user?.digivice?.let {
-            layoutDigivice.visibility = View.VISIBLE
-            layoutDigiviceModel.text = it.model + " of " + Session.user!!.crest.virtue
-            Picasso.get().load(it.image)
-                    .noPlaceholder()
-                    .into(viewDigiviceImage)
+        Session.user?.digivice?.let { digivice ->
+            binding.layoutDigivice.visibility = View.VISIBLE
+            binding.layoutDigiviceModel.text = "${digivice.model} of ${Session.user?.crest?.virtue}"
 
-            var digiviceFragment = DigiviceFragment().apply {
-                model = it.model
-                cooldown = it.cooldown
-                maxLevel = it.maxLevel.toString(this@HomeFragment.activity!!)
-                resume = it.resume
-                image = it.image
+            Picasso.get().load(digivice.image)
+                .noPlaceholder()
+                .into(binding.viewDigiviceImage)
+
+            val digiviceFragment = DigiviceFragment().apply {
+                model = digivice.model
+                cooldown = digivice.cooldown
+                maxLevel = digivice.maxLevel.toString()
+                resume = digivice.resume
+                image = digivice.image
             }
 
-            layoutDigivice.setOnClickListener {
-                digiviceFragment.show(activity!!.supportFragmentManager, "DIGIVICE_FRAGMENT")
+            binding.layoutDigivice.setOnClickListener {
+                digiviceFragment.show(requireActivity().supportFragmentManager, "DIGIVICE_FRAGMENT")
             }
 
-            if(isSpotlightShowed && !isDigiviceSpotlightShowed) {
+            if (isSpotlightShowed && !isDigiviceSpotlightShowed) {
                 showDigiviceSpotlight()
-
-                preferences.edit()
-                        .putString("digiviceSpotlight", "showed")
-                        .commit()
             }
         }
     }
 
     private fun showDigiviceSpotlight() {
-        SpotlightView.Builder(activity).setConfiguration(Session.spotlightConfig)
-                .target(viewDigiviceImage)
-                .headingTvText("Digivice")
-                .subHeadingTvText("Aqui está o seu Digivice.\nToque nele para ver mais informações.")
-                .usageId("tutorialDigivice") //UNIQUE ID
-                .show()
+        /*SpotlightView.Builder(requireActivity()).setConfiguration(Session.spotlightConfig)
+            .target(binding.viewDigiviceImage)
+            .headingTvText("Digivice")
+            .subHeadingTvText("Aqui está o seu Digivice.\nToque nele para ver mais informações.")
+            .usageId("tutorialDigivice") // UNIQUE ID
+            .show()*/
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
